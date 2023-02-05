@@ -9,43 +9,99 @@ const Footer = () => {
       </div>
       <div>
         <h3>Information</h3>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
       </div>
       <div>
         <h3>Information</h3>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
       </div>
       <div>
         <h3>Information</h3>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
       </div>
       <div>
         <h3>Information</h3>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
-        <Link to="">About us</Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
+        <Link className="link" to="">
+          About us
+        </Link>
       </div>
     </footer>
   );
