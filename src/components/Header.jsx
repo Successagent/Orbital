@@ -11,7 +11,7 @@ import headerHeroImage from "../assets/logo.webp";
 import Button from "./Button";
 import Nav from "./Nav";
 
-const Header = () => {
+const Header = ({ pathname }) => {
   return (
     <header className="header">
       <section className="header-hero">
@@ -39,7 +39,7 @@ const Header = () => {
           <AiOutlineShoppingCart className="red-hover" />
         </div>
       </section>
-      <Nav />
+      <Nav pathname={pathname} />
     </header>
   );
 };

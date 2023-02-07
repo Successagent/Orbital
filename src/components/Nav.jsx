@@ -4,7 +4,7 @@ import { FcCallback } from "react-icons/fc";
 import { BsFilterLeft } from "react-icons/bs";
 import { AiOutlineDown } from "react-icons/ai";
 
-const Nav = () => {
+const Nav = ({ pathname }) => {
   return (
     <nav className="header-nav">
       <div>
@@ -22,7 +22,10 @@ const Nav = () => {
         <Link to="">About</Link>
         <Link to="">About</Link>
       </ul>
-      <div className="nav-call-sect">
+      <div
+        className="nav-call-sect"
+        style={{ display: `${pathname == "/about" ? "none" : ""}` }}
+      >
         <FcCallback />
         <div>
           <p>Call us 24/7</p>
