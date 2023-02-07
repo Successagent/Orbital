@@ -10,19 +10,15 @@ import {
   AiOutlineShoppingCart,
   AiFillStar,
 } from "react-icons/ai";
-import { BiSupport } from "react-icons/bi";
-import { BsArrowReturnRight, BsCreditCard2Back } from "react-icons/bs";
-import {
-  MdOutlineLocalShipping,
-  MdNavigateNext,
-  MdNavigateBefore,
-} from "react-icons/md";
+
+import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import {
   Footer,
   Header,
   Newsletter,
   Products,
   ProductsBanner,
+  SupportCard,
 } from "../components";
 
 const Home = () => {
@@ -152,36 +148,7 @@ const Home = () => {
             </div>
           </div>
         </div>
-        <div className="home-hero-sect-2">
-          <div>
-            <BiSupport />
-            <div>
-              <h3>Support 24/7</h3>
-              <p>Delicated 24/7 support</p>
-            </div>
-          </div>
-          <div>
-            <BsArrowReturnRight />
-            <div>
-              <h3>Support 24/7</h3>
-              <p>Delicated 24/7 support</p>
-            </div>
-          </div>
-          <div>
-            <BsCreditCard2Back />
-            <div>
-              <h3>Support 24/7</h3>
-              <p>Delicated 24/7 support</p>
-            </div>
-          </div>
-          <div>
-            <MdOutlineLocalShipping />
-            <div>
-              <h3>Support 24/7</h3>
-              <p>Delicated 24/7 support</p>
-            </div>
-          </div>
-        </div>
+        <SupportCard />
         <Products h2_title="New Top Sales!" products={fourProducts} />
         <ProductsBanner
           sale_text={"Sparing Sales Coming"}

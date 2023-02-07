@@ -1,9 +1,9 @@
 import React from "react";
 import Button from "./Button";
 
-const Newsletter = () => {
+const Newsletter = ({ pathname }) => {
   return (
-    <section className="newsletter-con">
+    <section className="newsletter-con" data-visible={pathname}>
       <div>
         <h2>Join our Newsletter</h2>
         <p>Sign up for our newsletter to get up-to-date from us</p>

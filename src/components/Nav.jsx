@@ -24,7 +24,7 @@ const Nav = ({ pathname }) => {
       </ul>
       <div
         className="nav-call-sect"
-        style={{ display: `${pathname == "/about" ? "none" : ""}` }}
+        style={{ display: `${pathname == "/about" || "/shop" ? "none" : ""}` }}
       >
         <FcCallback />
         <div>

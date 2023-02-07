@@ -7,10 +7,10 @@ import {
   AiFillStar,
 } from "react-icons/ai";
 
-const Products = ({ products, h2_title }) => {
+const Products = ({ products, h2_title, pathname }) => {
   return (
     <div className="product-sect">
-      <div className="product-hero-con">
+      <div className="product-hero-con" data-visible={pathname}>
         <h2>{h2_title}</h2>
         <div>
           <p className="active-border">Audio & Videos</p>

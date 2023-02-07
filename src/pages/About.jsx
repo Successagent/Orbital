@@ -1,30 +1,52 @@
-import React from "react";
-import { Button, Footer, Header, Newsletter } from "../components";
+import React, { useState } from "react";
+import {
+  Button,
+  Footer,
+  Header,
+  Newsletter,
+  PageHero,
+  SupportCard,
+} from "../components";
 import { useLocation } from "react-router-dom";
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { GrFacebookOption } from "react-icons/gr";
-import AboutHeroImage from "../assets/page-title.webp";
 import AboutImageTwo from "../assets/d1.webp";
 import TeamImage from "../assets/2.webp";
+import reviewLogo from "../assets/client1.webp";
 
 const About = () => {
   const { pathname } = useLocation();
+  const reviews = [
+    {
+      message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
+  fugit. Commodi illo delectus, cupiditate atque hic non vero
+  doloremque illum.`,
+      title: "Chairman",
+      name: "Merida Swan",
+      icon: reviewLogo,
+    },
+    {
+      message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
+  fugit. Commodi illo delectus, cupiditate atque hic non vero
+  doloremque illum.`,
+      title: "Chairman",
+      name: "Merida Swan",
+      icon: reviewLogo,
+    },
+    {
+      message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
+  fugit. Commodi illo delectus, cupiditate atque hic non vero
+  doloremque illum.`,
+      title: "Chairman",
+      name: "Merida Swan",
+      icon: reviewLogo,
+    },
+  ];
   return (
     <>
       <section className="about-sect">
         <Header pathname={pathname} />
-        <div className="about-hero-sect">
-          <div>
-            <h1>About Us</h1>
-            <div className="about-hero-nav-sect">
-              <h3>Home</h3>
-              <h3>About Us</h3>
-            </div>
-          </div>
-          <div>
-            <img src={AboutHeroImage} alt="" />
-          </div>
-        </div>
+        <PageHero page_title="About Us" />
         <div className="about-intro-sect">
           <div>
             <img src={AboutImageTwo} alt="" />
@@ -48,7 +70,7 @@ const About = () => {
           <div className="team-con">
             <div className="team-children">
               <img src={TeamImage} alt="" />
-              <div>
+              <div className="team-children-first-sect">
                 <h3>Monroe Bond</h3>
                 <p>Chief Admin</p>
                 <div className="team-icons-sect">
@@ -69,7 +91,7 @@ const About = () => {
             </div>
             <div className="team-children">
               <img src={TeamImage} alt="" />
-              <div>
+              <div className="team-children-first-sect">
                 <h3>Monroe Bond</h3>
                 <p>Chief Admin</p>
                 <div className="team-icons-sect">
@@ -90,7 +112,7 @@ const About = () => {
             </div>
             <div className="team-children">
               <img src={TeamImage} alt="" />
-              <div>
+              <div className="team-children-first-sect">
                 <h3>Monroe Bond</h3>
                 <p>Chief Admin</p>
                 <div className="team-icons-sect">
@@ -111,8 +133,30 @@ const About = () => {
             </div>
           </div>
         </div>
+        <div className="customers-review-sect">
+          <h2>Customer's Reviews</h2>
+          <div className="customer-review-con">
+            {reviews.map((review, idx) => (
+              <div key={idx} className="review-item">
+                <div className="review-message">
+                  <p>{review.message}</p>
+                </div>
+                <div className="review-details-con">
+                  <div>
+                    <img src={review.icon} alt="" />
+                  </div>
+                  <div>
+                    <h3 className="product-text-name">{review.name}</h3>
+                    <p>{review.title}</p>
+                  </div>
+                </div>
+              </div>
+            ))}
+          </div>
+        </div>
+        <SupportCard />
       </section>
-      <Newsletter />
+      <Newsletter pathname={pathname} />
       <Footer />
     </>
   );
