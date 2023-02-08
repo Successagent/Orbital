@@ -1067,6 +1067,16 @@ footer .link::after {
   left: 215px;
 }
 
+.shop-sect .product-con {
+  display: grid;
+  grid-template-columns: repeat(3, 1fr);
+  justify-content: flex-start;
+}
+
+.shop-sect .product-con>.product-item {
+  width: 100%;
+}
+
 @media(max-width:600px) {}
 
 
