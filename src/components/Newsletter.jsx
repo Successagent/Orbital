@@ -1,9 +1,13 @@
 import React from "react";
 import Button from "./Button";
 
-const Newsletter = ({ pathname }) => {
+const Newsletter = ({ pathname, id }) => {
   return (
-    <section className="newsletter-con" data-visible={pathname}>
+    <section
+      className={`newsletter-con ${
+        pathname === "/about" || "/shop" || `/products/${id}` ? "twist" : ""
+      }`}
+    >
       <div>
         <h2>Join our Newsletter</h2>
         <p>Sign up for our newsletter to get up-to-date from us</p>

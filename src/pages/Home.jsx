@@ -1,9 +1,8 @@
 import React from "react";
-
+import { useLocation } from "react-router-dom";
 import speaker from "../assets/slider4.webp";
 import productImage from "../assets/shopping.png";
 
-import Button from "../components/Button";
 import {
   AiOutlineArrowRight,
   AiOutlineHeart,
@@ -14,104 +13,19 @@ import {
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import {
   Footer,
+  GridProducts,
   Header,
   Newsletter,
   Products,
   ProductsBanner,
   SupportCard,
+  Button,
 } from "../components";
+import { products } from "../datas/product";
 
 const Home = () => {
-  const products = [
-    {
-      src: productImage,
-      status: "-10%",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "new",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "-10%",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "new",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "-10%",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "new",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "-10%",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "new",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "-10%",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "new",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "-10%",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-    {
-      src: productImage,
-      status: "new",
-      productName: "Bluetooth Speaker New Without Cable",
-      category: "video & musics",
-      price: "160.00",
-    },
-  ];
-
+  const { pathname } = useLocation();
   const fourProducts = products.slice(0, 4);
-  const sixProducts = products.slice(0, 6);
-
   return (
     <>
       <section className="home-hero">
@@ -163,6 +77,7 @@ const Home = () => {
                 <MdNavigateNext />
               </div>
             </div>
+
             <div className="flash-sales-item-one-main">
               <div className="flash-sales-item-one-main-details-con">
                 <div className="flash-sales-item-one-main-details-con-time-sect">
@@ -186,9 +101,9 @@ const Home = () => {
                   </div>
                 </div>
                 <p className="product-name-text">
-                  Headphone Supersonic New Adi-25
+                  {fourProducts[0].productName}
                 </p>
-                <h3 className="product-price">$126.00</h3>
+                <h3 className="product-price">${fourProducts[0].price}</h3>
                 <div className="product-rate-con">
                   <AiFillStar />
                   <AiFillStar />
@@ -200,7 +115,7 @@ const Home = () => {
               <div className="flash-sales-item-one-main-image-con">
                 <img
                   className="flash-sales-item-one-img"
-                  src={productImage}
+                  src={fourProducts[0].src[0]}
                   alt=""
                 />
               </div>
@@ -220,31 +135,7 @@ const Home = () => {
               <p>Gaming</p>
               <p>Headphone</p>
             </div>
-            <div className="flash-sales-item-two-grid-products">
-              {sixProducts.map((product) => (
-                <div>
-                  <div>
-                    <img src={product.src} alt="" />
-                  </div>
-                  <div>
-                    <p className="product-name-text">{product.productName}</p>
-                    <h3 className="product-price">{product.price}</h3>
-                    <div className="flash-sales-grid-flex">
-                      <div className="product-rate-con">
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                        <AiFillStar />
-                      </div>
-                      <div>
-                        <AiOutlineShoppingCart />
-                      </div>
-                    </div>
-                  </div>
-                </div>
-              ))}
-            </div>
+            <GridProducts pathname={pathname} />
           </div>
         </div>
         <div className="category-sect">

@@ -15,9 +15,9 @@ const Nav = ({ pathname }) => {
         </button>
       </div>
       <ul>
-        <Link to="">Home</Link>
-        <Link to="">About</Link>
-        <Link to="">Shop</Link>
+        <Link to="/">Home</Link>
+        <Link to="/about">About</Link>
+        <Link to="/shop">Shop</Link>
         <Link to="">About</Link>
         <Link to="">About</Link>
         <Link to="">About</Link>

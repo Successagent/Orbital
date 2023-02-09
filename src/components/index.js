@@ -1,5 +1,6 @@
 import Button from "./Button";
 import Footer from "./Footer";
+import GridProducts from "./GridProducts";
 import Header from "./Header";
 import Nav from "./Nav";
 import Newsletter from "./Newsletter";
@@ -18,4 +19,5 @@ export {
   Newsletter,
   SupportCard,
   PageHero,
+  GridProducts,
 };
