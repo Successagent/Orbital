@@ -9,6 +9,8 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 
+import reviewImage from "../assets/c1.webp";
+
 const SingleProduct = () => {
   const { id } = useParams();
   const showFourProducts = products.slice(0, 4);
@@ -16,6 +18,7 @@ const SingleProduct = () => {
   const product = products.filter((index) => index.id == id);
   const index = product[0];
   const [selectedImage, setSelectedImage] = useState(1);
+  const [tabs, setTabs] = useState(false);
 
   const changeActiveImage = (e) => {
     if (e.target.id == 0) {
@@ -27,6 +30,10 @@ const SingleProduct = () => {
     } else if (e.target.id == 3) {
       setSelectedImage(4);
     }
+  };
+
+  const toggleTab = () => {
+    setTabs(!tabs);
   };
   return (
     <>
@@ -101,13 +108,108 @@ const SingleProduct = () => {
               </div>
               <button className="single-product-btn">add to cart</button>
             </div>
+            <h4>
+              SKU: <span>WS-256HG</span>
+            </h4>
+            <h4>
+              CATEGORIES: <span>Home, Electronic</span>
+            </h4>
           </div>
         </div>
         <div className="product-specs-descrp-review-sect">
-          <div>
-            <h3>Description</h3>
-            <h3>Specification</h3>
-            <h3>Review</h3>
+          <div className="tabs-con">
+            <h3
+              className={`${tabs == false ? "active-border-bottom" : ""}`}
+              onClick={toggleTab}
+            >
+              Description
+            </h3>
+            <h3
+              className={`${tabs == true ? "active-border-bottom" : ""}`}
+              onClick={toggleTab}
+            >
+              Review
+            </h3>
+          </div>
+          <div className={`tabs ${tabs == false ? "active-tab" : ""}`}>
+            <p>
+              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
+              eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim
+              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
+              aliquip ex ea comm consequat. Duis aute irure dolor in
+              reprehenderit in voluptate velit esse cillum dolore eu fugiat
+              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
+              sunt in culpa qui officia deserunt mollit anim id est laborum. Sed
+              ut perspiciatis unde omnis iste natus error sit voluptatem
+              accusantium doloremque laudantium, totamhy rem aperiam, eaque ipsa
+              quae ab illo inventore veritatis et quasi architecto beatae vitae
+              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
+              aspernatur
+            </p>
+          </div>
+          <div
+            className={`tabs descrp-tab ${tabs == true ? "active-tab" : ""}`}
+          >
+            <div>
+              <div>
+                <img src={reviewImage} alt="" />
+                <h3>Tomas Doe</h3>
+                <p>Developer</p>
+                <div className="product-rate-con">
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                viverra amet, sodales faucibus nibh. Vivamus amet potenti
+                ultricies nunc gravida duis. Nascetur scelerisque massa sodales
+                egestas augue neque euismod scelerisque viverra.
+              </p>
+            </div>
+            <div>
+              <div>
+                <img src={reviewImage} alt="" />
+                <h3>Tomas Doe</h3>
+                <p>Developer</p>
+                <div className="product-rate-con">
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                viverra amet, sodales faucibus nibh. Vivamus amet potenti
+                ultricies nunc gravida duis. Nascetur scelerisque massa sodales
+                egestas augue neque euismod scelerisque viverra.
+              </p>
+            </div>
+            <div>
+              <div>
+                <img src={reviewImage} alt="" />
+                <h3>Tomas Doe</h3>
+                <p>Developer</p>
+                <div className="product-rate-con">
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                  <AiFillStar />
+                </div>
+              </div>
+              <p>
+                Lorem ipsum dolor sit amet, consectetur adipiscing elit. Sed
+                viverra amet, sodales faucibus nibh. Vivamus amet potenti
+                ultricies nunc gravida duis. Nascetur scelerisque massa sodales
+                egestas augue neque euismod scelerisque viverra.
+              </p>
+            </div>
           </div>
         </div>
         <div className="related-product-con">
@@ -129,10 +231,7 @@ const SingleProduct = () => {
                   </button>
                   <div className="product-item-first-con">
                     <div className="product-image-con">
-                      <img
-                        src={product.src.length > 0 && product.src[0]}
-                        alt={product.productName}
-                      />
+                      <img src={product.src[0]} alt={product.productName} />
                     </div>
                     <div className="product-search-con">
                       <div className="product-svg-con" id="svg-con-1">

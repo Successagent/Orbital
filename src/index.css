@@ -351,10 +351,9 @@ footer .link::after {
   margin-bottom: 100px;
 }
 
-.product-item {
-  padding: 15px;
+.product-con a {
   background-color: #f0f2f5;
-  width: 100%;
+  width: 25%;
   position: relative;
   cursor: pointer;
 }
@@ -371,6 +370,15 @@ footer .link::after {
   display: flex;
   justify-content: center;
   margin-top: 50px;
+  height: 45%;
+}
+
+.product-item-first-con img {
+  height: 100%;
+}
+
+.product-item-two-con {
+  height: 45%;
 }
 
 .status {
@@ -749,7 +757,7 @@ footer .link::after {
   grid-template-columns: repeat(4, 1fr);
 }
 
-.part-two-products .product-item {
+.part-two-products .product-con a {
   background-color: transparent;
   border: 1px solid rgba(32, 165, 98, 0.2);
   width: 100%;
@@ -1211,6 +1219,33 @@ footer .link::after {
   justify-content: center;
   gap: 15px;
   margin-top: 50px;
+  position: relative;
+}
+
+.related-products-container a {
+  width: 25%;
+  position: relative;
+}
+
+.related-products-container a .product-item {
+  width: 100%;
+  background-color: transparent;
+  border: 1px solid rgba(32, 165, 98, 0.2);
+  display: flex;
+  flex-direction: column;
+  height: 500px;
+  padding: 15px;
+}
+
+.single-product-details-con h4 {
+  color: #000;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.single-product-details-con h4 span {
+  color: #4b4b4b;
+  font-weight: 500;
 }
 
 .single-product-single-image-con {
@@ -1226,10 +1261,61 @@ footer .link::after {
   max-width: 400px;
 }
 
-.prev-btn,
-.next-btn {
-  height: 50px !important;
-  width: 50px !important;
+
+.product-specs-descrp-review-sect {
+  padding: 50px;
+}
+
+.tabs-con {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 35px;
+  border-bottom: 2px solid #f1f2f6;
+  padding-bottom: 30px;
+}
+
+.tabs-con h3 {
+  font-weight: 600;
+  cursor: pointer;
+  font-size: 18px;
+}
+
+.descrp-tab {
+  flex-direction: column;
+  gap: 20px;
+}
+
+.descrp-tab>div {
+  background: #f0f2f5;
+  padding: 30px;
+  border-radius: 30px;
+}
+
+.descrp-tab>div>div {
+  display: flex;
+  align-items: center;
+  gap: 30px;
+  margin-bottom: 20px;
+}
+
+
+.tabs {
+  padding: 50px 80px;
+  display: none;
+}
+
+.active-border-bottom {
+  border-bottom: red solid 2px;
+}
+
+.tabs p {
+  font-size: 15px;
+  line-height: 1.7rem;
+}
+
+.active-tab {
+  display: flex !important;
 }
 
 @media(max-width:600px) {}

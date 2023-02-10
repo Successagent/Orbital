@@ -1,16 +1,22 @@
-import productImage from "../assets/pexels-jean-cont-11726361.jpg";
-import productImageIndexTwo from "../assets/pexels-stephen-c-11804611.jpg";
-import productImageIndexThree from "../assets/pexels-stephen-c-11804608.jpg";
-import productImageTwo from "../assets/pexels-gary-barnes-6248683.jpg";
-import productImageThree from "../assets/pexels-stephen-c-11804606.jpg";
-import productImageIndexFour from "../assets/pexels-gary-barnes-6248687.jpg";
+import productImage from "../assets/cloth-18.jfif";
+import productImageIndexOne from "../assets/cloth-19.jfif";
+import productImageIndexTwo from "../assets/cloth-20.jfif";
+import productImageIndexThree from "../assets/cloth-eight.jpeg";
+import productImageTwo from "../assets/cloth-15.webp";
+import productImageTwoIndexOne from "../assets/cloth-16.webp";
+import productImageTwoIndexTwo from "../assets/cloth-17.webp";
+import productImageTwoIndexThree from "../assets/cloth-five.webp";
+import productImageThree from "../assets/cloth-four.webp";
+import productImageThreeIndexOne from "../assets/cloth-one.jpg";
+import productImageThreeIndexTwo from "../assets/cloth-seven.webp";
+import productImageThreeIndexThree from "../assets/cloth-six.jpg";
 
 export const products = [
   {
     id: 1,
     src: [
       productImage,
-      productImageIndexFour,
+      productImageIndexOne,
       productImageIndexTwo,
       productImageIndexThree,
     ],
@@ -23,9 +29,9 @@ export const products = [
     id: 2,
     src: [
       productImageTwo,
-      productImageIndexFour,
-      productImageIndexThree,
-      productImage,
+      productImageTwoIndexOne,
+      productImageTwoIndexTwo,
+      productImageTwoIndexThree,
     ],
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
@@ -36,9 +42,9 @@ export const products = [
     id: 3,
     src: [
       productImageThree,
-      productImageIndexTwo,
-      productImageIndexThree,
-      productImageTwo,
+      productImageThreeIndexOne,
+      productImageThreeIndexTwo,
+      productImageThreeIndexThree,
     ],
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
@@ -48,10 +54,10 @@ export const products = [
   {
     id: 4,
     src: [
-      productImageTwo,
-      productImageIndexFour,
+      productImage,
+      productImageIndexOne,
+      productImageIndexTwo,
       productImageIndexThree,
-      productImageThree,
     ],
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
@@ -61,10 +67,10 @@ export const products = [
   {
     id: 5,
     src: [
-      productImageThree,
-      productImageIndexTwo,
-      productImageIndexThree,
       productImageTwo,
+      productImageTwoIndexOne,
+      productImageTwoIndexTwo,
+      productImageTwoIndexThree,
     ],
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
@@ -74,10 +80,10 @@ export const products = [
   {
     id: 6,
     src: [
-      productImage,
-      productImageIndexFour,
-      productImageIndexTwo,
       productImageThree,
+      productImageThreeIndexOne,
+      productImageThreeIndexTwo,
+      productImageThreeIndexThree,
     ],
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
@@ -87,10 +93,10 @@ export const products = [
   {
     id: 7,
     src: [
-      productImageThree,
+      productImage,
+      productImageIndexOne,
       productImageIndexTwo,
       productImageIndexThree,
-      productImageTwo,
     ],
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
@@ -100,10 +106,10 @@ export const products = [
   {
     id: 8,
     src: [
-      productImage,
-      productImageIndexFour,
-      productImageIndexTwo,
-      productImageIndexThree,
+      productImageTwo,
+      productImageTwoIndexOne,
+      productImageTwoIndexTwo,
+      productImageTwoIndexThree,
     ],
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
@@ -113,10 +119,10 @@ export const products = [
   {
     id: 9,
     src: [
-      productImageTwo,
-      productImageIndexFour,
-      productImageIndexThree,
       productImageThree,
+      productImageThreeIndexOne,
+      productImageThreeIndexTwo,
+      productImageThreeIndexThree,
     ],
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
@@ -126,10 +132,10 @@ export const products = [
   {
     id: 10,
     src: [
-      productImageTwo,
-      productImageIndexFour,
-      productImageIndexThree,
       productImage,
+      productImageIndexOne,
+      productImageIndexTwo,
+      productImageIndexThree,
     ],
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
@@ -139,10 +145,10 @@ export const products = [
   {
     id: 11,
     src: [
-      productImage,
-      productImageIndexFour,
-      productImageIndexTwo,
-      productImageIndexThree,
+      productImageTwo,
+      productImageTwoIndexOne,
+      productImageTwoIndexTwo,
+      productImageTwoIndexThree,
     ],
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
@@ -153,9 +159,9 @@ export const products = [
     id: 12,
     src: [
       productImageThree,
-      productImageIndexTwo,
-      productImageIndexThree,
-      productImageTwo,
+      productImageThreeIndexOne,
+      productImageThreeIndexTwo,
+      productImageThreeIndexThree,
     ],
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
