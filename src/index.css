@@ -358,6 +358,10 @@ footer .link::after {
   cursor: pointer;
 }
 
+.product-con a .product-item {
+  width: 100%;
+}
+
 .product-item img {
   transition: all ease-in-out 500ms;
 }
