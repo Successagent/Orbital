@@ -23,7 +23,7 @@ export const products = [
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "170.00",
   },
   {
     id: 2,
@@ -36,7 +36,7 @@ export const products = [
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "165.00",
   },
   {
     id: 3,
@@ -49,7 +49,7 @@ export const products = [
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "150.00",
   },
   {
     id: 4,
@@ -62,7 +62,7 @@ export const products = [
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "155.00",
   },
   {
     id: 5,
@@ -75,7 +75,7 @@ export const products = [
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "140.00",
   },
   {
     id: 6,
@@ -88,7 +88,7 @@ export const products = [
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "145.00",
   },
   {
     id: 7,
@@ -101,7 +101,7 @@ export const products = [
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "180.00",
   },
   {
     id: 8,
@@ -114,7 +114,7 @@ export const products = [
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "185.00",
   },
   {
     id: 9,
@@ -127,7 +127,7 @@ export const products = [
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "190.00",
   },
   {
     id: 10,
@@ -140,7 +140,7 @@ export const products = [
     status: "new",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "195.00",
   },
   {
     id: 11,
@@ -153,7 +153,7 @@ export const products = [
     status: "-10%",
     productName: "Bluetooth Speaker New Without Cable",
     category: "video & musics",
-    price: "160.00",
+    price: "200.00",
   },
   {
     id: 12,

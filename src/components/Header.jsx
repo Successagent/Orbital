@@ -1,4 +1,6 @@
-import React from "react";
+import React, { useContext } from "react";
+import { StateContext } from "../App";
+
 import { Link } from "react-router-dom";
 import {
   AiOutlineSearch,
@@ -10,8 +12,14 @@ import {
 import headerHeroImage from "../assets/logo.webp";
 import Button from "./Button";
 import Nav from "./Nav";
+import SideCart from "./SideCart";
 
 const Header = ({ pathname }) => {
+  const [cart, setCart] = useContext(StateContext);
+
+  const toggleCart = () => {
+    setCart(!cart);
+  };
   return (
     <header className="header">
       <section className="header-hero">
@@ -36,10 +44,11 @@ const Header = ({ pathname }) => {
             </Link>
           </div>
           <AiOutlineHeart className="red-hover" />
-          <AiOutlineShoppingCart className="red-hover" />
+          <AiOutlineShoppingCart className="red-hover" onClick={toggleCart} />
         </div>
       </section>
       <Nav pathname={pathname} />
+      <SideCart cart={cart} toggleCart={toggleCart} />
     </header>
   );
 };

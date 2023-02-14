@@ -8,6 +8,7 @@ import PageHero from "./PageHero";
 import Products from "./Products";
 import ProductsBanner from "./ProductsBanner";
 import SupportCard from "./SupportCard";
+import Map from "./Map";
 
 export {
   Header,
@@ -20,4 +21,5 @@ export {
   SupportCard,
   PageHero,
   GridProducts,
+  Map,
 };

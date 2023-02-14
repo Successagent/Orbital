@@ -16,11 +16,6 @@ const Products = ({ products, h2_title, pathname }) => {
     <div className="product-sect">
       <div className="product-hero-con" data-visible={pathname}>
         <h2>{h2_title}</h2>
-        <div>
-          <p className="active-border">Audio & Videos</p>
-          <p>Gaming</p>
-          <p>Headphone</p>
-        </div>
       </div>
       <div className="product-con">
         {products.map((product, idx) => (
@@ -39,10 +34,7 @@ const Products = ({ products, h2_title, pathname }) => {
               </button>
               <div className="product-item-first-con">
                 <div className="product-image-con">
-                  <img
-                    src={product.src.length > 0 && product.src[0]}
-                    alt={product.productName}
-                  />
+                  <img src={product.src[0]} alt={product.productName} />
                 </div>
                 <div className="product-search-con">
                   <div className="product-svg-con" id="svg-con-1">

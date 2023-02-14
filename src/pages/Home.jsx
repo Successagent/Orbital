@@ -29,7 +29,7 @@ const Home = () => {
   return (
     <>
       <section className="home-hero">
-        <Header />
+        {/* <Header /> */}
         <div className="home-hero-section">
           <div className="home-hero-item-1">
             <div className="home-hero-section-text-con">
@@ -130,11 +130,6 @@ const Home = () => {
             </div>
           </div>
           <div className="flash-sales-item-two">
-            <div className="flash-sales-item-two-hero">
-              <p className="active-border">Audio & Videos</p>
-              <p>Gaming</p>
-              <p>Headphone</p>
-            </div>
             <GridProducts pathname={pathname} />
           </div>
         </div>
