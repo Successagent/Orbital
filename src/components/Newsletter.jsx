@@ -5,7 +5,11 @@ const Newsletter = ({ pathname, id }) => {
   return (
     <section
       className={`newsletter-con ${
-        pathname === "/about" || "/shop" || `/products/${id}` ? "twist" : ""
+        pathname === "/about" ||
+        pathname === "/shop" ||
+        pathname === `/products/${id}`
+          ? "twist"
+          : "newsletter-con"
       }`}
     >
       <div>

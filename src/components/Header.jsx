@@ -9,6 +9,9 @@ import {
   AiOutlineDown,
 } from "react-icons/ai";
 
+import { BiUser } from "react-icons/bi";
+import { RxHamburgerMenu } from "react-icons/rx";
+
 import headerHeroImage from "../assets/logo.webp";
 import Button from "./Button";
 import Nav from "./Nav";
@@ -45,6 +48,22 @@ const Header = ({ pathname }) => {
           </div>
           <AiOutlineHeart className="red-hover" />
           <AiOutlineShoppingCart className="red-hover" onClick={toggleCart} />
+        </div>
+      </section>
+      <section
+        className="mobile-header"
+        style={{ padding: `${pathname !== "/" ? "20px" : ""}` }}
+      >
+        <div className="mobile-header-image-con">
+          <img src={headerHeroImage} alt="" />
+        </div>
+        <div className="mobile-header-icons-con">
+          <AiOutlineSearch />
+          <BiUser />
+          <AiOutlineShoppingCart />
+          <div className="hamburger-con">
+            <RxHamburgerMenu />
+          </div>
         </div>
       </section>
       <Nav pathname={pathname} />

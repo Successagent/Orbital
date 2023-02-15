@@ -144,6 +144,10 @@ img {
   width: 25%;
 }
 
+.mobile-header {
+  display: none;
+}
+
 .header-nav {
   display: flex;
   align-items: center;
@@ -1784,13 +1788,24 @@ textarea {
     gap: 20px;
   }
 
+  .category-sect {
+    padding: 30px 20px;
+  }
+
   .category-products-sect {
     display: grid;
-    grid-template-columns: repeat(2, 1fr);
+    grid-template-columns: repeat(1fr);
     row-gap: 30px;
   }
 
-  .category-products-sect>div:nth-child(1) {
+  .category-products-sect>div div {
+    height: 150px;
+    width: 150px;
+  }
+
+  .category-products-sect>div:nth-child(1),
+  .category-products-sect>div:nth-child(2),
+  .category-products-sect>div:nth-child(3) {
     display: none;
   }
 
@@ -1826,6 +1841,24 @@ textarea {
     align-items: flex-start;
     height: auto;
     padding: 20px;
+    padding: 100px 20px;
+    text-align: center;
+  }
+
+  .newsletter-con h2 {
+    font-size: 18px;
+    margin-bottom: 15px;
+  }
+
+  .newsletter-con input {
+    outline: none;
+  }
+
+  .newsletter-con p {
+    font-size: 14px;
+    font-weight: 400;
+    margin-bottom: 20px;
+    line-height: 1.5rem;
   }
 
   .newsletter-form {
@@ -1834,6 +1867,123 @@ textarea {
 
   .flash-sales-item-one-main-cart-con {
     display: none;
+    height: 0;
+    position: static;
+  }
+
+  .product-sect {
+    margin-top: 50px;
+  }
+
+  .related-product-con {
+    padding: 30px 20px;
+  }
+
+  .related-products-container {
+    flex-direction: column;
+  }
+
+  .product-specs-descrp-review-sect {
+    padding: 30px 20px;
+  }
+
+  .descrp-tab>div>div {
+    flex-direction: column;
+  }
+
+  .single-product {
+    flex-direction: column;
+    padding: 30px 20px;
+  }
+
+  .single-product>div {
+    width: 100%;
+  }
+
+  .tabs {
+    padding: 0;
+  }
+
+  .related-products-container a {
+    width: 100%;
+  }
+
+  .single-product-other-images-con {
+    margin: 25px 0;
+    flex-wrap: wrap;
+  }
+
+  .about-hero-sect {
+    padding: 30px 20px;
+    flex-direction: column;
+    padding-bottom: 0px;
+  }
+
+  .about-hero-sect h1 {
+    font-size: 35px;
+  }
+
+  .about-hero-nav-sect {
+    margin: 20px 0;
+    margin-bottom: 30px;
+  }
+
+  .about-hero-sect img {
+    position: static;
+    max-width: 150px;
+  }
+
+  .about-hero-sect>div {
+    width: 100%;
+  }
+
+  .about-hero-sect>div:nth-child(2) {
+    display: flex;
+    justify-content: flex-end;
+  }
+
+  .header-hero {
+    display: none;
+  }
+
+  .header-nav {
+    display: none;
+  }
+
+  .header {
+    padding: 0;
+  }
+
+  .mobile-header {
+    display: flex;
+    align-items: center;
+    padding: 20px 0;
+    justify-content: space-between;
+  }
+
+  .mobile-header-image-con {
+    width: 35%;
+  }
+
+  .mobile-header-icons-con {
+    width: 65%;
+    display: flex;
+    align-items: center;
+    justify-content: flex-end;
+    color: #20a562;
+    font-size: 25px;
+    gap: 10px;
+  }
+
+  .hamburger-con {
+    display: flex;
+    align-items: center;
+    background-color: red;
+    padding: 5px;
+    justify-content: center;
+    color: white;
+    font-size: 20px;
+    margin-left: 10px;
   }
 }
 
