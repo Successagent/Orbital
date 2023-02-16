@@ -1500,6 +1500,7 @@ textarea {
   z-index: 9999;
   display: flex;
   justify-content: center;
+  transition: all ease-in-out 400ms;
 }
 
 .side-cart h4 {
@@ -1527,11 +1528,11 @@ textarea {
 }
 
 .close-cart {
-  display: none !important;
+  transform: translateX(1300px) !important;
 }
 
 .open-cart {
-  display: flex !important;
+  transform: translateX(0px) !important;
 }
 
 .side-cart-header {
@@ -1959,10 +1960,36 @@ textarea {
     align-items: center;
     padding: 20px 0;
     justify-content: space-between;
+    position: relative;
   }
 
   .mobile-header-image-con {
     width: 35%;
+  }
+
+  .mobile-nav {
+    position: fixed;
+    background-color: white;
+    width: 100%;
+    inset: 0;
+    height: 350px;
+    display: flex;
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+    font-size: 20px;
+    font-family: "Poppins", sans-serif;
+    font-weight: 400;
+    text-align: center;
+    z-index: 9999;
+    transition: all ease-in-out 400ms;
+  }
+
+  .mobile-nav svg {
+    font-size: 30px;
+    margin-bottom: 50px;
+    font-weight: 200;
   }
 
   .mobile-header-icons-con {
@@ -1984,6 +2011,90 @@ textarea {
     color: white;
     font-size: 20px;
     margin-left: 10px;
+  }
+
+  .cart-dark-con {
+    width: 20%;
+  }
+
+  .cart-sidebar-con {
+    width: 80%;
+  }
+
+  .close-nav {
+    height: 0px;
+    opacity: 0;
+  }
+
+  .open-nav {
+    height: 350px;
+    opacity: 1;
+  }
+
+  .about-intro-sect {
+    flex-direction: column-reverse;
+    padding: 30px 20px;
+    align-items: flex-start;
+    justify-content: flex-start;
+    gap: 50px;
+  }
+
+  .about-intro-sect>div {
+    width: 100%;
+  }
+
+  .about-intro-sect h1 {
+    font-size: 35px;
+  }
+
+  .team-con {
+    flex-direction: column;
+    gap: 50px;
+  }
+
+  .team-children {
+    height: 550px;
+  }
+
+  .customer-review-con {
+    flex-direction: column;
+    margin-top: 20px;
+  }
+
+  .contact-form-con>div {
+    width: 100%;
+    padding: 30px 20px;
+  }
+
+  .contact-form-con {
+    flex-direction: column;
+    width: 100%;
+  }
+
+  .hr-flex {
+    width: 300px;
+  }
+
+  .contact-getin-touch-section {
+    width: 100% !important;
+  }
+
+  .contact-information-section {
+    border: none;
+    width: 100% !important;
+  }
+
+  .contact-form {
+    display: flex;
+    flex-direction: column;
+  }
+
+  .shop-sect .product-con {
+    grid-template-columns: 1fr;
+  }
+
+  .store-sect {
+    padding: 30px 20px;
   }
 }
 

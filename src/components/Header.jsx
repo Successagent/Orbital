@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useContext, useState } from "react";
 import { StateContext } from "../App";
 
 import { Link } from "react-router-dom";
@@ -16,9 +16,15 @@ import headerHeroImage from "../assets/logo.webp";
 import Button from "./Button";
 import Nav from "./Nav";
 import SideCart from "./SideCart";
+import { FaTimes } from "react-icons/fa";
 
 const Header = ({ pathname }) => {
   const [cart, setCart] = useContext(StateContext);
+  const [visible, setVisible] = useState(false);
+
+  const oppenNav = () => {
+    setVisible(!visible);
+  };
 
   const toggleCart = () => {
     setCart(!cart);
@@ -60,11 +66,22 @@ const Header = ({ pathname }) => {
         <div className="mobile-header-icons-con">
           <AiOutlineSearch />
           <BiUser />
-          <AiOutlineShoppingCart />
+          <AiOutlineShoppingCart onClick={toggleCart} />
           <div className="hamburger-con">
-            <RxHamburgerMenu />
+            <RxHamburgerMenu onClick={oppenNav} />
           </div>
         </div>
+        <ul
+          className={`mobile-nav ${
+            visible == false ? "close-nav" : "open-nav"
+          }`}
+        >
+          <FaTimes onClick={oppenNav} />
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="/contact">Contact</Link>
+        </ul>
       </section>
       <Nav pathname={pathname} />
       <SideCart cart={cart} toggleCart={toggleCart} />
