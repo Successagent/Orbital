@@ -1,9 +1,8 @@
 import React from "react";
 import { useLocation } from "react-router-dom";
 import { Footer, Header, Newsletter, PageHero, Products } from "../components";
-import { products } from "../datas/product";
 
-const Shop = () => {
+const Shop = ({ products }) => {
   const { pathname } = useLocation();
 
   return (

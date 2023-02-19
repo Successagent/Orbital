@@ -12,40 +12,42 @@ const ShoppingCart = () => {
         <Header pathname={pathname} />
         <PageHero page_title={"Cart"} />
         <div className="shopping-cart-stats">
-          <div className="shopping-cart-header">
-            <div className="products-con">
-              <p>Product</p>
-            </div>
-            <div className="price-con">
-              <p>Price</p>
-            </div>
-            <div className="quantity-con">
-              <p>Quantity</p>
-            </div>
-            <div className="subtotal-con">
-              <p>Subtotal</p>
-            </div>
-          </div>
-          <div className="shopping-cart-main">
-            <div className="products-con">
-              <div className="cart-img-con">
-                <img src={cartLogo} alt="" />
+          <div>
+            <div className="shopping-cart-header">
+              <div className="products-con">
+                <p>Product</p>
               </div>
-              <p>D-Phone Android</p>
-            </div>
-            <div className="price-con">
-              <p>$120.00</p>
-            </div>
-            <div className="quantity-con">
-              <div className="single-product-btn">
-                <span>-</span>
-                <span>0</span>
-                <span>+</span>
+              <div className="price-con">
+                <p>Price</p>
+              </div>
+              <div className="quantity-con">
+                <p>Quantity</p>
+              </div>
+              <div className="subtotal-con">
+                <p>Subtotal</p>
               </div>
             </div>
-            <div className="subtotal-con">
-              <p>$120.00</p>
-              <FaTrash />
+            <div className="shopping-cart-main">
+              <div className="products-con">
+                <div className="cart-img-con">
+                  <img src={cartLogo} alt="" />
+                </div>
+                <p>D-Phone Android</p>
+              </div>
+              <div className="price-con">
+                <p>$120.00</p>
+              </div>
+              <div className="quantity-con">
+                <div className="single-product-btn">
+                  <span>-</span>
+                  <span>0</span>
+                  <span>+</span>
+                </div>
+              </div>
+              <div className="subtotal-con">
+                <p>$120.00</p>
+                <FaTrash />
+              </div>
             </div>
           </div>
         </div>

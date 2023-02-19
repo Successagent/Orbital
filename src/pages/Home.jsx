@@ -20,12 +20,12 @@ import {
   ProductsBanner,
   SupportCard,
   Button,
+  DailyDeals,
 } from "../components";
-import { products } from "../datas/product";
 
-const Home = () => {
+const Home = ({ products, addToCart }) => {
   const { pathname } = useLocation();
-  const fourProducts = products.slice(0, 4);
+
   return (
     <>
       <section className="home-hero">
@@ -63,7 +63,7 @@ const Home = () => {
           </div>
         </div>
         <SupportCard />
-        <Products h2_title="New Top Sales!" products={fourProducts} />
+        <Products h2_title="New Top Sales!" products={products.slice(0, 4)} />
         <ProductsBanner
           sale_text={"Sparing Sales Coming"}
           name_text={"Smart Watch Android"}
@@ -77,60 +77,10 @@ const Home = () => {
                 <MdNavigateNext />
               </div>
             </div>
-
-            <div className="flash-sales-item-one-main">
-              <div className="flash-sales-item-one-main-details-con">
-                <div className="flash-sales-item-one-main-details-con-time-sect">
-                  <div>
-                    <div>
-                      <h3>4</h3>
-                    </div>
-                    <h3>HRS</h3>
-                  </div>
-                  <div>
-                    <div>
-                      <h3>14</h3>
-                    </div>
-                    <h3>MINS</h3>
-                  </div>
-                  <div>
-                    <div>
-                      <h3>4</h3>
-                    </div>
-                    <h3>SECS</h3>
-                  </div>
-                </div>
-                <p className="product-name-text">
-                  {fourProducts[0].productName}
-                </p>
-                <h3 className="product-price">${fourProducts[0].price}</h3>
-                <div className="product-rate-con">
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                  <AiFillStar />
-                </div>
-              </div>
-              <div className="flash-sales-item-one-main-image-con">
-                <img
-                  className="flash-sales-item-one-img"
-                  src={fourProducts[0].src[0]}
-                  alt=""
-                />
-              </div>
-              <div className="flash-sales-item-one-main-cart-con">
-                <div className="product-svg-con">
-                  <AiOutlineHeart />
-                </div>
-                <div className="product-svg-con">
-                  <AiOutlineShoppingCart />
-                </div>
-              </div>
-            </div>
+            <DailyDeals dealsProducts={products.slice(0, 1)} />
           </div>
           <div className="flash-sales-item-two">
-            <GridProducts pathname={pathname} />
+            <GridProducts pathname={pathname} products={products} />
           </div>
         </div>
         <div className="category-sect">

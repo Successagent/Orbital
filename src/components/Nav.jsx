@@ -18,8 +18,6 @@ const Nav = ({ pathname }) => {
         <Link to="/">Home</Link>
         <Link to="/about">About</Link>
         <Link to="/shop">Shop</Link>
-        <Link to="">About</Link>
-        <Link to="">About</Link>
         <Link to="/contact">Contact</Link>
       </ul>
       <div

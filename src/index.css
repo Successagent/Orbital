@@ -360,16 +360,15 @@ footer .link::after {
   margin-bottom: 100px;
 }
 
-.product-con a {
-  background-color: #f0f2f5;
-  position: relative;
-  cursor: pointer;
-}
-
-.product-con a .product-item {
+.product-con .product-item {
   overflow: hidden;
   padding: 10px;
   padding-bottom: 20px;
+  background-color: #f0f2f5;
+  position: relative;
+  cursor: pointer;
+  display: flex;
+  flex-direction: column;
 }
 
 .product-item img {
@@ -384,16 +383,11 @@ footer .link::after {
   display: flex;
   justify-content: center;
   margin-top: 50px;
-  height: 45%;
 }
 
 .product-item-first-con img {
   height: 300px;
   width: 300px;
-}
-
-.product-item-two-con {
-  height: 45%;
 }
 
 .status {
@@ -1245,15 +1239,14 @@ footer .link::after {
   gap: 15px;
   margin-top: 50px;
   position: relative;
+  margin-bottom: 50px;
 }
 
-.related-products-container a {
+
+
+.related-products-container .product-item {
   width: 25%;
   position: relative;
-}
-
-.related-products-container a .product-item {
-  width: 100%;
   background-color: transparent;
   border: 1px solid rgba(32, 165, 98, 0.2);
   display: flex;
@@ -1608,6 +1601,8 @@ textarea {
   padding: 100px 30px;
 }
 
+
+
 .shopping-cart-stats p {
   font-size: 15px;
   font-weight: 500;
@@ -1690,7 +1685,7 @@ textarea {
     left: 250px;
   }
 
-  .product-con a .product-item {
+  .product-con .product-item {
     padding: 20px;
   }
 
@@ -1815,13 +1810,13 @@ textarea {
     flex-direction: column;
   }
 
-  .part-two-products .product-con a:nth-child(1),
-  .part-two-products .product-con a:nth-child(2),
-  .part-two-products .product-con a:nth-child(3),
-  .part-two-products .product-con a:nth-child(4),
-  .part-two-products .product-con a:nth-child(5),
-  .part-two-products .product-con a:nth-child(6),
-  .part-two-products .product-con a:nth-child(7) {
+  .part-two-products .product-con .product-item,
+  .part-two-products .product-con .product-item,
+  .part-two-products .product-con .product-item,
+  .part-two-products .product-con .product-item,
+  .part-two-products .product-con .product-item,
+  .part-two-products .product-con .product-item,
+  .part-two-products .product-con .product-item {
     display: none;
   }
 
@@ -1905,9 +1900,6 @@ textarea {
     padding: 0;
   }
 
-  .related-products-container a {
-    width: 100%;
-  }
 
   .single-product-other-images-con {
     margin: 25px 0;
@@ -2095,6 +2087,17 @@ textarea {
 
   .store-sect {
     padding: 30px 20px;
+  }
+
+  .shopping-cart-stats {
+    padding: 30px 20px;
+    overflow-x: auto;
+  }
+
+  .shopping-cart-stats>div {
+
+    white-space: nowrap;
+    width: 1200px;
   }
 }
 

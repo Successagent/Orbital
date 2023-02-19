@@ -19,7 +19,7 @@ import SideCart from "./SideCart";
 import { FaTimes } from "react-icons/fa";
 
 const Header = ({ pathname }) => {
-  const [cart, setCart] = useContext(StateContext);
+  const [openCart, setOpenCart] = useContext(StateContext);
   const [visible, setVisible] = useState(false);
 
   const oppenNav = () => {
@@ -27,7 +27,8 @@ const Header = ({ pathname }) => {
   };
 
   const toggleCart = () => {
-    setCart(!cart);
+    setOpenCart(!openCart);
+    console.log(openCart);
   };
   return (
     <header className="header">
@@ -84,7 +85,7 @@ const Header = ({ pathname }) => {
         </ul>
       </section>
       <Nav pathname={pathname} />
-      <SideCart cart={cart} toggleCart={toggleCart} />
+      <SideCart cart={openCart} toggleCart={toggleCart} />
     </header>
   );
 };

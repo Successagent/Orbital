@@ -5,7 +5,6 @@ import cartLogo from "../assets/1.webp";
 import Button from "./Button";
 
 const SideCart = ({ cart, toggleCart }) => {
-  const navigate = useNavigate();
   return (
     <section
       className={`side-cart ${cart === false ? "close-cart" : "open-cart"}`}

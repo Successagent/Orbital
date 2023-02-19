@@ -1,13 +1,13 @@
 import React from "react";
 import Button from "./Button";
 
-const Newsletter = ({ pathname, id }) => {
+const Newsletter = ({ pathname, slug }) => {
   return (
     <section
       className={`newsletter-con ${
         pathname === "/about" ||
         pathname === "/shop" ||
-        pathname === `/products/${id}`
+        pathname === `/products/${slug}`
           ? "twist"
           : "newsletter-con"
       }`}

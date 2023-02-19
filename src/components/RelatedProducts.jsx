@@ -1,29 +1,17 @@
-import React, { useContext } from "react";
-import { urlFor } from "../lib/client";
-
+import React from "react";
 import {
-  AiOutlineArrowRight,
+  AiFillStar,
   AiOutlineHeart,
   AiOutlineShoppingCart,
-  AiFillStar,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { StateContext } from "../App";
+import { urlFor } from "../lib/client";
 
-const Products = ({ products, h2_title, pathname }) => {
-  const [cart, setCart] = useContext(StateContext);
-
-  const addToCart = (productIndex) => {
-    setCart([...cart, productIndex]);
-    console.log(cart);
-  };
-
+const RelatedProducts = ({ products }) => {
   return (
-    <div className="product-sect">
-      <div className="product-hero-con" data-visible={pathname}>
-        <h2>{h2_title}</h2>
-      </div>
-      <div className="product-con">
+    <div className="related-product-con">
+      <h2>Related Products</h2>
+      <div className="related-products-container">
         {products.map((product, idx) => (
           <div key={idx} className="product-item">
             <button
@@ -38,17 +26,20 @@ const Products = ({ products, h2_title, pathname }) => {
               {product.status}
             </button>
             <div className="product-item-first-con">
-              <Link to={`/products/${product.slug.current}`}>
-                <div className="product-image-con">
-                  <img src={urlFor(product.image[1])} />
-                </div>
-              </Link>
+              <div className="product-image-con">
+                <Link to={`/products/${product.slug.current}`}>
+                  <img
+                    src={urlFor(product.image[1])}
+                    alt={product.productName}
+                  />
+                </Link>
+              </div>
               <div className="product-search-con">
                 <div className="product-svg-con" id="svg-con-1">
                   <AiOutlineHeart />
                 </div>
                 <div className="product-svg-con" id="svg-con-2">
-                  <AiOutlineShoppingCart onClick={addToCart(product)} />
+                  <AiOutlineShoppingCart />
                 </div>
               </div>
             </div>
@@ -69,4 +60,5 @@ const Products = ({ products, h2_title, pathname }) => {
     </div>
   );
 };
-export default Products;
+
+export default RelatedProducts;
