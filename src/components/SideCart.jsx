@@ -3,11 +3,15 @@ import { Link, useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import cartLogo from "../assets/1.webp";
 import Button from "./Button";
+import { useGlobalContext } from "../context/context";
+import { urlFor } from "../lib/client";
 
-const SideCart = ({ cart, toggleCart }) => {
+const SideCart = ({ openCart, toggleCart }) => {
+  const { cart, qnty, getTotalQuantity } = useGlobalContext();
+
   return (
     <section
-      className={`side-cart ${cart === false ? "close-cart" : "open-cart"}`}
+      className={`side-cart ${openCart === false ? "close-cart" : "open-cart"}`}
     >
       <div className="cart-dark-con" onClick={toggleCart}></div>
       <div className="cart-sidebar-con">
@@ -16,36 +20,25 @@ const SideCart = ({ cart, toggleCart }) => {
           <FaTimes onClick={toggleCart} className="red-hover" />
         </div>
         <div className="cart-content-con">
-          <div>
-            <div className="cart-img-con">
-              <img src={cartLogo} alt="" />
+          {cart.map((product, idx) => (
+            <div key={idx}>
+              <div className="cart-img-con">
+                <img src={urlFor(product.image && product.image[0])} alt="" />
+              </div>
+              <div className="cart-details-con">
+                <p className="cart-product-name">{product.name}</p>
+                <p>
+                  <span>{product.quantity}</span>
+                  <span>x</span>
+                  <span>${product.price}</span>
+                </p>
+              </div>
             </div>
-            <div className="cart-details-con">
-              <p className="cart-product-name">Android Smart Watch</p>
-              <p>
-                <span>1</span>
-                <span>x</span>
-                <span>$59.90</span>
-              </p>
-            </div>
-          </div>
-          <div>
-            <div className="cart-img-con">
-              <img src={cartLogo} alt="" />
-            </div>
-            <div className="cart-details-con">
-              <p className="cart-product-name">Android Smart Watch</p>
-              <p>
-                <span>1</span>
-                <span>x</span>
-                <span>$59.90</span>
-              </p>
-            </div>
-          </div>
+          ))}
         </div>
         <div className="side-cart-header">
           <h4>Subtotal</h4>
-          <h3>$71.90</h3>
+          <h3>${getTotalQuantity()}</h3>
         </div>
         <div className="cart-btn-con">
           <Link className="btn" to={"/shopping-cart"} onClick={toggleCart}>

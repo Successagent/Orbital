@@ -11,13 +11,16 @@ import {
 import { client, urlFor } from "../lib/client";
 
 import { AiFillStar } from "react-icons/ai";
+import { useGlobalContext } from "../context/context";
 
 const SingleProduct = ({ products }) => {
   const [product, setProduct] = useState([]);
   const index = product[0];
   const [selectedImage, setSelectedImage] = useState(1);
   const [tabs, setTabs] = useState(false);
-
+  const { decreaseQuantity } = useGlobalContext();
+  const { increaseQuantity } = useGlobalContext();
+  const { qty } = useGlobalContext();
   const { slug } = useParams();
   const { pathname } = useLocation();
 
@@ -134,7 +137,7 @@ const SingleProduct = ({ products }) => {
             <div className="single-product-btn-con">
               <div className="single-product-btn">
                 <span>-</span>
-                <span>0</span>
+                <span>{qty}</span>
                 <span>+</span>
               </div>
               <button className="single-product-btn">add to cart</button>

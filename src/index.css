@@ -69,6 +69,7 @@ img {
   align-items: center;
   padding: 30px 0;
   justify-content: space-between;
+  position: relative;
 }
 
 .header-hero-form {
@@ -1542,6 +1543,8 @@ textarea {
 .cart-sidebar-con {
   background-color: white;
   width: 400px;
+  overflow-y: scroll;
+  height: 1000px;
 }
 
 
@@ -1656,6 +1659,26 @@ textarea {
 
 .subtotal-con svg:hover {
   color: #20a562;
+}
+
+.cart-value {
+  position: absolute;
+  background-color: red;
+  padding: 2px;
+  border-radius: 50%;
+  height: 15px;
+  width: 15px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  top: 38px;
+  right: 35px;
+}
+
+.cart-value {
+  color: white;
+  font-weight: 600;
+  font-size: 16px;
 }
 
 @media(max-width:600px) {

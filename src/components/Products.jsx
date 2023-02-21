@@ -1,6 +1,6 @@
 import React, { useContext } from "react";
 import { urlFor } from "../lib/client";
-
+import { useGlobalContext } from "../context/context";
 import {
   AiOutlineArrowRight,
   AiOutlineHeart,
@@ -11,12 +11,7 @@ import { Link } from "react-router-dom";
 import { StateContext } from "../App";
 
 const Products = ({ products, h2_title, pathname }) => {
-  const [cart, setCart] = useContext(StateContext);
-
-  const addToCart = (productIndex) => {
-    setCart([...cart, productIndex]);
-    console.log(cart);
-  };
+  const { cart, setCart, addToCart } = useGlobalContext();
 
   return (
     <div className="product-sect">
@@ -47,8 +42,12 @@ const Products = ({ products, h2_title, pathname }) => {
                 <div className="product-svg-con" id="svg-con-1">
                   <AiOutlineHeart />
                 </div>
-                <div className="product-svg-con" id="svg-con-2">
-                  <AiOutlineShoppingCart onClick={addToCart(product)} />
+                <div
+                  className="product-svg-con"
+                  id="svg-con-2"
+                  onClick={() => addToCart(product)}
+                >
+                  <AiOutlineShoppingCart />
                 </div>
               </div>
             </div>

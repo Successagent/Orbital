@@ -1,5 +1,5 @@
 import React, { useContext, useState } from "react";
-import { StateContext } from "../App";
+import { useGlobalContext } from "../context/context";
 
 import { Link } from "react-router-dom";
 import {
@@ -19,7 +19,7 @@ import SideCart from "./SideCart";
 import { FaTimes } from "react-icons/fa";
 
 const Header = ({ pathname }) => {
-  const [openCart, setOpenCart] = useContext(StateContext);
+  const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
 
   const oppenNav = () => {
@@ -54,6 +54,9 @@ const Header = ({ pathname }) => {
             </Link>
           </div>
           <AiOutlineHeart className="red-hover" />
+          <div className="cart-value-con">
+            <p className="cart-value">{cart.length}</p>
+          </div>
           <AiOutlineShoppingCart className="red-hover" onClick={toggleCart} />
         </div>
       </section>
@@ -85,7 +88,7 @@ const Header = ({ pathname }) => {
         </ul>
       </section>
       <Nav pathname={pathname} />
-      <SideCart cart={openCart} toggleCart={toggleCart} />
+      <SideCart openCart={openCart} toggleCart={toggleCart} />
     </header>
   );
 };
