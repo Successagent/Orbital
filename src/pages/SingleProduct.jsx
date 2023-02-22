@@ -59,7 +59,7 @@ const SingleProduct = ({ products }) => {
   return (
     <>
       <section className="single-product-con">
-        <Header pathname={pathname} />
+        <Header pathname={pathname} slug={slug} />
         <PageHero page_title={"Single Product"} />
         <div className="single-product">
           <div className="single-product-image-con">

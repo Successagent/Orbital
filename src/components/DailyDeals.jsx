@@ -1,4 +1,4 @@
-import React, { useEffect } from "react";
+import React, { useState } from "react";
 import {
   AiFillStar,
   AiOutlineShoppingCart,
@@ -7,64 +7,93 @@ import {
 
 import { urlFor } from "../lib/client";
 
-const DailyDeals = ({ dealsProducts }) => {
-  useEffect(() => {}, []);
+const DailyDeals = ({ dealsProducts, index, setIndex }) => {
   return (
     <div className="flash-sales-item-one-main">
-      <div className="flash-sales-item-one-main-details-con">
-        <div className="flash-sales-item-one-main-details-con-time-sect">
-          <div>
-            <div>
-              <h3>4</h3>
+      {dealsProducts.map((item, idx) => {
+        return (
+          <div
+            key={idx}
+            className={` ${
+              index == 1 && idx == 0
+                ? "active-flash-sale"
+                : index == 2 && idx == 1
+                ? "active-flash-sale"
+                : index == 3 && idx == 2
+                ? "active-flash-sale"
+                : index == 4 && idx == 3
+                ? "active-flash-sale"
+                : ""
+            }`}
+          >
+            <div className="flash-sales-item-one-main-details-con">
+              <div className="flash-sales-item-one-main-details-con-time-sect">
+                <div>
+                  <div>
+                    <h3>4</h3>
+                  </div>
+                  <h3>HRS</h3>
+                </div>
+
+                <div>
+                  <div>
+                    <h3>14</h3>
+                  </div>
+                  <h3>MINS</h3>
+                </div>
+
+                <div>
+                  <div>
+                    <h3>4</h3>
+                  </div>
+                  <h3>SECS</h3>
+                </div>
+              </div>
+              <p className="product-name-text">{dealsProducts && item?.name}</p>
+              <h3 className="product-price">${dealsProducts && item?.price}</h3>
+              <div className="product-rate-con">
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+                <AiFillStar />
+              </div>
             </div>
-            <h3>HRS</h3>
-          </div>
-          <div>
-            <div>
-              <h3>14</h3>
+            <div className="flash-sales-item-one-main-image-con">
+              {item?.image && (
+                <img
+                  className="flash-sales-item-one-img"
+                  src={urlFor(item?.image[0])}
+                  alt=""
+                />
+              )}
             </div>
-            <h3>MINS</h3>
-          </div>
-          <div>
-            <div>
-              <h3>4</h3>
+            <div className="flash-sales-item-one-main-cart-con">
+              <div className="product-svg-con">
+                <AiOutlineHeart />
+              </div>
+              <div className="product-svg-con">
+                <AiOutlineShoppingCart />
+              </div>
             </div>
-            <h3>SECS</h3>
           </div>
-        </div>
-        <p className="product-name-text">
-          {dealsProducts && dealsProducts[0]?.name}
-        </p>
-        <h3 className="product-price">
-          ${dealsProducts && dealsProducts[0]?.price}
-        </h3>
-        <div className="product-rate-con">
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-          <AiFillStar />
-        </div>
-      </div>
-      <div className="flash-sales-item-one-main-image-con">
-        {dealsProducts[0]?.image && (
-          <img
-            className="flash-sales-item-one-img"
-            src={urlFor(dealsProducts[0]?.image[0])}
-            alt=""
-          />
-        )}
-      </div>
-      <div className="flash-sales-item-one-main-cart-con">
-        <div className="product-svg-con">
-          <AiOutlineHeart />
-        </div>
-        <div className="product-svg-con">
-          <AiOutlineShoppingCart />
-        </div>
-      </div>
+        );
+      })}
     </div>
   );
 };
 
 export default DailyDeals;
+
+// {<div>
+//
+//
+// <div className="flash-sales-item-one-main-cart-con">
+//   <div className="product-svg-con">
+//     <AiOutlineHeart />
+//   </div>
+//   <div className="product-svg-con">
+//     <AiOutlineShoppingCart />
+//   </div>
+// </div>
+// </div>;}

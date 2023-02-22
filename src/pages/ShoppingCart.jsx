@@ -6,7 +6,7 @@ import { useGlobalContext } from "../context/context";
 import { urlFor } from "../lib/client";
 
 const ShoppingCart = () => {
-  const { cart, increaseQuantity, decreaseQuantity } = useGlobalContext();
+  const { cart, handleIncreament, handleDecreament } = useGlobalContext();
   const { pathname } = useLocation();
   return (
     <>
@@ -15,7 +15,7 @@ const ShoppingCart = () => {
         <PageHero page_title={"Cart"} />
         <div className="shopping-cart-stats">
           <div>
-            {cart.length < 0 && (
+            {cart?.length < 0 && (
               <div className="shopping-cart-header">
                 <div className="products-con">
                   <p>Product</p>
@@ -31,26 +31,22 @@ const ShoppingCart = () => {
                 </div>
               </div>
             )}
-            {cart.map((product, idx) => (
+            {cart?.map((product, idx) => (
               <div className="shopping-cart-main" key={idx}>
                 <div className="products-con">
                   <div className="cart-img-con">
-                    <img src={urlFor(product.image[0])} alt={product.name} />
+                    <img src={urlFor(product?.image[0])} alt={product.name} />
                   </div>
-                  <p>{product.name}</p>
+                  <p>{product?.name}</p>
                 </div>
                 <div className="price-con">
                   <p>${product.price}</p>
                 </div>
                 <div className="quantity-con">
                   <div className="single-product-btn">
-                    <span onClick={() => decreaseQuantity(product.quantity)}>
-                      -
-                    </span>
+                    <span onClick={() => handleDecreament(product)}>-</span>
                     <span>{product.quantity}</span>
-                    <span onClick={() => increaseQuantity(product.quantity)}>
-                      +
-                    </span>
+                    <span onClick={() => handleIncreament(product)}>+</span>
                   </div>
                 </div>
                 <div className="subtotal-con">

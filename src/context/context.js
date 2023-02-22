@@ -6,6 +6,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false);
   const [cart, setCart] = useState([]);
+  const [department, setDepartment] = useState(false);
 
   //  Add To Cart Function
 
@@ -39,13 +40,14 @@ const AppProvider = ({ children }) => {
     return cart.filter((product) => product !== index);
   };
 
-  const increameQuality = (qnty) => {
-    {
-    }
+  const handleIncreament = (data) => {
+    console.log(data.quantity);
   };
 
-  const decreameQuality = (qnty) => {
-    return;
+  const handleDecreament = (data) => {};
+
+  const toggleDepartmentCon = () => {
+    setDepartment(!department);
   };
 
   return (
@@ -58,8 +60,10 @@ const AppProvider = ({ children }) => {
         addToCart,
         getTotalQuantity,
         removeFromCart,
-        decreameQuality,
-        increameQuality,
+        handleDecreament,
+        handleIncreament,
+        department,
+        toggleDepartmentCon,
       }}
     >
       {children}

@@ -76,11 +76,14 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  border: 1.5px solid black;
+  border: 1.5px solid rgba(32, 165, 98, 0.5);
   width: 40%;
-  padding: 0;
+  padding: 2px;
   padding-left: 30px;
-  padding-right: 1px;
+}
+
+.header-hero-form input {
+  height: 100%;
 }
 
 .header-hero-links {
@@ -90,6 +93,22 @@ img {
   gap: 10px;
   font-weight: 500;
   color: #706967;
+}
+
+.radius-border {
+  border-radius: 50px;
+}
+
+.radius-border .btn {
+  border-radius: 50px;
+}
+
+.header-hero-form .btn {
+  font-size: 25px;
+}
+
+.header-hero-form p {
+  color: #4b4b4b;
 }
 
 .link {
@@ -156,6 +175,44 @@ img {
   height: 60px;
   background-color: #fafafa;
   border: 1px solid rgb(0, 0, 0, 0.1);
+  padding-right: 20px;
+}
+
+.header-nav>div:nth-child(1) {
+  position: relative;
+}
+
+.department-con {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  padding: 20px 30px;
+  padding-bottom: 0;
+  transition: all ease-in-out 300ms;
+  z-index: 90;
+}
+
+.department-con svg {
+  font-size: 25px;
+  color: #c0c3ca;
+}
+
+.department-con>div {
+  display: flex;
+  align-items: center;
+  gap: 15px;
+  color: #746a68;
+  padding: 20px 0;
+  border-bottom: 1px solid #c0c3ca;
+}
+
+.close-department {
+  transform: translateY(-600px);
+}
+
+.open-department {
+
+  transform: translateY(0px);
 }
 
 .nav-call-sect {
@@ -270,7 +327,6 @@ img {
 
 .home-hero-sect-2>div {
   display: flex;
-  align-items: center;
   gap: 15px;
 }
 
@@ -280,7 +336,7 @@ img {
 
 .home-hero-sect-2 svg {
   color: red;
-  font-size: 50px;
+  font-size: 40px;
 }
 
 footer {
@@ -318,7 +374,7 @@ footer .link::after {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  padding: 0 20px;
+  padding: 40px 20px;
   border-bottom: 2px solid rgb(0, 0, 0, 0.1);
 }
 
@@ -605,13 +661,28 @@ footer .link::after {
 .flash-sales-item-one-hero>div {
   display: flex;
   align-items: center;
+  justify-content: flex-end;
   font-size: 28px;
   cursor: pointer;
 }
 
+.flash-sales-item-one-hero>div>div {
+  width: 50%;
+}
+
 .flash-sales-item-one-main {
   padding: 40px;
+  overflow: hidden;
   display: flex;
+}
+
+.flash-sales-item-one-main>div {
+  display: flex;
+  display: none;
+}
+
+.active-flash-sale {
+  display: flex !important;
 }
 
 .flash-sales-item-one-main-details-con {
@@ -1495,6 +1566,7 @@ textarea {
   display: flex;
   justify-content: center;
   transition: all ease-in-out 400ms;
+  overflow-y: scroll;
 }
 
 .side-cart h4 {
@@ -1544,7 +1616,6 @@ textarea {
   background-color: white;
   width: 400px;
   overflow-y: scroll;
-  height: 1000px;
 }
 
 
@@ -2118,7 +2189,6 @@ textarea {
   }
 
   .shopping-cart-stats>div {
-
     white-space: nowrap;
     width: 1200px;
   }

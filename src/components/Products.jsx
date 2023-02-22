@@ -1,4 +1,4 @@
-import React, { useContext } from "react";
+import React, { useState } from "react";
 import { urlFor } from "../lib/client";
 import { useGlobalContext } from "../context/context";
 import {
@@ -8,18 +8,57 @@ import {
   AiFillStar,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { StateContext } from "../App";
 
 const Products = ({ products, h2_title, pathname }) => {
   const { cart, setCart, addToCart } = useGlobalContext();
+  const [displayProduct, setDisplayProduct] = useState([]);
+
+  const poloShirtArr = products.filter(
+    (item) => item.category === "Polo Sleeves"
+  );
+  const tShirtsArr = products.filter((item) => item.category == "T-Sleeves");
+  const longShirt = products.filter((item) => item.category === "Long Shirt");
+
+  const filterFunct = (e) => {
+    if (e.target.id === "polo-shirts") {
+      setDisplayProduct(poloShirtArr);
+      console.log(displayProduct);
+    }
+    if (e.target.id === "t-shirts") {
+      setDisplayProduct(tShirtsArr);
+      console.log(displayProduct);
+    }
+    if (e.target.id === "long-shirts") {
+      setDisplayProduct(longShirt);
+      console.log(displayProduct);
+    }
+  };
 
   return (
     <div className="product-sect">
       <div className="product-hero-con" data-visible={pathname}>
         <h2>{h2_title}</h2>
+        <div>
+          <p id="polo-shirts" onClick={filterFunct}>
+            Polo Shirts
+          </p>
+          <p id="t-shirts" onClick={filterFunct}>
+            T-Shirts
+          </p>
+          <p id="long-shirts" onClick={filterFunct}>
+            Long Shirts
+          </p>
+        </div>
       </div>
       <div className="product-con">
-        {products.map((product, idx) => (
+        {(displayProduct[0]?.category === "T-Sleeves"
+          ? tShirtsArr
+          : displayProduct[0]?.category === "Polo Sleeves"
+          ? poloShirtArr
+          : displayProduct[0]?.category === "Long Shirt"
+          ? longShirt
+          : products
+        ).map((product, idx) => (
           <div key={idx} className="product-item">
             <button
               className={`status ${

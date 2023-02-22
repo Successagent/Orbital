@@ -1,4 +1,4 @@
-import React, { useEffect, useState, createContext } from "react";
+import React, { useEffect, useState } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
 import {
   About,
@@ -23,7 +23,8 @@ function App() {
         name,
         price,
          slug,
-         status
+         status,
+         category
       }`
       )
       .then((data) => {

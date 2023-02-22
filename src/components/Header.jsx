@@ -18,7 +18,7 @@ import Nav from "./Nav";
 import SideCart from "./SideCart";
 import { FaTimes } from "react-icons/fa";
 
-const Header = ({ pathname }) => {
+const Header = ({ pathname, slug }) => {
   const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
 
@@ -36,10 +36,19 @@ const Header = ({ pathname }) => {
         <div className="header-hero-image-con">
           <img src={headerHeroImage} alt="header-hero-image" />
         </div>
-        <form className="header-hero-form">
+        <form
+          className={`header-hero-form ${
+            pathname === "/about" ||
+            pathname === "/shop" ||
+            pathname === "/contact" ||
+            pathname === `/products/${slug}`
+              ? "radius-border"
+              : ""
+          }`}
+        >
           <input type="text" placeholder="Search Products" />
           <div>
-            <p>Video Games</p>
+            <p>Polo Clothes</p>
             <AiOutlineDown />
           </div>
           <Button title={<AiOutlineSearch />} />
@@ -55,7 +64,7 @@ const Header = ({ pathname }) => {
           </div>
           <AiOutlineHeart className="red-hover" />
           <div className="cart-value-con">
-            <p className="cart-value">{cart.length}</p>
+            <p className="cart-value">{cart?.length}</p>
           </div>
           <AiOutlineShoppingCart className="red-hover" onClick={toggleCart} />
         </div>

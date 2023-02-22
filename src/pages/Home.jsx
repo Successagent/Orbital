@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import speaker from "../assets/slider4.webp";
 import productImage from "../assets/shopping.png";
@@ -23,8 +23,44 @@ import {
   DailyDeals,
 } from "../components";
 
-const Home = ({ products, addToCart }) => {
+const Home = ({ products }) => {
   const { pathname } = useLocation();
+
+  const [index, setIndex] = useState(1);
+
+  const toggleFlashSales = (e) => {
+    switch (e.target.id) {
+      case "next":
+        if (index == 1) {
+          setIndex(2);
+        }
+        if (index == 2) {
+          setIndex(3);
+        }
+        if (index == 3) {
+          setIndex(4);
+        }
+        if (index == 4) {
+          setIndex(1);
+        }
+        break;
+      case "prev":
+        if (index == 4) {
+          setIndex(3);
+        }
+        if (index == 3) {
+          setIndex(2);
+        }
+        if (index == 2) {
+          setIndex(1);
+        }
+        if (index == 1) {
+          setIndex(4);
+        }
+        break;
+    }
+    console.log(e.target.id);
+  };
 
   return (
     <>
@@ -63,7 +99,7 @@ const Home = ({ products, addToCart }) => {
           </div>
         </div>
         <SupportCard />
-        <Products h2_title="New Top Sales!" products={products.slice(0, 4)} />
+        <Products h2_title="New Top Sales!" products={products} />
         <ProductsBanner
           sale_text={"Sparing Sales Coming"}
           name_text={"Smart Watch Android"}
@@ -73,11 +109,19 @@ const Home = ({ products, addToCart }) => {
             <div className="flash-sales-item-one-hero">
               <h3>Daily Deals!</h3>
               <div>
-                <MdNavigateBefore />
-                <MdNavigateNext />
+                <div>
+                  <MdNavigateBefore id="prev" onClick={toggleFlashSales} />
+                </div>
+                <div>
+                  <MdNavigateNext id="next" onClick={toggleFlashSales} />
+                </div>
               </div>
             </div>
-            <DailyDeals dealsProducts={products.slice(0, 1)} />
+            <DailyDeals
+              dealsProducts={products}
+              index={index}
+              setIndex={setIndex}
+            />
           </div>
           <div className="flash-sales-item-two">
             <GridProducts pathname={pathname} products={products} />
