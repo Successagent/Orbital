@@ -2214,6 +2214,10 @@ textarea {
     white-space: nowrap;
     width: 1200px;
   }
+
+  .related-products-container .product-item {
+    width: 100%;
+  }
 }
 
 
