@@ -1,0 +1,28 @@
+.register-form {
+    display: flex;
+    justify-content: center;
+    padding: 70px 100px;
+    gap: 30px;
+    font-family: "Poppins", sans-serif;
+}
+
+.register-form input {
+    outline: none;
+    width: 100%;
+    height: 50px;
+    padding-left: 15px;
+}
+
+.register-form p {
+    margin: 20px 0;
+}
+
+.register-form>section {
+    width: 50%;
+}
+
+.register-form>div {
+    width: 50%;
+    border-left: 1px solid #D9D9D9;
+    padding-left: 40px;
+}

@@ -55,10 +55,10 @@ const Header = ({ pathname, slug }) => {
         </form>
         <div className="header-hero-links">
           <div>
-            <Link className="link red-hover" to="">
+            <Link className="link red-hover" to="/login">
               Login
             </Link>
-            <Link className="link red-hover" to="">
+            <Link className="link red-hover" to="/register">
               SignUp
             </Link>
           </div>

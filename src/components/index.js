@@ -13,6 +13,7 @@ import DailyDeals from "./DailyDeals";
 import SideCart from "./SideCart";
 import RelatedProducts from "./RelatedProducts";
 import Comments from "./Comments";
+import Categories from "./Categories";
 
 export {
   Header,
@@ -30,4 +31,5 @@ export {
   SideCart,
   RelatedProducts,
   Comments,
+  Categories,
 };

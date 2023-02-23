@@ -3,7 +3,10 @@ import { Routes, Route, useLocation } from "react-router-dom";
 import {
   About,
   Contact,
+  ForgetPassword,
   Home,
+  Login,
+  Registration,
   Shop,
   ShoppingCart,
   SingleProduct,
@@ -50,6 +53,9 @@ function App() {
         path="/shopping-cart"
         element={<ShoppingCart products={products} />}
       />
+      <Route path="/login" element={<Login />} />
+      <Route path="/register" element={<Registration />} />
+      <Route path="/forget-password" element={<ForgetPassword />} />
     </Routes>
   );
 }

@@ -171,7 +171,7 @@ img {
 .header-nav {
   display: flex;
   align-items: center;
-  justify-content: space-between;
+  gap: 130px;
   height: 60px;
   background-color: #fafafa;
   border: 1px solid rgb(0, 0, 0, 0.1);
@@ -247,7 +247,7 @@ img {
   display: flex;
   align-items: center;
   justify-content: space-between;
-  width: 50%;
+  width: 40%;
 }
 
 .home-hero {
@@ -772,7 +772,6 @@ footer .link::after {
 .flash-sales-item-two-grid-products {
   display: grid;
   grid-template-columns: repeat(2, 1fr);
-  margin-top: 60px;
   gap: 30px;
 }
 
@@ -833,7 +832,7 @@ footer .link::after {
 
 .part-two-products .product-con {
   background-color: white;
-  gap: 0;
+  gap: 20px;
   display: grid;
   grid-template-columns: repeat(4, 1fr);
 }
@@ -1534,6 +1533,21 @@ textarea {
   gap: 10px;
 }
 
+.input-con {
+  display: flex;
+}
+
+.input-con>div {
+  border: 1px solid #E8E8E8;
+  border-radius: 8px;
+  padding: 30px 50px;
+}
+
+.input-con>div,
+.input-con>form {
+  width: 50%;
+}
+
 .input-con svg {
   color: #d4d4d4;
 }
@@ -1826,6 +1840,14 @@ textarea {
     flex-direction: column;
     align-items: center;
     text-align: center;
+  }
+
+  .flash-sales-item-one-main>div {
+    flex-direction: column;
+  }
+
+  .flash-sales-item-one-main>div .product-rate-con {
+    margin-bottom: 20px;
   }
 
   .flash-sales-item-one-main-details-con-time-sect {

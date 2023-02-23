@@ -57,7 +57,7 @@ const Products = ({ products, h2_title, pathname }) => {
           ? poloShirtArr
           : displayProduct[0]?.category === "Long Shirt"
           ? longShirt
-          : products
+          : products.slice(0, 4)
         ).map((product, idx) => (
           <div key={idx} className="product-item">
             <button

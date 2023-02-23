@@ -1,7 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import speaker from "../assets/slider4.webp";
-import productImage from "../assets/shopping.png";
 
 import {
   AiOutlineArrowRight,
@@ -21,11 +20,11 @@ import {
   SupportCard,
   Button,
   DailyDeals,
+  Categories,
 } from "../components";
 
 const Home = ({ products }) => {
   const { pathname } = useLocation();
-
   const [index, setIndex] = useState(1);
 
   const toggleFlashSales = (e) => {
@@ -127,41 +126,7 @@ const Home = ({ products }) => {
             <GridProducts pathname={pathname} products={products} />
           </div>
         </div>
-        <div className="category-sect">
-          <h2>Top Categories</h2>
-          <div className="category-products-sect">
-            <div>
-              <div>
-                <img src={productImage} alt="" />
-              </div>
-              <p className="product-name-text">Audio/Video</p>
-            </div>
-            <div>
-              <div>
-                <img src={productImage} alt="" />
-              </div>
-              <p className="product-name-text">Audio/Video</p>
-            </div>
-            <div>
-              <div>
-                <img src={productImage} alt="" />
-              </div>
-              <p className="product-name-text">Audio/Video</p>
-            </div>
-            <div>
-              <div>
-                <img src={productImage} alt="" />
-              </div>
-              <p className="product-name-text">Audio/Video</p>
-            </div>
-            <div>
-              <div>
-                <img src={productImage} alt="" />
-              </div>
-              <p className="product-name-text">Audio/Video</p>
-            </div>
-          </div>
-        </div>
+        <Categories product={products} />
         <div className="part-two-products">
           <Products h2_title="New Top Sales!" products={products} />
         </div>
