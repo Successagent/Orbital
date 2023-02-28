@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
-import speaker from "../assets/slider4.webp";
+import clothes from "../assets/pexels-gary-barnes-6248683.jpg";
 
 import {
   AiOutlineArrowRight,
@@ -68,32 +68,32 @@ const Home = ({ products }) => {
         <div className="home-hero-section">
           <div className="home-hero-item-1">
             <div className="home-hero-section-text-con">
-              <h2>Bang and Olufsen Smart Speaker</h2>
-              <p>Wireless Connection with Computer, Laptops and TV</p>
+              <h2>Tortle Neck Sleeves</h2>
+              <p>A Very Good Looking Tortle Neck Sleeve</p>
               <Button title="shop now" icon={<AiOutlineArrowRight />} />
             </div>
             <div className="home-hero-section-img-con">
-              <img src={speaker} alt="" />
+              <img src={clothes} alt="" />
             </div>
           </div>
           <div className="home-hero-item-2">
             <div className="home-hero-section-text-con">
-              <h2>Bang and Olufsen Smart Speaker</h2>
-              <p>Wireless Connection with Computer, Laptops and TV</p>
+              <h2>Tortle Neck Sleeves</h2>
+              <p>A Very Good Looking Tortle Neck Sleeve</p>
               <Button title="shop now" icon={<AiOutlineArrowRight />} />
             </div>
             <div className="home-hero-section-img-con">
-              <img src={speaker} alt="" />
+              <img src={clothes} alt="" />
             </div>
           </div>
           <div className="home-hero-item-3">
             <div className="home-hero-section-text-con">
-              <h2>Bang and Olufsen Smart Speaker</h2>
-              <p>Wireless Connection with Computer, Laptops and TV</p>
+              <h2>Tortle Neck Sleeves</h2>
+              <p>A Very Good Looking Tortle Neck Sleeve</p>
               <Button title="shop now" icon={<AiOutlineArrowRight />} />
             </div>
             <div className="home-hero-section-img-con">
-              <img src={speaker} alt="" />
+              <img src={clothes} alt="" />
             </div>
           </div>
         </div>

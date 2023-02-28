@@ -560,7 +560,7 @@ footer .link::after {
 }
 
 .intro-products>div .bg {
-  background-image: url(./assets/13.webp);
+  background-image: url(./assets/pexels-mart-production-9558593.jpg);
   background-position: center center;
   background-repeat: no-repeat;
   background-size: cover;
@@ -847,12 +847,135 @@ footer .link::after {
   display: none;
 }
 
-.product-banner-two-sec .intro-products>div {
-  width: 50%;
+.dashboard-intro {
+  background-color: #f6f6f6;
+  height: 300px;
+  padding: 100px 500px;
+  margin-top: 100px;
+  font-size: 40px;
+  font-family: "Poppins", sans-serif;
+  color: #2c3e50;
 }
 
-.product-banner-two-sec .intro-products .bg {
-  background-image: url(./assets/16.webp);
+
+.admin-hero {
+  padding: 100px 30px;
+  position: relative;
+}
+
+.admin-hero-main-sect {
+  display: grid;
+  grid-template-columns: repeat(2, 250px);
+  gap: 1rem;
+  grid-template-areas: none;
+  width: 100%;
+  height: 100vh;
+  position: fixed;
+  background-color: #171717ad;
+  backdrop-filter: blur(10px);
+  top: 0;
+  padding: 1rem;
+  z-index: 10000;
+  left: 0;
+  scrollbar-width: none;
+  place-content: center;
+  transform: translateY(-1000px);
+  transition: all ease-in-out 350ms;
+  overflow: hidden;
+}
+
+.admin-card {
+  padding: 50px 30px;
+}
+
+.admin-card-parent-con {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  margin-bottom: 20px;
+}
+
+
+.admin-hero-main-item {
+  position: relative;
+}
+
+.admin-hero-main-item>div {
+  transform: translateY(-1000px);
+  transition: all ease-in-out 350ms;
+  cursor: pointer;
+}
+
+.open-dropdown {
+  transform: translateY(0px) !important;
+}
+
+.admin-hero-main-item>div li {
+  border-bottom: 1px solid #03b5c3;
+  padding-bottom: 10px;
+}
+
+.listing-type {
+  position: absolute;
+  background-color: white;
+  width: 100%;
+  z-index: 999;
+  padding: 15px;
+  display: flex;
+  flex-direction: column;
+  gap: 10px;
+}
+
+.open-modal {
+  transform: translateY(0px);
+}
+
+.admin-hero-main-sect .green {
+  background-color: green;
+  border: none;
+  color: white;
+}
+
+.admin-hero-main-sect h3 {
+  text-transform: capitalize;
+  margin-bottom: .3rem;
+  font-weight: 400;
+  font-size: 1rem;
+  color: #fff;
+}
+
+.admin-hero-main-sect input {
+  padding: 6px 12px;
+  font-size: 15px;
+  line-height: 1.6;
+  color: #2c3e50;
+  background-color: transparent;
+  border: 1px solid #d6d6d6;
+  width: 100%;
+  height: 45px;
+  cursor: pointer;
+  color: white;
+  font-family: "Lato", sans-serif;
+}
+
+
+
+.admin-hero-main-sect input:active,
+.admin-hero-main-sect input:focus,
+.admin-hero-main-sect input:hover {
+  outline: #03b5c3;
+  border: 1px solid #03b5c3;
+}
+
+.admin-hero-header {
+  display: flex;
+  justify-content: space-between;
+  align-items: center;
+}
+
+
+.product-banner-two-sec .intro-products>div {
+  width: 50%;
 }
 
 .product-banner-two-sec .intro-products .btn {
@@ -982,7 +1105,7 @@ footer .link::after {
 
 .about-hero-sect img {
   position: absolute;
-  top: 224px;
+  top: 170px;
   right: 60px;
   width: 350px;
 }
@@ -1018,7 +1141,12 @@ footer .link::after {
 }
 
 .about-team-sect {
-  margin-bottom: 50px;
+  padding: 100px 30px;
+}
+
+.about-team-sect h2 {
+  text-align: center;
+  margin-bottom: 30px;
 }
 
 .team-con {
@@ -1095,7 +1223,12 @@ footer .link::after {
 .customers-review-sect {
   background-color: #0a0a0a;
   color: white;
-  padding: 70px 30px;
+  padding: 100px 30px;
+}
+
+.customers-review-sect h2 {
+  text-align: center;
+  margin-bottom: 50px;
 }
 
 .customer-review-con {
@@ -1282,6 +1415,9 @@ footer .link::after {
   font-size: 14px;
   transition: all ease-in-out 300ms;
   cursor: pointer;
+  border: 1px solid #03b5c3;
+  outline-color: red;
+  width: 150px;
 }
 
 .single-product-btn:nth-child(2) {
@@ -1427,6 +1563,10 @@ footer .link::after {
 
 .contact-getin-touch-section {
   width: 60% !important;
+}
+
+.header-style {
+  font-size: 40px;
 }
 
 .contact-form-con>div {
@@ -1746,13 +1886,13 @@ textarea {
   color: #20a562;
 }
 
-.cart-value {
+.cart-value-con {
   position: absolute;
   background-color: red;
   padding: 2px;
   border-radius: 50%;
-  height: 15px;
-  width: 15px;
+  height: 18px;
+  width: 18px;
   display: flex;
   align-items: center;
   justify-content: center;
@@ -1763,7 +1903,7 @@ textarea {
 .cart-value {
   color: white;
   font-weight: 600;
-  font-size: 16px;
+  font-size: 14px;
 }
 
 @media(max-width:600px) {

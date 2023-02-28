@@ -12,6 +12,7 @@ import {
   SingleProduct,
 } from "./pages";
 import { client } from "./lib/client";
+import { AdminDashboard } from "./pages/Admin";
 
 function App() {
   const [products, setProducts] = useState([]);
@@ -56,6 +57,7 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/admin" element={<AdminDashboard />} />
     </Routes>
   );
 }

@@ -1,5 +1,5 @@
 import React from "react";
-import AboutHeroImage from "../assets/page-title.webp";
+import AboutHeroImage from "../assets/pexels-mart-production-9558593.jpg";
 
 const PageHero = ({ page_title }) => {
   return (

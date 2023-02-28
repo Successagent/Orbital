@@ -6,7 +6,7 @@ import { useGlobalContext } from "../context/context";
 import { urlFor } from "../lib/client";
 
 const ShoppingCart = () => {
-  const { cart, handleIncreament, handleDecreament } = useGlobalContext();
+  const { cart, setQuantity } = useGlobalContext();
   const { pathname } = useLocation();
   return (
     <>
@@ -15,7 +15,7 @@ const ShoppingCart = () => {
         <PageHero page_title={"Cart"} />
         <div className="shopping-cart-stats">
           <div>
-            {cart?.length < 0 && (
+            {cart?.length > 0 && (
               <div className="shopping-cart-header">
                 <div className="products-con">
                   <p>Product</p>
@@ -37,20 +37,20 @@ const ShoppingCart = () => {
                   <div className="cart-img-con">
                     <img src={urlFor(product?.image[0])} alt={product.name} />
                   </div>
-                  <p>{product?.name}</p>
+                  <p>{product.name}</p>
                 </div>
                 <div className="price-con">
                   <p>${product.price}</p>
                 </div>
                 <div className="quantity-con">
-                  <div className="single-product-btn">
-                    <span onClick={() => handleDecreament(product)}>-</span>
-                    <span>{product.quantity}</span>
-                    <span onClick={() => handleIncreament(product)}>+</span>
-                  </div>
+                  <input
+                    className="single-product-btn"
+                    onChange={(e) => setQuantity(product, e.target.value)}
+                    defaultValue={product.quantity}
+                  />
                 </div>
                 <div className="subtotal-con">
-                  <p>${product.price}</p>
+                  <p>${product.price * product.quantity}</p>
                   <FaTrash />
                 </div>
               </div>

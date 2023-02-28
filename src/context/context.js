@@ -18,6 +18,7 @@ const AppProvider = ({ children }) => {
     );
 
     let newCart = [...cart];
+
     if (cartItem) {
       cartItem.quantity++;
     } else {
@@ -37,17 +38,34 @@ const AppProvider = ({ children }) => {
   };
 
   const removeFromCart = (index) => {
-    return cart.filter((product) => product !== index);
+    const exist = cart.find((item) => item.slug.current === index.slug.current);
+    if (exist.quantity === 1) {
+      const toRemoveProduct = cart.filter(
+        (item) => item.slug.current !== index.slug.current
+      );
+      setCart(toRemoveProduct);
+    } else {
+    }
   };
 
-  const handleIncreament = (data) => {
-    console.log(data.quantity);
+  const handleIncreament = (current) => {
+    console.log(current);
   };
 
-  const handleDecreament = (data) => {};
+  const handleDecreament = (current) => {
+    console.log(current);
+  };
 
   const toggleDepartmentCon = () => {
     setDepartment(!department);
+  };
+
+  const setQuantity = (product, amount) => {
+    const cartItem = [...cart];
+    cartItem.find(
+      (item) => item.slug.current === product.slug.current
+    ).quantity = amount;
+    setCart(cartItem);
   };
 
   return (
@@ -64,6 +82,7 @@ const AppProvider = ({ children }) => {
         handleIncreament,
         department,
         toggleDepartmentCon,
+        setQuantity,
       }}
     >
       {children}

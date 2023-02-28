@@ -12,36 +12,11 @@ import { AiOutlineArrowRight } from "react-icons/ai";
 import { GrFacebookOption } from "react-icons/gr";
 import AboutImageTwo from "../assets/d1.webp";
 import TeamImage from "../assets/2.webp";
-import reviewLogo from "../assets/client1.webp";
+import { reviews } from "../datas/reviews";
 
 const About = () => {
   const { pathname } = useLocation();
-  const reviews = [
-    {
-      message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-      title: "Chairman",
-      name: "Merida Swan",
-      icon: reviewLogo,
-    },
-    {
-      message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-      title: "Chairman",
-      name: "Merida Swan",
-      icon: reviewLogo,
-    },
-    {
-      message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-      title: "Chairman",
-      name: "Merida Swan",
-      icon: reviewLogo,
-    },
-  ];
+
   return (
     <>
       <section className="about-sect">

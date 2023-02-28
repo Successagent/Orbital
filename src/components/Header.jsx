@@ -34,7 +34,7 @@ const Header = ({ pathname, slug }) => {
     <header className="header">
       <section className="header-hero">
         <div className="header-hero-image-con">
-          <img src={headerHeroImage} alt="header-hero-image" />
+          <h1 className="header-style">Orbital</h1>
         </div>
         <form
           className={`header-hero-form ${
@@ -63,7 +63,14 @@ const Header = ({ pathname, slug }) => {
             </Link>
           </div>
           <AiOutlineHeart className="red-hover" />
-          <div className="cart-value-con">
+          <div
+            className={`cart-value-con ${
+              pathname === "/shop" ||
+              pathname === "/about" ||
+              pathname === "/contact" ||
+              (pathname === `/products/${slug}` && "cart-value-con-two")
+            }`}
+          >
             <p className="cart-value">{cart?.length}</p>
           </div>
           <AiOutlineShoppingCart className="red-hover" onClick={toggleCart} />
