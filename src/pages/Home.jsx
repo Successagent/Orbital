@@ -101,7 +101,7 @@ const Home = ({ products }) => {
         <Products h2_title="New Top Sales!" products={products} />
         <ProductsBanner
           sale_text={"Sparing Sales Coming"}
-          name_text={"Smart Watch Android"}
+          name_text={"A Good Quality T-Shirt"}
         />
         <div className="flash-sales-con">
           <div className="flash-sales-item-one">

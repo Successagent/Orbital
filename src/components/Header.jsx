@@ -65,10 +65,13 @@ const Header = ({ pathname, slug }) => {
           <AiOutlineHeart className="red-hover" />
           <div
             className={`cart-value-con ${
-              pathname === "/shop" ||
               pathname === "/about" ||
+              pathname === "/shop" ||
               pathname === "/contact" ||
-              (pathname === `/products/${slug}` && "cart-value-con-two")
+              pathname === "/shopping-cart" ||
+              pathname === `/products/${slug}`
+                ? "cart-value-con-two"
+                : ""
             }`}
           >
             <p className="cart-value">{cart?.length}</p>

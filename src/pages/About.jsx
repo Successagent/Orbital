@@ -14,8 +14,30 @@ import AboutImageTwo from "../assets/d1.webp";
 import TeamImage from "../assets/2.webp";
 import { reviews } from "../datas/reviews";
 
+import Carousel from "react-multi-carousel";
+import "react-multi-carousel/lib/styles.css";
+
 const About = () => {
   const { pathname } = useLocation();
+  const responsive = {
+    superLargeDesktop: {
+      // the naming can be any, depends on you.
+      breakpoint: { max: 4000, min: 3000 },
+      items: 5,
+    },
+    desktop: {
+      breakpoint: { max: 3000, min: 1024 },
+      items: 3,
+    },
+    tablet: {
+      breakpoint: { max: 1024, min: 464 },
+      items: 2,
+    },
+    mobile: {
+      breakpoint: { max: 464, min: 0 },
+      items: 1,
+    },
+  };
 
   return (
     <>
@@ -110,9 +132,9 @@ const About = () => {
         </div>
         <div className="customers-review-sect">
           <h2>Customer's Reviews</h2>
-          <div className="customer-review-con">
+          <Carousel responsive={responsive}>
             {reviews.map((review, idx) => (
-              <div key={idx} className="review-item">
+              <div key={idx} className={`review-item review-item-${idx}`}>
                 <div className="review-message">
                   <p>{review.message}</p>
                 </div>
@@ -127,7 +149,7 @@ const About = () => {
                 </div>
               </div>
             ))}
-          </div>
+          </Carousel>
         </div>
         <SupportCard />
       </section>

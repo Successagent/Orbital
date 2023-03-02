@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false);
   const [cart, setCart] = useState([]);
   const [department, setDepartment] = useState(false);
+  const [activePage, setActivePage] = useState(1);
 
   //  Add To Cart Function
 
@@ -29,7 +30,7 @@ const AppProvider = ({ children }) => {
       newCart.push(cartItem);
     }
     setCart(newCart);
-    console.log(cart);
+    console.log(cartItem);
   };
 
   //   Total Price Function
@@ -38,14 +39,9 @@ const AppProvider = ({ children }) => {
   };
 
   const removeFromCart = (index) => {
-    const exist = cart.find((item) => item.slug.current === index.slug.current);
-    if (exist.quantity === 1) {
-      const toRemoveProduct = cart.filter(
-        (item) => item.slug.current !== index.slug.current
-      );
-      setCart(toRemoveProduct);
-    } else {
-    }
+    setCart((prevCart) =>
+      prevCart.filter((item) => item.slug.current !== index.slug.current)
+    );
   };
 
   const handleIncreament = (current) => {
@@ -83,6 +79,8 @@ const AppProvider = ({ children }) => {
         department,
         toggleDepartmentCon,
         setQuantity,
+        activePage,
+        setActivePage,
       }}
     >
       {children}

@@ -1,6 +1,7 @@
 import React from "react";
 import Button from "./Button";
 import { AiOutlineArrowRight } from "react-icons/ai";
+import { Link } from "react-router-dom";
 
 const ProductsBanner = ({ sale_text, name_text }) => {
   return (
@@ -9,7 +10,11 @@ const ProductsBanner = ({ sale_text, name_text }) => {
         <div className="intro-products-text-con">
           <p>{sale_text}</p>
           <h2>{name_text}</h2>
-          <Button title="Shop Now" icon={<AiOutlineArrowRight />} />
+          <Link to="/shop">
+            <button className="btn">
+              Shop Now <AiOutlineArrowRight />
+            </button>
+          </Link>
         </div>
         <div className="bg"></div>
       </div>
@@ -17,7 +22,11 @@ const ProductsBanner = ({ sale_text, name_text }) => {
         <div className="intro-products-text-con">
           <p>{sale_text}</p>
           <h2>{name_text}</h2>
-          <Button title="Shop Now" icon={<AiOutlineArrowRight />} />
+          <Link to="/shop">
+            <button className="btn">
+              Shop Now <AiOutlineArrowRight />
+            </button>
+          </Link>
         </div>
         <div className="bg"></div>
       </div>
@@ -25,7 +34,11 @@ const ProductsBanner = ({ sale_text, name_text }) => {
         <div className="intro-products-text-con">
           <p>{sale_text}</p>
           <h2>{name_text}</h2>
-          <Button title="Shop Now" icon={<AiOutlineArrowRight />} />
+          <Link to="/shop">
+            <button className="btn">
+              Shop Now <AiOutlineArrowRight />
+            </button>
+          </Link>
         </div>
         <div className="bg"></div>
       </div>

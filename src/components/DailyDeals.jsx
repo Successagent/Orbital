@@ -4,10 +4,13 @@ import {
   AiOutlineShoppingCart,
   AiOutlineHeart,
 } from "react-icons/ai";
+import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context/context";
 
 import { urlFor } from "../lib/client";
 
-const DailyDeals = ({ dealsProducts, index, setIndex }) => {
+const DailyDeals = ({ dealsProducts, index }) => {
+  const { addToCart } = useGlobalContext();
   return (
     <div className="flash-sales-item-one-main">
       {dealsProducts.map((item, idx) => {
@@ -59,21 +62,23 @@ const DailyDeals = ({ dealsProducts, index, setIndex }) => {
                 <AiFillStar />
               </div>
             </div>
-            <div className="flash-sales-item-one-main-image-con">
-              {item?.image && (
-                <img
-                  className="flash-sales-item-one-img"
-                  src={urlFor(item?.image[0])}
-                  alt=""
-                />
-              )}
-            </div>
+            <Link to={`/products/${item.slug.current}`}>
+              <div className="flash-sales-item-one-main-image-con">
+                {item?.image && (
+                  <img
+                    className="flash-sales-item-one-img"
+                    src={urlFor(item?.image[0])}
+                    alt=""
+                  />
+                )}
+              </div>
+            </Link>
             <div className="flash-sales-item-one-main-cart-con">
               <div className="product-svg-con">
                 <AiOutlineHeart />
               </div>
               <div className="product-svg-con">
-                <AiOutlineShoppingCart />
+                <AiOutlineShoppingCart onClick={() => addToCart(item)} />
               </div>
             </div>
           </div>
@@ -84,16 +89,3 @@ const DailyDeals = ({ dealsProducts, index, setIndex }) => {
 };
 
 export default DailyDeals;
-
-// {<div>
-//
-//
-// <div className="flash-sales-item-one-main-cart-con">
-//   <div className="product-svg-con">
-//     <AiOutlineHeart />
-//   </div>
-//   <div className="product-svg-con">
-//     <AiOutlineShoppingCart />
-//   </div>
-// </div>
-// </div>;}

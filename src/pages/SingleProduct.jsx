@@ -18,9 +18,8 @@ const SingleProduct = ({ products }) => {
   const index = product[0];
   const [selectedImage, setSelectedImage] = useState(1);
   const [tabs, setTabs] = useState(false);
-  const { decreaseQuantity } = useGlobalContext();
-  const { increaseQuantity } = useGlobalContext();
-  const { qty } = useGlobalContext();
+  const { addToCart } = useGlobalContext();
+
   const { slug } = useParams();
   const { pathname } = useLocation();
 
@@ -135,12 +134,12 @@ const SingleProduct = ({ products }) => {
               ad minimo veniam, quis nostrud exercitation ullamco laboris nisi.
             </p>
             <div className="single-product-btn-con">
-              <div className="single-product-btn">
-                <span>-</span>
-                <span>{qty}</span>
-                <span>+</span>
-              </div>
-              <button className="single-product-btn">add to cart</button>
+              <button
+                className="single-product-btn"
+                onClick={() => addToCart(index)}
+              >
+                add to cart
+              </button>
             </div>
             <h4>
               SKU: <span>WS-256HG</span>
