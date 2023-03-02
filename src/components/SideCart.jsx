@@ -1,7 +1,6 @@
 import React from "react";
 import { Link, useNavigate } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import cartLogo from "../assets/1.webp";
 import Button from "./Button";
 import { useGlobalContext } from "../context/context";
 import { urlFor } from "../lib/client";
@@ -23,7 +22,7 @@ const SideCart = ({ openCart, toggleCart }) => {
           {cart.map((product, idx) => (
             <div key={idx}>
               <div className="cart-img-con">
-                <img src={urlFor(product.image && product.image[0])} alt="" />
+                <img src={product.src && product.src[0]} alt={product.name} />
               </div>
               <div className="cart-details-con">
                 <p className="cart-product-name">{product.name}</p>

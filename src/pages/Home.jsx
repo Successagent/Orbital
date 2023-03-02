@@ -22,8 +22,9 @@ import {
   DailyDeals,
   Categories,
 } from "../components";
+import { products } from "../datas/product";
 
-const Home = ({ products }) => {
+const Home = () => {
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
 
@@ -58,7 +59,6 @@ const Home = ({ products }) => {
         }
         break;
     }
-    console.log(e.target.id);
   };
 
   return (
@@ -98,7 +98,7 @@ const Home = ({ products }) => {
           </div>
         </div>
         <SupportCard />
-        <Products h2_title="New Top Sales!" products={products} />
+        <Products h2_title="New Top Sales!" products={products.slice(0, 8)} />
         <ProductsBanner
           sale_text={"Sparing Sales Coming"}
           name_text={"A Good Quality T-Shirt"}

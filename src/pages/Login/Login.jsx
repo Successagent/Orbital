@@ -4,7 +4,19 @@ import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 import "../Login/Login.css";
 import "../Registration/Registration.css";
 
-const index = () => {
+import { useForm } from "react-hook-form";
+
+const Login = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
+
+  const handleLoginForm = (data) => {
+    console.log(data);
+  };
+
   return (
     <>
       <Header />
@@ -14,11 +26,22 @@ const index = () => {
           <div>
             <h2>Login</h2>
             <div>
-              <form className="review-form">
+              <form
+                className="review-form"
+                onClick={handleSubmit((data) => handleLoginForm(data))}
+              >
                 <p>Email Address *</p>
-                <input type="text" />
+                <input
+                  type="text"
+                  {...register("email", { required: "Email is Required" })}
+                />
                 <p>Password *</p>
-                <input type="text" />
+                <input
+                  type="text"
+                  {...register("password", {
+                    required: "Password is Required",
+                  })}
+                />
                 <div className="forget-pass">
                   <div className="flex">
                     <input type="checkbox" />
@@ -28,7 +51,7 @@ const index = () => {
                     <p className="p forget-password">Forget Password?</p>
                   </Link>
                 </div>
-                <Button title="Login" />
+                <button className="btn">Login</button>
               </form>
             </div>
           </div>
@@ -50,4 +73,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default Login;

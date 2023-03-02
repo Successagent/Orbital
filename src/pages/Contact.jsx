@@ -26,7 +26,6 @@ const Contact = () => {
     } else if (e.target.id == 3) {
       setRed(3);
     }
-    console.log(red);
   };
 
   const changeFocus = (e) => {
@@ -39,7 +38,6 @@ const Contact = () => {
     } else if (e.target.id == 4) {
       setFocus(4);
     }
-    console.log(focus);
   };
 
   return (

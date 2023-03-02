@@ -9,7 +9,9 @@ import {
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
 
-const Products = ({ products, h2_title, pathname }) => {
+import { products } from "../datas/product";
+
+const Products = ({ h2_title, pathname }) => {
   const { cart, setCart, addToCart } = useGlobalContext();
   const [displayProduct, setDisplayProduct] = useState([]);
 
@@ -22,15 +24,12 @@ const Products = ({ products, h2_title, pathname }) => {
   const filterFunct = (e) => {
     if (e.target.id === "polo-shirts") {
       setDisplayProduct(poloShirtArr);
-      console.log(displayProduct);
     }
     if (e.target.id === "t-shirts") {
       setDisplayProduct(tShirtsArr);
-      console.log(displayProduct);
     }
     if (e.target.id === "long-shirts") {
       setDisplayProduct(longShirt);
-      console.log(displayProduct);
     }
   };
 
@@ -57,7 +56,7 @@ const Products = ({ products, h2_title, pathname }) => {
           ? poloShirtArr
           : displayProduct[0]?.category === "Long Shirt"
           ? longShirt
-          : products.slice(0, 4)
+          : products
         ).map((product, idx) => (
           <div key={idx} className="product-item">
             <button
@@ -72,9 +71,9 @@ const Products = ({ products, h2_title, pathname }) => {
               {product.status}
             </button>
             <div className="product-item-first-con">
-              <Link to={`/products/${product.slug.current}`}>
+              <Link to={`/products/${product.id}`}>
                 <div className="product-image-con">
-                  <img src={urlFor(product.image[1])} />
+                  <img src={product.src[1]} alt={product.name} />
                 </div>
               </Link>
               <div className="product-search-con">

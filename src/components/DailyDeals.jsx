@@ -52,8 +52,8 @@ const DailyDeals = ({ dealsProducts, index }) => {
                   <h3>SECS</h3>
                 </div>
               </div>
-              <p className="product-name-text">{dealsProducts && item?.name}</p>
-              <h3 className="product-price">${dealsProducts && item?.price}</h3>
+              <p className="product-name-text">{dealsProducts && item.name}</p>
+              <h3 className="product-price">${dealsProducts && item.price}</h3>
               <div className="product-rate-con">
                 <AiFillStar />
                 <AiFillStar />
@@ -62,12 +62,12 @@ const DailyDeals = ({ dealsProducts, index }) => {
                 <AiFillStar />
               </div>
             </div>
-            <Link to={`/products/${item.slug.current}`}>
+            <Link to={`/products/${item.id}`}>
               <div className="flash-sales-item-one-main-image-con">
-                {item?.image && (
+                {item.src && (
                   <img
                     className="flash-sales-item-one-img"
-                    src={urlFor(item?.image[0])}
+                    src={item.src[0]}
                     alt=""
                   />
                 )}

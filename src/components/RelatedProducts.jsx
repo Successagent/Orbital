@@ -27,11 +27,8 @@ const RelatedProducts = ({ products }) => {
             </button>
             <div className="product-item-first-con">
               <div className="product-image-con">
-                <Link to={`/products/${product.slug.current}`}>
-                  <img
-                    src={urlFor(product.image[1])}
-                    alt={product.productName}
-                  />
+                <Link to={`/products/${product.id}`}>
+                  <img src={product.src[1]} alt={product.productName} />
                 </Link>
               </div>
               <div className="product-search-con">
@@ -44,7 +41,7 @@ const RelatedProducts = ({ products }) => {
               </div>
             </div>
             <div className="product-item-two-con">
-              <p className="product-name-text">{product.name}</p>
+              <p className="product-name-text">{product.productName}</p>
               <h3 className="product-price">${product.price}</h3>
               <div className="product-rate-con">
                 <AiFillStar />

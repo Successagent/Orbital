@@ -60,7 +60,6 @@ const AdminDashboard = () => {
         landSize,
       },
     ]);
-    console.log(mainAdminData);
   };
 
   const toggleModal = (e) => {

@@ -9,7 +9,7 @@ const Categories = ({ product }) => {
         {product.slice(0, 5).map((item, idx) => (
           <div key={idx}>
             <div>
-              <img src={urlFor(item.image[1])} alt={item.name} />
+              <img src={item.src[1]} alt={item.name} />
             </div>
             <p className="product-name-text">{item.category}</p>
           </div>

@@ -2,18 +2,19 @@ import React, { useState } from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
+import { products } from "../datas/product";
 import { urlFor } from "../lib/client";
 
-const GridProducts = ({ pathname, products }) => {
+const GridProducts = ({ pathname }) => {
   const { addToCart } = useGlobalContext();
 
   return (
     <div className="flash-sales-item-two-grid-products">
       {(pathname === "/" && products.slice(0, 6)).map((product, idx) => (
         <div key={idx}>
-          <Link to={`/products/${product.slug.current}`}>
+          <Link to={`/products/${product.id}`}>
             <div>
-              <img src={urlFor(product.image[1])} alt="" />
+              <img src={product.src[1]} alt={product.name} />
             </div>
           </Link>
           <div>

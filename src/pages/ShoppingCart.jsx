@@ -35,7 +35,7 @@ const ShoppingCart = () => {
               <div className="shopping-cart-main" key={idx}>
                 <div className="products-con">
                   <div className="cart-img-con">
-                    <img src={urlFor(product?.image[0])} alt={product.name} />
+                    <img src={product.src[0]} alt={product.name} />
                   </div>
                   <p>{product.name}</p>
                 </div>

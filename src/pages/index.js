@@ -4,9 +4,9 @@ import Home from "./Home";
 import Shop from "./Shop";
 import ShoppingCart from "./ShoppingCart";
 import SingleProduct from "./SingleProduct";
-import Login from "../pages/Login";
 import Registration from "../pages/Registration";
 import ForgetPassword from "../pages/ForgetPassword";
+import Login from "./Login/Login";
 
 export {
   Home,

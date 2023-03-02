@@ -14,9 +14,7 @@ const AppProvider = ({ children }) => {
   const addToCart = (productIndex) => {
     //The Method here is to find the index of the product added to the cart, if the product is existing take only the first one
 
-    let cartItem = cart.find(
-      (item) => item.slug.current === productIndex.slug.current
-    );
+    let cartItem = cart.find((item) => item.id === productIndex.id);
 
     let newCart = [...cart];
 
@@ -30,7 +28,6 @@ const AppProvider = ({ children }) => {
       newCart.push(cartItem);
     }
     setCart(newCart);
-    console.log(cartItem);
   };
 
   //   Total Price Function
@@ -39,17 +36,8 @@ const AppProvider = ({ children }) => {
   };
 
   const removeFromCart = (index) => {
-    setCart((prevCart) =>
-      prevCart.filter((item) => item.slug.current !== index.slug.current)
-    );
-  };
-
-  const handleIncreament = (current) => {
-    console.log(current);
-  };
-
-  const handleDecreament = (current) => {
-    console.log(current);
+    setCart((prevCart) => prevCart.filter((item) => item.id !== index.id));
+    console.log(cart);
   };
 
   const toggleDepartmentCon = () => {
@@ -58,9 +46,7 @@ const AppProvider = ({ children }) => {
 
   const setQuantity = (product, amount) => {
     const cartItem = [...cart];
-    cartItem.find(
-      (item) => item.slug.current === product.slug.current
-    ).quantity = amount;
+    cartItem.find((item) => item.id === product.id).quantity = amount;
     setCart(cartItem);
   };
 
@@ -74,8 +60,6 @@ const AppProvider = ({ children }) => {
         addToCart,
         getTotalQuantity,
         removeFromCart,
-        handleDecreament,
-        handleIncreament,
         department,
         toggleDepartmentCon,
         setQuantity,

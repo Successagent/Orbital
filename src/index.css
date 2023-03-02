@@ -722,6 +722,7 @@ footer .link::after {
   transition: all ease-in-out 400ms;
   font-size: 20px;
   font-weight: 300;
+  cursor: pointer;
 }
 
 .active-pagination {
@@ -1772,7 +1773,6 @@ textarea {
   display: flex;
   justify-content: center;
   transition: all ease-in-out 400ms;
-  overflow-y: scroll;
 }
 
 .side-cart h4 {
@@ -1822,6 +1822,18 @@ textarea {
   background-color: white;
   width: 400px;
   overflow-y: scroll;
+}
+
+.cart-sidebar-con::-webkit-scrollbar {
+  display: none;
+}
+
+/* Hide scrollbar for IE, Edge and Firefox */
+.cart-sidebar-con {
+  -ms-overflow-style: none;
+  /* IE and Edge */
+  scrollbar-width: none;
+  /* Firefox */
 }
 
 
@@ -1938,7 +1950,7 @@ textarea {
   height: 100%;
 }
 
-.shopping-cart-total {}
+
 
 .shopping-cart-total p {
   margin-bottom: 20px;

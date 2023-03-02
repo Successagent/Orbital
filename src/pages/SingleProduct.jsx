@@ -8,20 +8,22 @@ import {
   PageHero,
   RelatedProducts,
 } from "../components";
-import { client, urlFor } from "../lib/client";
+
+import { products } from "../datas/product";
 
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../context/context";
 
-const SingleProduct = ({ products }) => {
-  const [product, setProduct] = useState([]);
-  const index = product[0];
+const SingleProduct = () => {
   const [selectedImage, setSelectedImage] = useState(1);
   const [tabs, setTabs] = useState(false);
   const { addToCart } = useGlobalContext();
 
-  const { slug } = useParams();
+  const { id } = useParams();
   const { pathname } = useLocation();
+
+  let product = products.filter((item) => item.id == id);
+  let index = product[0];
 
   const changeActiveImage = (e) => {
     if (e.target.id == 0) {
@@ -39,58 +41,30 @@ const SingleProduct = ({ products }) => {
     setTabs(!tabs);
   };
 
-  useEffect(() => {
-    client
-      .fetch(
-        `*[slug.current == "${slug}"] {
-      details,
-      image,
-      name,
-      price,
-       slug,
-    }`
-      )
-      .then((data) => {
-        setProduct(data);
-      })
-      .catch((err) => console.log(err));
-  }, [slug]);
   return (
     <>
       <section className="single-product-con">
-        <Header pathname={pathname} slug={slug} />
+        <Header pathname={pathname} slug={id} />
         <PageHero page_title={"Single Product"} />
         <div className="single-product">
           <div className="single-product-image-con">
             <div>
               <div className="single-product-single-image-con">
                 {selectedImage == 1 ? (
-                  <img
-                    src={index?.image && urlFor(index?.image[0])}
-                    alt={index?.name}
-                  />
+                  <img src={index.src && index.src[0]} alt={index?.name} />
                 ) : selectedImage == 2 ? (
-                  <img
-                    src={index?.image && urlFor(index?.image[1])}
-                    alt={index?.name}
-                  />
+                  <img src={index.src && index.src[1]} alt={index?.name} />
                 ) : selectedImage == 3 ? (
-                  <img
-                    src={index?.image && urlFor(index?.image[2])}
-                    alt={index?.name}
-                  />
+                  <img src={index.src && index.src[2]} alt={index?.name} />
                 ) : selectedImage == 4 ? (
-                  <img
-                    src={index?.image && urlFor(index?.image[3])}
-                    alt={index?.name}
-                  />
+                  <img src={index.src && index.src[3]} alt={index?.name} />
                 ) : (
                   ""
                 )}
               </div>
               <div className="single-product-other-images-con">
-                {index?.image &&
-                  index?.image?.map((image, idx) => (
+                {index.src &&
+                  index.src.map((image, idx) => (
                     <div
                       key={idx}
                       id={idx}
@@ -107,16 +81,16 @@ const SingleProduct = ({ products }) => {
                       }`}
                       onMouseEnter={changeActiveImage}
                     >
-                      <img src={image && urlFor(image)} alt="" />
+                      <img src={image && image} alt="" />
                     </div>
                   ))}
               </div>
             </div>
           </div>
           <div className="single-product-details-con">
-            <h2>{index?.name}</h2>
+            <h2>{index.name}</h2>
             <h3>
-              ${index?.price} - <span>$260.00</span>
+              ${index.price} - <span>$260.00</span>
             </h3>
             <div className="single-product-review-con">
               <div className="product-rate-con">
@@ -184,7 +158,7 @@ const SingleProduct = ({ products }) => {
         </div>
         <RelatedProducts products={products.slice(0, 4)} />
       </section>
-      <Newsletter pathname={pathname} slug={slug} />
+      <Newsletter pathname={pathname} slug={id} />
       <Footer />
     </>
   );

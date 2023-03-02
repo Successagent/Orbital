@@ -28,7 +28,6 @@ const Header = ({ pathname, slug }) => {
 
   const toggleCart = () => {
     setOpenCart(!openCart);
-    console.log(openCart);
   };
   return (
     <header className="header">

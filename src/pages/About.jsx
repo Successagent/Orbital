@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import {
   Button,
   Footer,
@@ -7,8 +7,9 @@ import {
   PageHero,
   SupportCard,
 } from "../components";
-import { useLocation } from "react-router-dom";
-import { AiOutlineArrowRight } from "react-icons/ai";
+import { Link, useLocation } from "react-router-dom";
+import { AiOutlineArrowRight, AiOutlineInstagram } from "react-icons/ai";
+import { CiTwitter } from "react-icons/ci";
 import { GrFacebookOption } from "react-icons/gr";
 import AboutImageTwo from "../assets/d1.webp";
 import TeamImage from "../assets/2.webp";
@@ -16,6 +17,7 @@ import { reviews } from "../datas/reviews";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";
+import { FaLinkedinIn } from "react-icons/fa";
 
 const About = () => {
   const { pathname } = useLocation();
@@ -59,7 +61,9 @@ const About = () => {
               reprehenderit in voluptat velit esse cillum dolore eu fugiat nulla
               pariatur.
             </p>
-            <Button title="Contact Us" icon={<AiOutlineArrowRight />} />
+            <Link to={"/contact"}>
+              <Button title="Contact Us" icon={<AiOutlineArrowRight />} />
+            </Link>
           </div>
         </div>
         <div className="about-team-sect">
@@ -75,34 +79,13 @@ const About = () => {
                     <GrFacebookOption />
                   </div>
                   <div>
-                    <GrFacebookOption />
+                    <AiOutlineInstagram />
                   </div>
                   <div>
-                    <GrFacebookOption />
+                    <CiTwitter />
                   </div>
                   <div>
-                    <GrFacebookOption />
-                  </div>
-                </div>
-              </div>
-            </div>
-            <div className="team-children">
-              <img src={TeamImage} alt="" />
-              <div className="team-children-first-sect">
-                <h3>Monroe Bond</h3>
-                <p>Chief Admin</p>
-                <div className="team-icons-sect">
-                  <div>
-                    <GrFacebookOption />
-                  </div>
-                  <div>
-                    <GrFacebookOption />
-                  </div>
-                  <div>
-                    <GrFacebookOption />
-                  </div>
-                  <div>
-                    <GrFacebookOption />
+                    <FaLinkedinIn />
                   </div>
                 </div>
               </div>
@@ -117,13 +100,34 @@ const About = () => {
                     <GrFacebookOption />
                   </div>
                   <div>
-                    <GrFacebookOption />
+                    <AiOutlineInstagram />
                   </div>
+                  <div>
+                    <CiTwitter />
+                  </div>
+                  <div>
+                    <FaLinkedinIn />
+                  </div>
+                </div>
+              </div>
+            </div>
+            <div className="team-children">
+              <img src={TeamImage} alt="" />
+              <div className="team-children-first-sect">
+                <h3>Monroe Bond</h3>
+                <p>Chief Admin</p>
+                <div className="team-icons-sect">
                   <div>
                     <GrFacebookOption />
                   </div>
                   <div>
-                    <GrFacebookOption />
+                    <AiOutlineInstagram />
+                  </div>
+                  <div>
+                    <CiTwitter />
+                  </div>
+                  <div>
+                    <FaLinkedinIn />
                   </div>
                 </div>
               </div>
