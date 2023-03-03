@@ -5,6 +5,7 @@ import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 
 import "../Registration/Registration.css";
 import "../Login/Login.css";
+import Loading from "../../components/HOCs/Loading";
 
 const index = ({}) => {
   return (
@@ -57,4 +58,4 @@ const index = ({}) => {
   );
 };
 
-export default index;
+export default Loading(index);

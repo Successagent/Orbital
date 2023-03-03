@@ -1,12 +1,15 @@
-import React from "react";
+import React, { useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Button, Footer, Header, Newsletter, PageHero } from "../components";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context/context";
-import { urlFor } from "../lib/client";
+import Loading from "../components/HOCs/Loading";
 
 const ShoppingCart = () => {
-  const { cart, setQuantity, removeFromCart } = useGlobalContext();
+  const { cart, setQuantity, removeFromCart, getTotalQuantity } =
+    useGlobalContext();
+  const [shipping, setShipping] = useState(50);
+  const [localFee, setLocalFee] = useState(40);
   const { pathname } = useLocation();
   return (
     <>
@@ -69,8 +72,8 @@ const ShoppingCart = () => {
           <div className="shopping-cart-total-con">
             <div className="shopping-cart-total">
               <div className="total-con">
-                <h3>Total</h3>
-                <h3 className="total-price">$182.00</h3>
+                <h3>Sub Total</h3>
+                <h3 className="total-price">${getTotalQuantity()}</h3>
               </div>
               <div>
                 <p>Total</p>
@@ -83,7 +86,9 @@ const ShoppingCart = () => {
               </div>
               <div className="total-con">
                 <h3>Total</h3>
-                <h3 className="total-price">$182.00</h3>
+                <h3 className="total-price">
+                  ${`${getTotalQuantity() + shipping + localFee}`}
+                </h3>
               </div>
               <Button title="PROCEED TO CHECKOUT" />
             </div>
@@ -96,4 +101,4 @@ const ShoppingCart = () => {
   );
 };
 
-export default ShoppingCart;
+export default Loading(ShoppingCart);

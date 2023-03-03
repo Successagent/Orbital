@@ -13,6 +13,7 @@ import { products } from "../datas/product";
 
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../context/context";
+import Loading from "../components/HOCs/Loading";
 
 const SingleProduct = () => {
   const [selectedImage, setSelectedImage] = useState(1);
@@ -164,4 +165,4 @@ const SingleProduct = () => {
   );
 };
 
-export default SingleProduct;
+export default Loading(SingleProduct);

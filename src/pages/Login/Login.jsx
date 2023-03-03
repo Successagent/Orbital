@@ -5,6 +5,7 @@ import "../Login/Login.css";
 import "../Registration/Registration.css";
 
 import { useForm } from "react-hook-form";
+import Loading from "../../components/HOCs/Loading";
 
 const Login = () => {
   const {
@@ -73,4 +74,4 @@ const Login = () => {
   );
 };
 
-export default Login;
+export default Loading(Login);

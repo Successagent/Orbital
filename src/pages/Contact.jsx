@@ -12,6 +12,7 @@ import { FaUserAlt } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { FiPhoneCall } from "react-icons/fi";
 import { AiOutlineArrowRight, AiOutlineMail } from "react-icons/ai";
+import Loading from "../components/HOCs/Loading";
 
 const Contact = () => {
   const { pathname } = useLocation();
@@ -154,4 +155,4 @@ const Contact = () => {
   );
 };
 
-export default Contact;
+export default Loading(Contact);

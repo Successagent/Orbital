@@ -7,6 +7,7 @@ import {
 import { MdNavigateNext } from "react-icons/md";
 import { Link, useLocation } from "react-router-dom";
 import { Footer, Header, Newsletter, PageHero } from "../components";
+import Loading from "../components/HOCs/Loading";
 import { useGlobalContext } from "../context/context";
 
 import { products } from "../datas/product";
@@ -125,4 +126,4 @@ const Shop = () => {
   );
 };
 
-export default Shop;
+export default Loading(Shop);

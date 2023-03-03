@@ -1,4 +1,4 @@
-import React, { useContext, useState } from "react";
+import React, { useState } from "react";
 import { useGlobalContext } from "../context/context";
 
 import { Link } from "react-router-dom";
@@ -6,15 +6,13 @@ import {
   AiOutlineSearch,
   AiOutlineHeart,
   AiOutlineShoppingCart,
-  AiOutlineDown,
 } from "react-icons/ai";
 
 import { BiUser } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 
 import headerHeroImage from "../assets/logo.webp";
-import Button from "./Button";
-import Nav from "./Nav";
+
 import SideCart from "./SideCart";
 import { FaTimes } from "react-icons/fa";
 
@@ -35,23 +33,12 @@ const Header = ({ pathname, slug }) => {
         <div className="header-hero-image-con">
           <h1 className="header-style">Orbital</h1>
         </div>
-        <form
-          className={`header-hero-form ${
-            pathname === "/about" ||
-            pathname === "/shop" ||
-            pathname === "/contact" ||
-            pathname === `/products/${slug}`
-              ? "radius-border"
-              : ""
-          }`}
-        >
-          <input type="text" placeholder="Search Products" />
-          <div>
-            <p>Polo Clothes</p>
-            <AiOutlineDown />
-          </div>
-          <Button title={<AiOutlineSearch />} />
-        </form>
+        <ul>
+          <Link to="/">Home</Link>
+          <Link to="/about">About</Link>
+          <Link to="/shop">Shop</Link>
+          <Link to="/contact">Contact</Link>
+        </ul>
         <div className="header-hero-links">
           <div>
             <Link className="link red-hover" to="/login">
@@ -61,7 +48,7 @@ const Header = ({ pathname, slug }) => {
               SignUp
             </Link>
           </div>
-          <AiOutlineHeart className="red-hover" />
+          <AiOutlineHeart className="red-hover heart" />
           <div
             className={`cart-value-con ${
               pathname === "/about" ||
@@ -88,7 +75,13 @@ const Header = ({ pathname, slug }) => {
         <div className="mobile-header-icons-con">
           <AiOutlineSearch />
           <BiUser />
-          <AiOutlineShoppingCart onClick={toggleCart} />
+          <AiOutlineShoppingCart
+            onClick={toggleCart}
+            className="shoppin-cart"
+          />
+          <div className="cart-value-con">
+            <p className="cart-value">{cart.length}</p>
+          </div>
           <div className="hamburger-con">
             <RxHamburgerMenu onClick={oppenNav} />
           </div>
@@ -105,7 +98,6 @@ const Header = ({ pathname, slug }) => {
           <Link to="/contact">Contact</Link>
         </ul>
       </section>
-      <Nav pathname={pathname} />
       <SideCart openCart={openCart} toggleCart={toggleCart} />
     </header>
   );

@@ -7,6 +7,9 @@ import {
   PageHero,
   SupportCard,
 } from "../components";
+
+import Loading from "../components/HOCs/Loading";
+
 import { Link, useLocation } from "react-router-dom";
 import { AiOutlineArrowRight, AiOutlineInstagram } from "react-icons/ai";
 import { CiTwitter } from "react-icons/ci";
@@ -163,4 +166,4 @@ const About = () => {
   );
 };
 
-export default About;
+export default Loading(About);

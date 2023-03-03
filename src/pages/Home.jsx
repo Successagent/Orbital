@@ -23,6 +23,7 @@ import {
   Categories,
 } from "../components";
 import { products } from "../datas/product";
+import Loading from "../components/HOCs/Loading";
 
 const Home = () => {
   const { pathname } = useLocation();
@@ -143,4 +144,4 @@ const Home = () => {
   );
 };
 
-export default Home;
+export default Loading(Home);

@@ -1,5 +1,4 @@
 import React, { useContext, useState } from "react";
-import { client } from "../lib/client";
 
 const AppContext = React.createContext();
 

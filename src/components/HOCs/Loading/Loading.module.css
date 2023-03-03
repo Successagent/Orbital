@@ -1,0 +1,74 @@
+.container {
+  position: fixed;
+  inset: 0;
+  background: #000;
+  z-index: 12;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  gap: 2em;
+  color: #fff;
+  opacity: 1;
+  clip-path: polygon(0% 0%,
+      100% 0%,
+      100% 100%,
+      80% 100%,
+      80% 0%,
+      80% 0%,
+      80% 100%,
+      60% 100%,
+      60% 0%,
+      60% 0%,
+      60% 100%,
+      40% 100%,
+      40% 0%,
+      40% 0%,
+      40% 100%,
+      20% 100%,
+      20% 0%,
+      20% 0%,
+      20% 100%,
+      0% 100%);
+  transition: all 500ms;
+  z-index: 999999;
+}
+
+.spinner {
+  padding: 5em;
+  border-radius: 9999px;
+  border: 1px solid #fff;
+  border-left: 1px solid #000;
+  animation: spin 2s linear infinite;
+}
+
+.hidden {
+  opacity: 0.6;
+  pointer-events: none;
+  clip-path: polygon(0% 0%,
+      80% 0%,
+      80% 100%,
+      80% 100%,
+      80% 0%,
+      60% 0%,
+      60% 100%,
+      60% 100%,
+      60% 0%,
+      40% 0%,
+      40% 100%,
+      40% 100%,
+      40% 0%,
+      20% 0%,
+      20% 100%,
+      20% 100%,
+      20% 0%,
+      0% 0%,
+      0% 100%,
+      0% 100%);
+}
+
+@keyframes spin {
+  to {
+    transform: rotate(360deg);
+  }
+}
