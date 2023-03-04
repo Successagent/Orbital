@@ -49,7 +49,6 @@ const Header = ({ pathname, slug }) => {
               SignUp
             </Link>
           </div>
-          <AiOutlineHeart className="red-hover heart" />
           <div
             className={`cart-value-con ${
               pathname === "/about" ||
@@ -71,10 +70,9 @@ const Header = ({ pathname, slug }) => {
         style={{ padding: `${pathname !== "/" ? "20px" : ""}` }}
       >
         <div className="mobile-header-image-con">
-          <img src={headerHeroImage} alt="" />
+          <h1 className="header-style">Orbital</h1>
         </div>
         <div className="mobile-header-icons-con">
-          <AiOutlineSearch />
           <BiUser />
           <AiOutlineShoppingCart
             onClick={toggleCart}
