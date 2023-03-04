@@ -2577,6 +2577,47 @@ textarea {
 }
 
 
+@media(max-width:1000px) {
+  .header-hero-image-con {
+    width: 15%;
+  }
+
+
+  .header ul {
+    width: 80%;
+  }
+
+  .header-hero-links {
+    width: 35%;
+  }
+
+  .category-products-sect>div:nth-child(1) {
+    display: none;
+  }
+
+  .flash-sales-con {
+    flex-direction: column;
+  }
+
+  .flash-sales-item-two,
+  .flash-sales-item-one {
+    width: 100%;
+  }
+
+  .flash-sales-item-one {
+    display: none;
+  }
+
+
+  .intro-products {
+    display: flex !important;
+  }
+
+  .part-two-products .product-con {
+    grid-template-columns: repeat(2, 1fr);
+  }
+}
+
 
 
 @media(max-width:1033px) and (min-width:650px) {
