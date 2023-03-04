@@ -1,12 +1,13 @@
 import React from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
 import Button from "./Button";
 import { useGlobalContext } from "../context/context";
-import { urlFor } from "../lib/client";
+
+import Loading from "./HOCs/Loading";
 
 const SideCart = ({ openCart, toggleCart }) => {
-  const { cart, qnty, getTotalQuantity } = useGlobalContext();
+  const { cart, getTotalQuantity } = useGlobalContext();
 
   return (
     <section
@@ -50,4 +51,4 @@ const SideCart = ({ openCart, toggleCart }) => {
   );
 };
 
-export default SideCart;
+export default Loading(SideCart);

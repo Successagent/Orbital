@@ -27,7 +27,7 @@
     padding-left: 40px;
 }
 
-@media(max-width:600px) {
+@media(max-width:780px) {
     .register-form {
         flex-direction: column;
         padding: 50px 30px;
