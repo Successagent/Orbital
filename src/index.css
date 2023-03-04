@@ -2374,6 +2374,7 @@ textarea {
     flex-direction: column;
     transition: all ease-in-out 400ms;
     padding: 15px;
+    justify-content: flex-start;
   }
 
   .mobile-nav a {
