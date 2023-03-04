@@ -6,6 +6,7 @@ import {
   AiOutlineSearch,
   AiOutlineHeart,
   AiOutlineShoppingCart,
+  AiOutlineClose,
 } from "react-icons/ai";
 
 import { BiUser } from "react-icons/bi";
@@ -91,7 +92,7 @@ const Header = ({ pathname, slug }) => {
             visible == false ? "close-nav" : "open-nav"
           }`}
         >
-          <FaTimes onClick={oppenNav} />
+          <AiOutlineClose onClick={oppenNav} />
           <Link to="/">Home</Link>
           <Link to="/about">About</Link>
           <Link to="/shop">Shop</Link>
