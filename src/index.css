@@ -2583,6 +2583,28 @@ textarea {
   .header-style {
     font-size: 30px;
   }
+
+  .admin-hero-header {
+    flex-direction: column;
+    gap: 30px;
+  }
+
+  .dashboard-intro {
+    padding: 0;
+    height: auto;
+    padding: 50px 20px;
+    text-align: center;
+  }
+
+  .dashboard-intro h1 {
+    font-size: 35px;
+  }
+
+  .admin-hero-main-sect {
+    grid-template-columns: 1fr;
+    overflow: scroll;
+    padding-top: 350px;
+  }
 }
 
 
@@ -2648,11 +2670,18 @@ textarea {
     width: 100%;
   }
 
+
+
 }
 
 
 
 @media(max-width:1033px) and (min-width:650px) {
+
+
+  .admin-hero-main-sect {
+    transform: translateY(-1500px);
+  }
 
   .home-hero-section,
   .intro-products {
