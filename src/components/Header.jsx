@@ -11,11 +11,7 @@ import {
 
 import { BiUser } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
-
-import headerHeroImage from "../assets/logo.webp";
-
 import SideCart from "./SideCart";
-import { FaTimes } from "react-icons/fa";
 
 const Header = ({ pathname, slug }) => {
   const { openCart, setOpenCart, cart } = useGlobalContext();
@@ -73,7 +69,9 @@ const Header = ({ pathname, slug }) => {
           <h1 className="header-style">Orbital</h1>
         </div>
         <div className="mobile-header-icons-con">
-          <BiUser />
+          <BiUser>
+            <Link to={"/login"}></Link>
+          </BiUser>
           <AiOutlineShoppingCart
             onClick={toggleCart}
             className="shoppin-cart"

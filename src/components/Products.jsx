@@ -7,6 +7,7 @@ import {
   AiOutlineShoppingCart,
   AiFillStar,
 } from "react-icons/ai";
+import { useTrail, animated } from "react-spring";
 import { Link } from "react-router-dom";
 
 import { products } from "../datas/product";
@@ -32,6 +33,11 @@ const Products = ({ h2_title, pathname }) => {
       setDisplayProduct(longShirt);
     }
   };
+
+  const trail = useTrail(products.length, {
+    from: { transform: "translate3d(0, -40px,0)" },
+    to: { transform: "translate3d(0, 0,0)" },
+  });
 
   return (
     <div className="product-sect">

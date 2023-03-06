@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link } from "react-router-dom";
+import { Link, useNavigate } from "react-router-dom";
 import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 import "../Login/Login.css";
 import "../Registration/Registration.css";
@@ -14,8 +14,12 @@ const Login = () => {
     formState: { errors },
   } = useForm();
 
+  const navigate = useNavigate();
+
   const handleLoginForm = (data) => {
-    console.log(data);
+    if (data) {
+      navigate("/admin");
+    }
   };
 
   return (
