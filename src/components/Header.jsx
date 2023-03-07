@@ -69,7 +69,7 @@ const Header = ({ pathname, slug }) => {
           <h1 className="header-style">Orbital</h1>
         </div>
         <div className="mobile-header-icons-con">
-          <Link style={{ color: "#4b4b4b" }} to={"/login"}>
+          <Link style={{ color: "#4b4b4b" }} to={"/register"}>
             <BiUser />
           </Link>
 
