@@ -956,7 +956,7 @@ footer .link::after {
   left: 0;
   scrollbar-width: none;
   place-content: center;
-  transform: translateY(-1000px);
+  transform: translateY(-1500px);
   transition: all ease-in-out 350ms;
   overflow: hidden;
 }
@@ -2660,7 +2660,16 @@ textarea {
   .admin-hero-main-sect {
     grid-template-columns: 1fr;
     overflow: scroll;
-    padding-top: 350px;
+    padding-top: 450px;
+  }
+
+  .admin-card {
+    overflow: scroll;
+  }
+
+  .admin-card-header,
+  .admin-card-parent-con {
+    width: 1200px;
   }
 }
 
@@ -2738,6 +2747,12 @@ textarea {
     z-index: 1;
   }
 
+  .dashboard-intro {
+    height: auto;
+    padding: 100px 200px;
+    text-align: center;
+  }
+
 }
 
 
@@ -2746,7 +2761,7 @@ textarea {
 
 
   .admin-hero-main-sect {
-    transform: translateY(-1500px);
+    padding-top: 50px;
   }
 
   .home-hero-section,

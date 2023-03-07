@@ -7,7 +7,7 @@ import {
   Newsletter,
   PageHero,
 } from "../../components";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import Loading from "../../components/HOCs/Loading";
 import { BsTrash } from "react-icons/bs";
 
@@ -403,7 +403,9 @@ const AdminDashboard = () => {
             </div>
             <div>
               <BsTrash className="d-btn" />
-              <button className="e-btn">edit</button>
+              <Link to={`/admin/product/edit/${idx}`}>
+                <button className="e-btn">edit</button>
+              </Link>
             </div>
             <div>
               <p>{item.locationName}</p>
