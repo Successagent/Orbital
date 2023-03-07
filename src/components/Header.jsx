@@ -69,9 +69,10 @@ const Header = ({ pathname, slug }) => {
           <h1 className="header-style">Orbital</h1>
         </div>
         <div className="mobile-header-icons-con">
-          <BiUser>
-            <Link to={"/login"}></Link>
-          </BiUser>
+          <Link style={{ color: "#4b4b4b" }} to={"/login"}>
+            <BiUser />
+          </Link>
+
           <AiOutlineShoppingCart
             onClick={toggleCart}
             className="shoppin-cart"

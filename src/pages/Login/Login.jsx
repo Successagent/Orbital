@@ -4,6 +4,7 @@ import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 import "../Login/Login.css";
 import "../Registration/Registration.css";
 
+import axios from "axios";
 import { useForm } from "react-hook-form";
 import Loading from "../../components/HOCs/Loading";
 
@@ -16,9 +17,22 @@ const Login = () => {
 
   const navigate = useNavigate();
 
-  const handleLoginForm = (data) => {
-    if (data) {
-      navigate("/admin");
+  const handleLoginForm = async (data) => {
+    if (data.email !== "" && data.passowrd !== "") {
+      try {
+        const loginUser = await axios.post(
+          "http://localhost:5000/api/auth/login",
+          {
+            email: data.email,
+            password: data.password,
+          }
+        );
+        if (loginUser.status === 200) {
+          navigate("/admin");
+        }
+      } catch (error) {
+        console.log(error);
+      }
     }
   };
 

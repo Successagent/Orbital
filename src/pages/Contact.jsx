@@ -13,11 +13,18 @@ import { GoLocation } from "react-icons/go";
 import { FiPhoneCall } from "react-icons/fi";
 import { AiOutlineArrowRight, AiOutlineMail } from "react-icons/ai";
 import Loading from "../components/HOCs/Loading";
+import { useForm } from "react-hook-form";
 
 const Contact = () => {
   const { pathname } = useLocation();
   const [red, setRed] = useState(0);
   const [focus, setFocus] = useState(0);
+
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm();
 
   const toggleColor = (e) => {
     if (e.target.id == 1) {
@@ -26,6 +33,8 @@ const Contact = () => {
       setRed(2);
     } else if (e.target.id == 3) {
       setRed(3);
+    } else if (e.target.id == 4) {
+      setRed(4);
     }
   };
 
@@ -38,6 +47,20 @@ const Contact = () => {
       setFocus(3);
     } else if (e.target.id == 4) {
       setFocus(4);
+    }
+  };
+
+  const handleFormSubmit = async (data) => {
+    try {
+      const response = await fetch("http://localhost:5000/api/contact", {
+        method: "POST",
+        headers: { "Content-Type": "application/json" },
+        body: JSON.stringify(data),
+      });
+      const resData = await response.json();
+      console.log(resData);
+    } catch (error) {
+      console.log(error);
     }
   };
 
@@ -87,7 +110,10 @@ const Contact = () => {
               <div className="hr"></div>
               <div className="hr"></div>
             </div>
-            <form className="contact-form">
+            <form
+              className="contact-form"
+              onSubmit={handleSubmit((data) => handleFormSubmit(data))}
+            >
               <div
                 className={`input-con contact-form-item-one ${
                   focus == 1 ? "red-border" : ""
@@ -99,9 +125,31 @@ const Contact = () => {
                 <FaUserAlt className={` ${red === 1 ? "color-red" : ""}`} />
                 <input
                   type="text"
-                  placeholder="Your Name"
+                  {...register("fname", {
+                    required: "First Name is Required",
+                  })}
+                  placeholder="First Name"
                   id={1}
                   onFocus={changeFocus}
+                />
+              </div>
+              <div
+                className={`input-con contact-form-item-five ${
+                  focus == 3 ? "red-border" : ""
+                }`}
+                id={3}
+                onMouseEnter={toggleColor}
+                onMouseLeave={() => setRed()}
+              >
+                <FaUserAlt className={` ${red === 3 ? "color-red" : ""}`} />
+                <input
+                  type="text"
+                  placeholder="Last Name"
+                  id={3}
+                  onFocus={changeFocus}
+                  {...register("lname", {
+                    required: "Last Name is Required",
+                  })}
                 />
               </div>
               <div
@@ -118,28 +166,14 @@ const Contact = () => {
                   placeholder="Enter Your Email"
                   id="2"
                   onFocus={changeFocus}
-                />
-              </div>
-              <div
-                className={`input-con contact-form-item-three ${
-                  focus == 3 ? "red-border" : ""
-                }`}
-                id={3}
-                onMouseEnter={toggleColor}
-                onMouseLeave={() => setRed(0)}
-              >
-                <FiPhoneCall className={` ${red === 3 ? "color-red" : ""}`} />
-                <input
-                  type="text"
-                  placeholder="Your Subject"
-                  id="3"
-                  onFocus={changeFocus}
+                  {...register("email", { required: "Email is Required" })}
                 />
               </div>
               <textarea
                 className={`contact-form-item-four ${
                   focus == 4 ? "red-border" : ""
                 }`}
+                {...register("message", { required: "Message is Required" })}
                 id="4"
                 onFocus={changeFocus}
               ></textarea>

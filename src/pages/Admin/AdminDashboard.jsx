@@ -8,6 +8,8 @@ import {
   PageHero,
 } from "../../components";
 import { useLocation } from "react-router-dom";
+import Loading from "../../components/HOCs/Loading";
+import { BsTrash } from "react-icons/bs";
 
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
@@ -24,12 +26,9 @@ const AdminDashboard = () => {
       city: "",
       locationName: "",
       landSize: "",
+      images: [],
     },
   ]);
-
-  // const changeHandle = (e) => {
-  //   setAdminProduct({ ...adminProduct, [e.target.name]: e.target.value });
-  // };
 
   const {
     headerDescription,
@@ -42,7 +41,10 @@ const AdminDashboard = () => {
     city,
     locationName,
     landSize,
+    images,
   } = adminProduct;
+
+  console.log(adminProduct);
 
   const handleAdminData = () => {
     setMainAdminData([
@@ -58,6 +60,7 @@ const AdminDashboard = () => {
         city,
         locationName,
         landSize,
+        images,
       },
     ]);
   };
@@ -342,6 +345,18 @@ const AdminDashboard = () => {
               }
             />
           </div>
+          <div className="admin-hero-main-item admin-hero-main-item-11">
+            <input
+              type="file"
+              multiple="multiple"
+              onChange={(e) =>
+                setAdminProduct({
+                  ...adminProduct,
+                  images: e.target.files,
+                })
+              }
+            />
+          </div>
           <button className="btn" onClick={handleAdminData}>
             Save
           </button>
@@ -351,17 +366,48 @@ const AdminDashboard = () => {
         </div>
       </section>
       <section className="admin-card">
+        <div className="admin-card-header">
+          <div>
+            <p>Listing Type</p>
+          </div>
+          <div>
+            <p>Asking Price</p>
+          </div>
+          <div>
+            <p>Land Size</p>
+          </div>
+          <div>
+            <p>City</p>
+          </div>
+          <div>
+            <p>Status</p>
+          </div>
+          <div>
+            <p>Location Name</p>
+          </div>
+        </div>
         {mainAdminData.map((item, idx) => (
           <div className="admin-card-parent-con" key={idx}>
-            <p>{item.listingType}</p>
-            <p>{item.headerDescription}</p>
-            <p>{item.landSize}</p>
-            <p>{item.city}</p>
-            <p>{item.locationName}</p>
-            <p>{item.state}</p>
-            <p>{item.measurementUnit}</p>
-            <p>{item.askingPrice}</p>
-            <p>{item.marketValue}</p>
+            <div className="admin-card-image-con">
+              <img src={URL.createObjectURL(item.images[0])} alt={item.city} />
+              <p>{item.listingType}</p>
+            </div>
+            <div>
+              <p>{item.askingPrice}</p>
+            </div>
+            <div>
+              <p>{item.landSize}</p>
+            </div>
+            <div>
+              <p>{item.city}</p>
+            </div>
+            <div>
+              <BsTrash className="d-btn" />
+              <button className="e-btn">edit</button>
+            </div>
+            <div>
+              <p>{item.locationName}</p>
+            </div>
           </div>
         ))}
       </section>
@@ -371,4 +417,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default Loading(AdminDashboard);
