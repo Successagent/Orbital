@@ -90,9 +90,7 @@ const AdminDashboard = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!sessionStorage.getItem(`createdProducts`)) {
-      getCreatedProduct();
-    }
+    getCreatedProduct();
   }, []);
   return (
     <section className="admin-dashboard">
