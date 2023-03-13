@@ -13,7 +13,7 @@ import { BiUser } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SideCart from "./SideCart";
 
-const Header = ({ pathname, slug }) => {
+const Header = ({ pathname, slug, login }) => {
   const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
 
@@ -38,11 +38,30 @@ const Header = ({ pathname, slug }) => {
         </ul>
         <div className="header-hero-links">
           <div>
-            <Link className="link red-hover" to="/login">
-              Login
+            <Link
+              className="link red-hover"
+              to={`${
+                pathname === "/admin" ||
+                pathname === "/admin_login" ||
+                pathname === "/admin_register"
+                  ? "/admin_login"
+                  : "/login"
+              }`}
+            >
+              {pathname === "/admin" ? "Logout" : "Login"}
             </Link>
-            <Link className="link red-hover" to="/register">
-              SignUp
+
+            <Link
+              className="link red-hover"
+              to={`${
+                pathname === "/admin" ||
+                pathname == "/admin_login" ||
+                pathname == "/admin_register"
+                  ? "/admin_register"
+                  : "/register"
+              }`}
+            >
+              {pathname == "/admin" ? "Sign Out" : "Sign In"}
             </Link>
           </div>
           <div

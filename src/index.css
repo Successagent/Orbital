@@ -107,6 +107,10 @@ img {
   color: #706967;
 }
 
+.edit-product {
+  padding: 50px;
+}
+
 .radius-border {
   border-radius: 50px;
 }
@@ -939,6 +943,10 @@ footer .link::after {
 .admin-hero {
   padding: 50px 30px;
   position: relative;
+}
+
+.bi-profile {
+  margin-top: 10px;
 }
 
 .admin-hero-main-sect {

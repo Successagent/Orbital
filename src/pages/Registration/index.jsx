@@ -29,7 +29,7 @@ const Registration = () => {
           confirmPassword: data.confirmPassword,
         }
       );
-      console.log(registerUser);
+      console.log(registerUser.data);
       if (registerUser.status === 201) {
         navigate("/login");
       }

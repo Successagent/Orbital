@@ -1,5 +1,5 @@
 import { useState } from "react";
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 import "../Login/Login.css";
 import "../Registration/Registration.css";
@@ -8,7 +8,7 @@ import axios from "axios";
 import { useForm } from "react-hook-form";
 import Loading from "../../components/HOCs/Loading";
 
-const Login = () => {
+const AdminLogin = () => {
   const {
     handleSubmit,
     register,
@@ -16,18 +16,20 @@ const Login = () => {
   } = useForm();
 
   const navigate = useNavigate();
+  const { pathname } = useLocation();
 
   const handleLoginForm = async (data) => {
     if (data.email !== "" && data.passowrd !== "") {
       try {
-        const loginUser = await axios.post(
-          "http://localhost:5000/api/auth/login",
+        const adminUser = await axios.post(
+          "http://localhost:5000/api/auth/admin",
           {
             email: data.email,
             password: data.password,
           }
         );
-        if (loginUser.status === 200) {
+        console.log(adminUser);
+        if (adminUser.status === 200) {
           navigate("/admin");
         }
       } catch (error) {
@@ -38,12 +40,12 @@ const Login = () => {
 
   return (
     <>
-      <Header />
-      <PageHero page_title="Login" />
+      <Header pathname={pathname} />
+      <PageHero page_title="Admin Login" />
       <div className="register-form login-form">
         <section className="support-form-section">
           <div>
-            <h2>Login</h2>
+            <h2>Admin Login</h2>
             <div>
               <form
                 className="review-form"
@@ -76,12 +78,12 @@ const Login = () => {
           </div>
         </section>
         <div>
-          <h2>Register</h2>
+          <h2>Admin Register</h2>
           <p>
             Login to your account to access your user dashboard, manage your
             orders and profile
           </p>
-          <Link to="/register">
+          <Link to="/admin_register">
             <Button title="Register"></Button>
           </Link>
         </div>
@@ -92,4 +94,4 @@ const Login = () => {
   );
 };
 
-export default Loading(Login);
+export default Loading(AdminLogin);

@@ -27,8 +27,9 @@ const Login = () => {
             password: data.password,
           }
         );
+        console.log(loginUser.data);
         if (loginUser.status === 200) {
-          navigate("/admin");
+          navigate("/");
         }
       } catch (error) {
         console.log(error);

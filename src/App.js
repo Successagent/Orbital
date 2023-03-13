@@ -12,8 +12,9 @@ import {
   SingleProduct,
 } from "./pages";
 
-import { AdminDashboard } from "./pages/Admin";
+import { AdminDashboard, AdminLogin, AdminRegistration } from "./pages/Admin";
 import ProductDetails from "./pages/Admin/ProductDetails";
+import ProductEdit from "./pages/Admin/ProductEdit";
 
 function App() {
   const { pathname } = useLocation();
@@ -33,7 +34,9 @@ function App() {
       <Route path="/register" element={<Registration />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
       <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/admin/product/edit/:id" element={<ProductDetails />} />
+      <Route path="/admin_login" element={<AdminLogin />} />
+      <Route path="/admin_register" element={<AdminRegistration />} />
+      <Route path="/admin/product/edit/:id" element={<ProductEdit />} />
       <Route path="/admin/product/detail/:id" element={<AdminDashboard />} />
     </Routes>
   );

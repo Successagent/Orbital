@@ -3,12 +3,12 @@ import Skeleton, { SkeletonTheme } from "react-loading-skeleton";
 import "react-loading-skeleton/dist/skeleton.css";
 
 const SkeLoading = () => {
-  const products = JSON.parse(sessionStorage.getItem(`createdProducts`));
+  const products = JSON.parse(localStorage.getItem(`createdProducts`));
 
   return (
     <>
-      {products &&
-        products.map((_, idx) => (
+      {products.length > 1 &&
+        products?.map((item, idx) => (
           <div className="skeleton-card" key={idx}>
             <div className="skeleton-card-image-con">
               <Skeleton width={50} height={50} />

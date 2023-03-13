@@ -8,12 +8,12 @@ import AdminCreatedProduct from "./AdminCreatedProduct";
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
   const [products, setProducts] = useState(() => {
-    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
-    return sessionStorageProduct
-      ? JSON.parse(sessionStorage.getItem("createdProducts"))
+    const localStorageProduct = localStorage.getItem("createdProducts");
+    return localStorageProduct
+      ? JSON.parse(localStorage.getItem("createdProducts"))
       : [];
   });
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
@@ -26,14 +26,12 @@ const AdminDashboard = () => {
 
   const getCreatedProduct = async () => {
     try {
+      setLoading(true);
       const newProducts = await axios.get("http://localhost:5000/api/product");
       setLoading(false);
       console.log(newProducts.data);
       setProducts(newProducts.data);
-      sessionStorage.setItem(
-        `createdProducts`,
-        JSON.stringify(newProducts.data)
-      );
+      localStorage.setItem(`createdProducts`, JSON.stringify(newProducts.data));
     } catch (error) {
       console.log(error);
     }
@@ -90,7 +88,9 @@ const AdminDashboard = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    getCreatedProduct();
+    if (!localStorage.getItem(`createdProducts`)) {
+      getCreatedProduct();
+    }
   }, []);
   return (
     <section className="admin-dashboard">
@@ -178,7 +178,7 @@ const AdminDashboard = () => {
               onChange={handleImageChange}
             />
           </div>
-          <button className="btn" onClick={handleCreateProduct}>
+          <button className="btn" onClick={handleCreateProduct} id="case-one">
             Save
           </button>
           <button className="btn green" id="case-one" onClick={toggleModal}>
@@ -212,4 +212,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default AdminDashboard;
+export default Loading(AdminDashboard);

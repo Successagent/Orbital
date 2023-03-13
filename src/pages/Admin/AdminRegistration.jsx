@@ -1,6 +1,4 @@
-import { useState } from "react";
-
-import { Link, useNavigate } from "react-router-dom";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 
 import "../Registration/Registration.css";
@@ -9,8 +7,9 @@ import Loading from "../../components/HOCs/Loading";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 
-const Registration = () => {
+const AdminRegistration = () => {
   const navigate = useNavigate();
+  const { pathname } = useLocation();
   const {
     handleSubmit,
     register,
@@ -20,18 +19,18 @@ const Registration = () => {
   const handleRegisterForm = async (data) => {
     try {
       const registerUser = await axios.post(
-        "http://localhost:5000/api/auth/register",
+        "http://localhost:5000/api/auth/adminRegister",
         {
-          firstName: data.firstName,
-          lastName: data.lastName,
+          fname: data.firstName,
+          lname: data.lastName,
           email: data.email,
           password: data.password,
-          confirmPassword: data.confirmPassword,
+          cpassword: data.confirmPassword,
         }
       );
       console.log(registerUser);
       if (registerUser.status === 201) {
-        navigate("/login");
+        navigate("/admin_login");
       }
     } catch (error) {
       console.log(error);
@@ -41,13 +40,13 @@ const Registration = () => {
   return (
     <>
       <div className="register-page">
-        <Header />
-        <PageHero page_title={"Registration"} />
+        <Header pathname={pathname} />
+        <PageHero page_title={"Admin Registration"} />
 
         <div className="register-form">
           <section>
             <div>
-              <h2>Register</h2>
+              <h2>Admin Register</h2>
               <div>
                 <form
                   onSubmit={handleSubmit((data) => handleRegisterForm(data))}
@@ -89,12 +88,12 @@ const Registration = () => {
             </div>
           </section>
           <div>
-            <h2>Login</h2>
+            <h2>Admin Login</h2>
             <p>
               Login to your account to access your user dashboard, manage your
               orders and profile
             </p>
-            <Link to="/login">
+            <Link to="/admin_login">
               <Button title="Login"></Button>
             </Link>
           </div>
@@ -106,4 +105,4 @@ const Registration = () => {
   );
 };
 
-export default Loading(Registration);
+export default Loading(AdminRegistration);
