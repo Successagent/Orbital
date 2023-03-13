@@ -8,12 +8,18 @@ import AdminCreatedProduct from "./AdminCreatedProduct";
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
   const [products, setProducts] = useState(() => {
+    const localStorageProduct = sessionStorage.getItem("createdProducts");
+    return localStorageProduct
+      ? JSON.parse(sessionStorage.getItem("createdProducts"))
+      : [];
+  });
+  const [skeLoading, setSkeLoading] = useState(() => {
     const localStorageProduct = localStorage.getItem("createdProducts");
     return localStorageProduct
       ? JSON.parse(localStorage.getItem("createdProducts"))
       : [];
   });
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
@@ -26,11 +32,12 @@ const AdminDashboard = () => {
 
   const getCreatedProduct = async () => {
     try {
-      setLoading(true);
       const newProducts = await axios.get("http://localhost:5000/api/product");
       setLoading(false);
-      console.log(newProducts.data);
-      setProducts(newProducts.data);
+      sessionStorage.setItem(
+        `createdProducts`,
+        JSON.stringify(newProducts.data)
+      );
       localStorage.setItem(`createdProducts`, JSON.stringify(newProducts.data));
     } catch (error) {
       console.log(error);
@@ -88,8 +95,15 @@ const AdminDashboard = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!localStorage.getItem(`createdProducts`)) {
+    if (!sessionStorage.getItem(`createdProducts`)) {
       getCreatedProduct();
+    }
+
+    if (skeLoading) {
+      setLoading(true);
+      if (products.length > 1) {
+        setLoading(false);
+      }
     }
   }, []);
   return (
@@ -212,4 +226,4 @@ const AdminDashboard = () => {
   );
 };
 
-export default Loading(AdminDashboard);
+export default AdminDashboard;

@@ -7,14 +7,14 @@ import { useForm } from "react-hook-form";
 const ProductEdit = () => {
   const [modal, setModal] = useState(1);
   const [editProduct, setEditProduct] = useState([]);
-  const { name, price, quantity, category, desc } = editProduct;
-  console.log(name);
-  const [formData, setFormData] = useState({
-    name: "",
-    description: "",
-    price: "",
-    category: "",
-    quantity: "",
+  let { name, price, quantity, category, desc } = editProduct;
+
+  let [formData, setFormData] = useState({
+    name: name,
+    description: desc,
+    price: price,
+    category: category,
+    quantity: quantity,
   });
 
   const { id } = useParams();
@@ -35,8 +35,23 @@ const ProductEdit = () => {
     }
   };
 
-  const handleUpdateProduct = (e) => {
-    console.log(formData);
+  const handleUpdateProduct = async (data) => {
+    const updatedProduct = data;
+    updatedProduct.category = data.category ? data.category : category;
+    updatedProduct.name = data.name ? data.name : name;
+    updatedProduct.quantity = data.quantity ? data.quantity : quantity;
+    updatedProduct.price = data.price ? data.price : price;
+    updatedProduct.desc = data.desc ? data.desc : desc;
+    console.log(updatedProduct);
+
+    try {
+      const editedProduct = await axios.put(
+        `http://localhost:5000/api/product/${id}`,
+        {}
+      );
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const toggleModal = (e) => {
@@ -76,7 +91,7 @@ const ProductEdit = () => {
               name="category"
               type="text"
               {...register("category")}
-              defaultValue={formData.category}
+              defaultValue={editProduct ? editProduct.category : "Loading..."}
             />
           </div>
           <div className="admin-hero-main-item admin-hero-main-item-2">
@@ -86,7 +101,7 @@ const ProductEdit = () => {
               type="text"
               id="productNname"
               {...register("name")}
-              defaultValue={formData.name}
+              defaultValue={editProduct.name}
             />
           </div>
           <div className="admin-hero-main-item admin-hero-main-item-3">
@@ -96,7 +111,7 @@ const ProductEdit = () => {
               type="text"
               id="description"
               {...register("desc")}
-              defaultValue={formData.desc}
+              defaultValue={editProduct.desc}
             />
           </div>
           <div className="admin-hero-main-item admin-hero-main-item-5">
@@ -106,7 +121,7 @@ const ProductEdit = () => {
               type="text"
               id="quantity"
               {...register("quantity")}
-              defaultValue={formData.quantity}
+              defaultValue={editProduct.quantity}
             />
           </div>
           <div className="admin-hero-main-item admin-hero-main-item-6">
@@ -116,7 +131,7 @@ const ProductEdit = () => {
               type="text"
               id="price"
               {...register("price")}
-              defaultValue={formData.price}
+              defaultValue={editProduct.price}
             />
           </div>
           <button
