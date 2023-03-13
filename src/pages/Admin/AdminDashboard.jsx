@@ -7,18 +7,14 @@ import AdminCreatedProduct from "./AdminCreatedProduct";
 
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
+  let { accessToken } = JSON.parse(localStorage.getItem("admin"));
   const [products, setProducts] = useState(() => {
     const localStorageProduct = sessionStorage.getItem("createdProducts");
     return localStorageProduct
       ? JSON.parse(sessionStorage.getItem("createdProducts"))
       : [];
   });
-  const [skeLoading, setSkeLoading] = useState(() => {
-    const localStorageProduct = localStorage.getItem("createdProducts");
-    return localStorageProduct
-      ? JSON.parse(localStorage.getItem("createdProducts"))
-      : [];
-  });
+
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     productName: "",
@@ -34,6 +30,7 @@ const AdminDashboard = () => {
     try {
       const newProducts = await axios.get("http://localhost:5000/api/product");
       setLoading(false);
+      setProducts(newProducts.data);
       sessionStorage.setItem(
         `createdProducts`,
         JSON.stringify(newProducts.data)
@@ -70,8 +67,7 @@ const AdminDashboard = () => {
         newProductData,
         {
           headers: {
-            token:
-              "eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJpZCI6IjY0MDg5ZjUxOTUwOGMxMzk5MGE5NzIwZCIsImlzQWRtaW4iOnRydWUsImlhdCI6MTY3ODM1MTE0NywiZXhwIjoxNjc4NjEwMzQ3fQ.rvTdnX88UhVMObzRWyBjqRs0i9AEFSmH8kK9Ej_NZ90",
+            token: accessToken,
           },
         }
       );
@@ -95,16 +91,7 @@ const AdminDashboard = () => {
   const { pathname } = useLocation();
 
   useEffect(() => {
-    if (!sessionStorage.getItem(`createdProducts`)) {
-      getCreatedProduct();
-    }
-
-    if (skeLoading) {
-      setLoading(true);
-      if (products.length > 1) {
-        setLoading(false);
-      }
-    }
+    getCreatedProduct();
   }, []);
   return (
     <section className="admin-dashboard">
@@ -218,7 +205,11 @@ const AdminDashboard = () => {
             <p>Status</p>
           </div>
         </div>
-        <AdminCreatedProduct products={products} loading={loading} />
+        <AdminCreatedProduct
+          products={products}
+          loading={loading}
+          setProducts={setProducts}
+        />
       </section>
       <Newsletter />
       <Footer />

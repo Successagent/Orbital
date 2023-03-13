@@ -7,7 +7,7 @@ const SkeLoading = () => {
 
   return (
     <>
-      {products.length > 1 &&
+      {products?.length &&
         products?.map((item, idx) => (
           <div className="skeleton-card" key={idx}>
             <div className="skeleton-card-image-con">

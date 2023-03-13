@@ -107,6 +107,29 @@ img {
   color: #706967;
 }
 
+.edit-image-con {
+  position: fixed;
+  background-color: #4b4b4b;
+  color: white;
+  inset: 0;
+  display: grid;
+  grid-template-columns: repeat(4, 1fr);
+  align-items: center;
+  justify-content: center;
+  padding-top: 200px;
+  display: none;
+}
+
+.edit-image-con>div {
+  width: 100%;
+  height: 100%;
+}
+
+.edit-image {
+  height: 350px;
+  width: 300px;
+}
+
 .edit-product {
   padding: 50px;
 }

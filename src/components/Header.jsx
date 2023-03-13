@@ -65,6 +65,15 @@ const Header = ({ pathname, slug, login }) => {
             </Link>
           </div>
           <div
+            style={{
+              display: `${
+                pathname === "/admin" ||
+                pathname === "/admin_login" ||
+                pathname === "/admin_register"
+                  ? "none"
+                  : ""
+              }`,
+            }}
             className={`cart-value-con ${
               pathname === "/about" ||
               pathname === "/shop" ||
@@ -77,7 +86,19 @@ const Header = ({ pathname, slug, login }) => {
           >
             <p className="cart-value">{cart?.length}</p>
           </div>
-          <AiOutlineShoppingCart className="red-hover" onClick={toggleCart} />
+          <AiOutlineShoppingCart
+            style={{
+              display: `${
+                pathname === "/admin" ||
+                pathname === "/admin_login" ||
+                pathname === "/admin_register"
+                  ? "none"
+                  : ""
+              }`,
+            }}
+            className="red-hover"
+            onClick={toggleCart}
+          />
         </div>
       </section>
       <section
