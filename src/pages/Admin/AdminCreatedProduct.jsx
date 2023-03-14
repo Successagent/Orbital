@@ -8,6 +8,10 @@ import Loading from "../../components/HOCs/Loading";
 
 const AdminCreatedProduct = ({ products, loading, setProducts }) => {
   let { accessToken } = JSON.parse(localStorage.getItem("admin"));
+  const [sessionStorageVar, setSessionStorageVar] = JSON.parse(
+    sessionStorage.getItem(`createdProducts`)
+  );
+
   const [isLoading, setIsLoading] = useState(false);
 
   // Delete Product
@@ -22,6 +26,9 @@ const AdminCreatedProduct = ({ products, loading, setProducts }) => {
       console.log(removeProduct);
       if (removeProduct.status === 200) {
         setProducts(products.filter((item) => item._id !== id));
+        setSessionStorageVar(
+          sessionStorageVar.filter((item) => item._id !== id)
+        );
       }
     } catch (error) {
       console.log(error);

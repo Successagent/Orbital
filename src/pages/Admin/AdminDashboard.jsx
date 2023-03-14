@@ -1,7 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { Footer, Header, Newsletter, PageHero } from "../../components";
-import { Link, useLocation } from "react-router-dom";
-import Loading from "../../components/HOCs/Loading";
+import { Link, useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
 
@@ -9,8 +8,8 @@ const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
   let { accessToken } = JSON.parse(localStorage.getItem("admin"));
   const [products, setProducts] = useState(() => {
-    const localStorageProduct = sessionStorage.getItem("createdProducts");
-    return localStorageProduct
+    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
+    return sessionStorageProduct
       ? JSON.parse(sessionStorage.getItem("createdProducts"))
       : [];
   });
@@ -93,6 +92,12 @@ const AdminDashboard = () => {
   useEffect(() => {
     getCreatedProduct();
   }, []);
+
+  const navigate = useNavigate();
+
+  if (localStorage.getItem("admin") === false) {
+    navigate("/admin_login");
+  }
   return (
     <section className="admin-dashboard">
       <Header pathname={pathname} />
@@ -175,7 +180,7 @@ const AdminDashboard = () => {
               name="images"
               id="images"
               type="file"
-              multiple="multiple"
+              multiple
               onChange={handleImageChange}
             />
           </div>
