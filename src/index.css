@@ -2467,7 +2467,7 @@ textarea {
   .mobile-header {
     display: flex;
     align-items: center;
-    padding: 20px 0;
+    padding: 20px;
     justify-content: space-between;
     position: relative;
   }

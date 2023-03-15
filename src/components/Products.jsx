@@ -1,19 +1,17 @@
 import React, { useEffect, useState } from "react";
-import { urlFor } from "../lib/client";
+
 import { useGlobalContext } from "../context/context";
 import {
-  AiOutlineArrowRight,
   AiOutlineHeart,
   AiOutlineShoppingCart,
   AiFillStar,
 } from "react-icons/ai";
-import { useTrail, animated } from "react-spring";
+
 import { Link } from "react-router-dom";
 import axios from "axios";
 
 const Products = ({ h2_title, pathname }) => {
-  const { cart, setCart, addToCart } = useGlobalContext();
-  const [displayProduct, setDisplayProduct] = useState([]);
+  const { addToCart } = useGlobalContext();
   const [products, setProducts] = useState(() => {
     const sessionStorageProduct = sessionStorage.getItem("createdProducts");
     return sessionStorageProduct

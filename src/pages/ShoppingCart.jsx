@@ -8,6 +8,7 @@ import Loading from "../components/HOCs/Loading";
 const ShoppingCart = () => {
   const { cart, setQuantity, removeFromCart, getTotalQuantity } =
     useGlobalContext();
+  const token = JSON.parse(sessionStorage.getItem("token"));
   const [shipping, setShipping] = useState(50);
   const [localFee, setLocalFee] = useState(40);
   const { pathname } = useLocation();
@@ -90,7 +91,7 @@ const ShoppingCart = () => {
                   N{`${getTotalQuantity() + shipping + localFee}`}
                 </h3>
               </div>
-              <Link to="/register" className="btn">
+              <Link to={`${token ? "/checkout" : "/register"}`} className="btn">
                 PROCEED TO CHECKOUT
               </Link>
             </div>
