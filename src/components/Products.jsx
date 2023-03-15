@@ -46,15 +46,9 @@ const Products = ({ h2_title, pathname }) => {
       <div className="product-hero-con" data-visible={pathname}>
         <h2>{h2_title}</h2>
         <div>
-          <p id="polo-shirts" onClick={filterFunct}>
-            Polo Shirts
-          </p>
-          <p id="t-shirts" onClick={filterFunct}>
-            T-Shirts
-          </p>
-          <p id="long-shirts" onClick={filterFunct}>
-            Long Shirts
-          </p>
+          <p id="polo-shirts">Polo Shirts</p>
+          <p id="t-shirts">T-Shirts</p>
+          <p id="long-shirts">Long Shirts</p>
         </div>
       </div>
       <div className="product-con">

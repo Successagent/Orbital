@@ -12,20 +12,38 @@ import {
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
+import axios from "axios";
 
 const SingleProduct = () => {
   const [selectedImage, setSelectedImage] = useState(1);
   const [tabs, setTabs] = useState(false);
   const { addToCart } = useGlobalContext();
+  const [products, setProducts] = useState(() => {
+    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
+    return sessionStorageProduct
+      ? JSON.parse(sessionStorage.getItem("createdProducts"))
+      : [];
+  });
 
   const { id } = useParams();
   const { pathname } = useLocation();
 
-  let products = JSON.parse(localStorage.getItem("createdProducts"));
+  const getCreatedProduct = async () => {
+    try {
+      const newProducts = await axios.get("http://localhost:5000/api/product");
+
+      setProducts(newProducts.data);
+      sessionStorage.setItem(
+        `createdProducts`,
+        JSON.stringify(newProducts.data)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   let product = products.filter((item) => item._id == id);
   let index = product[0];
-  console.log(index);
 
   const changeActiveImage = (e) => {
     if (e.target.id == 0) {
@@ -42,6 +60,10 @@ const SingleProduct = () => {
   const toggleTab = () => {
     setTabs(!tabs);
   };
+
+  useEffect(() => {
+    getCreatedProduct();
+  }, []);
 
   return (
     <>
