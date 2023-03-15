@@ -30,7 +30,10 @@ const AdminLogin = () => {
         );
         console.log(adminUser);
         if (adminUser.status === 200) {
-          localStorage.setItem("admin", JSON.stringify(adminUser.data));
+          sessionStorage.setItem(
+            "admin",
+            JSON.stringify(adminUser.data.accessToken)
+          );
           navigate("/admin");
         }
       } catch (error) {

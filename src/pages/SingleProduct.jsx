@@ -9,8 +9,6 @@ import {
   RelatedProducts,
 } from "../components";
 
-import { products } from "../datas/product";
-
 import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
@@ -23,8 +21,11 @@ const SingleProduct = () => {
   const { id } = useParams();
   const { pathname } = useLocation();
 
-  let product = products.filter((item) => item.id == id);
+  let products = JSON.parse(localStorage.getItem("createdProducts"));
+
+  let product = products.filter((item) => item._id == id);
   let index = product[0];
+  console.log(index);
 
   const changeActiveImage = (e) => {
     if (e.target.id == 0) {
@@ -52,20 +53,32 @@ const SingleProduct = () => {
             <div>
               <div className="single-product-single-image-con">
                 {selectedImage == 1 ? (
-                  <img src={index.src && index.src[0]} alt={index?.name} />
+                  <img
+                    src={index?.image && index.image[0].url}
+                    alt={index?.name}
+                  />
                 ) : selectedImage == 2 ? (
-                  <img src={index.src && index.src[1]} alt={index?.name} />
+                  <img
+                    src={index?.image && index.image[1].url}
+                    alt={index?.name}
+                  />
                 ) : selectedImage == 3 ? (
-                  <img src={index.src && index.src[2]} alt={index?.name} />
+                  <img
+                    src={index?.image && index.image[2].url}
+                    alt={index?.name}
+                  />
                 ) : selectedImage == 4 ? (
-                  <img src={index.src && index.src[3]} alt={index?.name} />
+                  <img
+                    src={index?.image && index.image[3].url}
+                    alt={index?.name}
+                  />
                 ) : (
                   ""
                 )}
               </div>
               <div className="single-product-other-images-con">
-                {index.src &&
-                  index.src.map((image, idx) => (
+                {index?.image &&
+                  index?.image.map((image, idx) => (
                     <div
                       key={idx}
                       id={idx}
@@ -82,16 +95,16 @@ const SingleProduct = () => {
                       }`}
                       onMouseEnter={changeActiveImage}
                     >
-                      <img src={image && image} alt="" />
+                      <img src={image && image.url} alt="" />
                     </div>
                   ))}
               </div>
             </div>
           </div>
           <div className="single-product-details-con">
-            <h2>{index.name}</h2>
+            <h2>{index?.name}</h2>
             <h3>
-              ${index.price} - <span>$260.00</span>
+              N{index?.price} - <span>N260.00</span>
             </h3>
             <div className="single-product-review-con">
               <div className="product-rate-con">
@@ -117,10 +130,10 @@ const SingleProduct = () => {
               </button>
             </div>
             <h4>
-              SKU: <span>WS-256HG</span>
+              Size: <span>{index?.sizes.map((size) => `${size}, `)}</span>
             </h4>
             <h4>
-              CATEGORIES: <span>Home, Electronic</span>
+              CATEGORIES: <span>{index?.category}</span>
             </h4>
           </div>
         </div>

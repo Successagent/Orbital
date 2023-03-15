@@ -6,7 +6,7 @@ import AdminCreatedProduct from "./AdminCreatedProduct";
 
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
-  let { accessToken } = JSON.parse(localStorage.getItem("admin"));
+  let accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const [products, setProducts] = useState(() => {
     const sessionStorageProduct = sessionStorage.getItem("createdProducts");
     return sessionStorageProduct
@@ -29,6 +29,7 @@ const AdminDashboard = () => {
     try {
       const newProducts = await axios.get("http://localhost:5000/api/product");
       setLoading(false);
+      console.log(newProducts.data);
       setProducts(newProducts.data);
       sessionStorage.setItem(
         `createdProducts`,
@@ -70,10 +71,7 @@ const AdminDashboard = () => {
           },
         }
       );
-      console.log(res.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const toggleModal = (e) => {

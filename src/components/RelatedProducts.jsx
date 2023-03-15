@@ -27,8 +27,8 @@ const RelatedProducts = ({ products }) => {
             </button>
             <div className="product-item-first-con">
               <div className="product-image-con">
-                <Link to={`/products/${product.id}`}>
-                  <img src={product.src[1]} alt={product.productName} />
+                <Link to={`/products/${product._id}`}>
+                  <img src={product.image[1].url} alt={product.productName} />
                 </Link>
               </div>
               <div className="product-search-con">

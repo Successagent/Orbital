@@ -4,13 +4,9 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 import SkeLoading from "./SkeLoading";
-import Loading from "../../components/HOCs/Loading";
 
 const AdminCreatedProduct = ({ products, loading, setProducts }) => {
-  let { accessToken } = JSON.parse(localStorage.getItem("admin"));
-  const [sessionStorageVar, setSessionStorageVar] = JSON.parse(
-    sessionStorage.getItem(`createdProducts`)
-  );
+  let accessToken = JSON.parse(sessionStorage.getItem("admin"));
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,16 +19,11 @@ const AdminCreatedProduct = ({ products, loading, setProducts }) => {
         { id: id },
         { headers: { token: accessToken } }
       );
-      console.log(removeProduct);
+
       if (removeProduct.status === 200) {
         setProducts(products.filter((item) => item._id !== id));
-        setSessionStorageVar(
-          sessionStorageVar.filter((item) => item._id !== id)
-        );
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
     setIsLoading(false);
   };
   if (loading || isLoading === true) return <SkeLoading />;

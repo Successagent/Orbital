@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { urlFor } from "../lib/client";
 import { useGlobalContext } from "../context/context";
 import {
@@ -9,12 +9,33 @@ import {
 } from "react-icons/ai";
 import { useTrail, animated } from "react-spring";
 import { Link } from "react-router-dom";
-
-import { products } from "../datas/product";
+import axios from "axios";
 
 const Products = ({ h2_title, pathname }) => {
   const { cart, setCart, addToCart } = useGlobalContext();
   const [displayProduct, setDisplayProduct] = useState([]);
+  const [products, setProducts] = useState(() => {
+    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
+    return sessionStorageProduct
+      ? JSON.parse(sessionStorage.getItem("createdProducts"))
+      : [];
+  });
+  const [loading, setLoading] = useState(true);
+
+  const getCreatedProduct = async () => {
+    try {
+      const newProducts = await axios.get("http://localhost:5000/api/product");
+      setLoading(false);
+
+      setProducts(newProducts.data);
+      sessionStorage.setItem(
+        `createdProducts`,
+        JSON.stringify(newProducts.data)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   const poloShirtArr = products.filter(
     (item) => item.category === "Polo Sleeves"
@@ -34,10 +55,9 @@ const Products = ({ h2_title, pathname }) => {
     }
   };
 
-  const trail = useTrail(products.length, {
-    from: { transform: "translate3d(0, -40px,0)" },
-    to: { transform: "translate3d(0, 0,0)" },
-  });
+  useEffect(() => {
+    getCreatedProduct();
+  }, []);
 
   return (
     <div className="product-sect">
@@ -56,14 +76,7 @@ const Products = ({ h2_title, pathname }) => {
         </div>
       </div>
       <div className="product-con">
-        {(displayProduct[0]?.category === "T-Sleeves"
-          ? tShirtsArr
-          : displayProduct[0]?.category === "Polo Sleeves"
-          ? poloShirtArr
-          : displayProduct[0]?.category === "Long Shirt"
-          ? longShirt
-          : products
-        ).map((product, idx) => (
+        {products.map((product, idx) => (
           <div key={idx} className="product-item">
             <button
               className={`status ${
@@ -77,9 +90,9 @@ const Products = ({ h2_title, pathname }) => {
               {product.status}
             </button>
             <div className="product-item-first-con">
-              <Link to={`/products/${product.id}`}>
+              <Link to={`/products/${product._id}`}>
                 <div className="product-image-con">
-                  <img src={product.src[1]} alt={product.name} />
+                  <img src={product.image[3].url} alt={product.name} />
                 </div>
               </Link>
               <div className="product-search-con">

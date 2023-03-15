@@ -9,6 +9,7 @@ import { useForm } from "react-hook-form";
 import Loading from "../../components/HOCs/Loading";
 
 const Login = () => {
+  const [loading, setLoading] = useState(false);
   const {
     handleSubmit,
     register,
@@ -29,6 +30,12 @@ const Login = () => {
         );
         console.log(loginUser.data);
         if (loginUser.status === 200) {
+          setLoading(true);
+          sessionStorage.setItem(
+            "token",
+            JSON.stringify(loginUser.data.accessToken)
+          );
+          setLoading(false);
           navigate("/");
         }
       } catch (error) {
@@ -37,6 +44,7 @@ const Login = () => {
     }
   };
 
+  if (loading) return "Loading...";
   return (
     <>
       <Header />

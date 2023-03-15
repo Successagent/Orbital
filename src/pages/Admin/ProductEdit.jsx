@@ -9,7 +9,7 @@ const ProductEdit = () => {
   const [modal, setModal] = useState(1);
   const [editProduct, setEditProduct] = useState([]);
   let { name, price, quantity, category, desc, sizes, image } = editProduct;
-  let { accessToken } = JSON.parse(localStorage.getItem("admin"));
+  let accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const [showImages, setShowImages] = useState(false);
   const { id } = useParams();
 

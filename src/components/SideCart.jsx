@@ -8,6 +8,7 @@ import Loading from "./HOCs/Loading";
 
 const SideCart = ({ openCart, toggleCart }) => {
   const { cart, getTotalQuantity } = useGlobalContext();
+  const token = JSON.parse(sessionStorage.getItem("token"));
 
   return (
     <section
@@ -23,7 +24,10 @@ const SideCart = ({ openCart, toggleCart }) => {
           {cart.map((product, idx) => (
             <div key={idx}>
               <div className="cart-img-con">
-                <img src={product.src && product.src[0]} alt={product.name} />
+                <img
+                  src={product.image && product.image[0].url}
+                  alt={product.name}
+                />
               </div>
               <div className="cart-details-con">
                 <p className="cart-product-name">{product.name}</p>
@@ -44,7 +48,13 @@ const SideCart = ({ openCart, toggleCart }) => {
           <Link className="btn" to={"/shopping-cart"} onClick={toggleCart}>
             View Cart
           </Link>
-          <Button title="Checkout" />
+          <Link
+            className="btn"
+            to={`${token ? "/checkout" : "/register"}`}
+            onClick={toggleCart}
+          >
+            Checkout
+          </Link>
         </div>
       </div>
     </section>

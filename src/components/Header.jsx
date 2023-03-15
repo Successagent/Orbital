@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/context";
 
 import { Link } from "react-router-dom";
@@ -16,14 +16,37 @@ import SideCart from "./SideCart";
 const Header = ({ pathname, slug, login }) => {
   const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
+  const token = JSON.parse(sessionStorage.getItem("token"));
+  const [loginStatus, setLoginStatus] = useState("Login");
+  const [signOutStatus, setSignOutStatus] = useState("Sign in");
 
   const oppenNav = () => {
     setVisible(!visible);
   };
 
+  const toggleLoginAndSignOut = () => {
+    if (
+      token &&
+      (pathname === "/" ||
+        "/about" ||
+        "/shop" ||
+        `/products/${slug}` ||
+        "/contact" ||
+        "/shopping-cart")
+    ) {
+      setLoginStatus("Logout");
+      setSignOutStatus("Sign Out");
+      console.log(loginStatus);
+    }
+  };
+
   const toggleCart = () => {
     setOpenCart(!openCart);
   };
+
+  useEffect(() => {
+    toggleLoginAndSignOut();
+  }, []);
   return (
     <header className="header">
       <section className="header-hero">
@@ -39,6 +62,7 @@ const Header = ({ pathname, slug, login }) => {
         <div className="header-hero-links">
           <div>
             <Link
+              onClick={() => sessionStorage.clear("token")}
               className="link red-hover"
               to={`${
                 pathname === "/admin" ||
@@ -48,20 +72,23 @@ const Header = ({ pathname, slug, login }) => {
                   : "/login"
               }`}
             >
-              {pathname === "/admin" ? "Logout" : "Login"}
+              {loginStatus}
             </Link>
 
             <Link
+              onClick={() => sessionStorage.clear("token")}
               className="link red-hover"
               to={`${
                 pathname === "/admin" ||
                 pathname == "/admin_login" ||
                 pathname == "/admin_register"
                   ? "/admin_register"
+                  : token
+                  ? ""
                   : "/register"
               }`}
             >
-              {pathname == "/admin" ? "Sign Out" : "Sign In"}
+              {signOutStatus}
             </Link>
           </div>
           <div

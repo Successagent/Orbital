@@ -65,7 +65,7 @@ const Home = () => {
   return (
     <>
       <section className="home-hero">
-        <Header />
+        <Header pathname={pathname} />
         <div className="home-hero-section">
           <div className="home-hero-item-1">
             <div className="home-hero-section-text-con">

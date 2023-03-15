@@ -1,5 +1,5 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import { Button, Footer, Header, Newsletter, PageHero } from "../components";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context/context";
@@ -38,12 +38,12 @@ const ShoppingCart = () => {
               <div className="shopping-cart-main" key={idx}>
                 <div className="products-con">
                   <div className="cart-img-con">
-                    <img src={product.src[0]} alt={product.name} />
+                    <img src={product.image[0].url} alt={product.name} />
                   </div>
                   <p>{product.name}</p>
                 </div>
                 <div className="price-con">
-                  <p>${product.price}</p>
+                  <p>N{product.price}</p>
                 </div>
                 <div className="quantity-con">
                   <input
@@ -53,7 +53,7 @@ const ShoppingCart = () => {
                   />
                 </div>
                 <div className="subtotal-con">
-                  <p>${product.price * product.quantity}</p>
+                  <p>N{product.price * product.quantity}</p>
                   <FaTrash onClick={() => removeFromCart(product)} />
                 </div>
               </div>
@@ -73,24 +73,26 @@ const ShoppingCart = () => {
             <div className="shopping-cart-total">
               <div className="total-con">
                 <h3>Sub Total</h3>
-                <h3 className="total-price">${getTotalQuantity()}</h3>
+                <h3 className="total-price">N{getTotalQuantity()}</h3>
               </div>
               <div>
                 <p>Total</p>
                 <p>
-                  Shipping: <span>$34</span>
+                  Shipping: <span>N34</span>
                 </p>
                 <p>
-                  Local Pickup: <span>$50</span>
+                  Local Pickup: <span>N50</span>
                 </p>
               </div>
               <div className="total-con">
                 <h3>Total</h3>
                 <h3 className="total-price">
-                  ${`${getTotalQuantity() + shipping + localFee}`}
+                  N{`${getTotalQuantity() + shipping + localFee}`}
                 </h3>
               </div>
-              <Button title="PROCEED TO CHECKOUT" />
+              <Link to="/register" className="btn">
+                PROCEED TO CHECKOUT
+              </Link>
             </div>
           </div>
         </div>
