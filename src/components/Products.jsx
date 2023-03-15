@@ -37,24 +37,6 @@ const Products = ({ h2_title, pathname }) => {
     }
   };
 
-  const poloShirtArr = products.filter(
-    (item) => item.category === "Polo Sleeves"
-  );
-  const tShirtsArr = products.filter((item) => item.category == "T-Sleeves");
-  const longShirt = products.filter((item) => item.category === "Long Shirt");
-
-  const filterFunct = (e) => {
-    if (e.target.id === "polo-shirts") {
-      setDisplayProduct(poloShirtArr);
-    }
-    if (e.target.id === "t-shirts") {
-      setDisplayProduct(tShirtsArr);
-    }
-    if (e.target.id === "long-shirts") {
-      setDisplayProduct(longShirt);
-    }
-  };
-
   useEffect(() => {
     getCreatedProduct();
   }, []);
