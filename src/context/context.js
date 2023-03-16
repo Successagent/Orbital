@@ -1,3 +1,4 @@
+import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();
@@ -8,6 +9,25 @@ const AppProvider = ({ children }) => {
   const [cart, setCart] = useState(localStorageCart);
   const [department, setDepartment] = useState(false);
   const [activePage, setActivePage] = useState(1);
+  const [products, setProducts] = useState(() => {
+    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
+    return sessionStorageProduct
+      ? JSON.parse(sessionStorage.getItem("createdProducts"))
+      : [];
+  });
+
+  const getCreatedProduct = async () => {
+    try {
+      const newProducts = await axios.get("http://localhost:5000/api/product");
+      setProducts(newProducts.data);
+      sessionStorage.setItem(
+        `createdProducts`,
+        JSON.stringify(newProducts.data)
+      );
+    } catch (error) {
+      console.log(error);
+    }
+  };
 
   //  Add To Cart Function
 
@@ -50,6 +70,10 @@ const AppProvider = ({ children }) => {
     setCart(cartItem);
   };
 
+  useEffect(() => {
+    getCreatedProduct();
+  }, []);
+
   return (
     <AppContext.Provider
       value={{
@@ -65,6 +89,7 @@ const AppProvider = ({ children }) => {
         setQuantity,
         activePage,
         setActivePage,
+        products,
       }}
     >
       {children}

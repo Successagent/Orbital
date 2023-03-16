@@ -24,11 +24,12 @@ import {
 } from "../components";
 
 import Loading from "../components/HOCs/Loading";
+import { useGlobalContext } from "../context/context";
 
 const Home = () => {
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
-  const products = JSON.parse(sessionStorage.getItem("createdProducts"));
+  const { products } = useGlobalContext();
 
   const toggleFlashSales = (e) => {
     switch (e.target.id) {
@@ -100,7 +101,7 @@ const Home = () => {
           </div>
         </div>
         <SupportCard />
-        <Products h2_title="New Top Sales!" products={products.slice(0, 8)} />
+        <Products h2_title="New Top Sales!" products={products} />
         <ProductsBanner
           sale_text={"Sparing Sales Coming"}
           name_text={"A Good Quality T-Shirt"}
@@ -130,7 +131,7 @@ const Home = () => {
         </div>
         <Categories product={products} />
         <div className="part-two-products">
-          <Products h2_title="New Top Sales!" products={products} />
+          <Products h2_title="New Top Sales!" products={products.slice(0, 8)} />
         </div>
         <div className="product-banner-two-sec">
           <ProductsBanner

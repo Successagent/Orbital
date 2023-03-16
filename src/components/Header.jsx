@@ -59,10 +59,10 @@ const Header = ({ pathname, slug }) => {
       pathname === `/products/${slug}` ||
       pathname === "/shopping-cart"
     ) {
-      sessionStorage.clear("token");
+      sessionStorage.removeItem("token");
     }
     if (pathname === "/admin" || pathname === `/admin/product/edit/${slug}`) {
-      sessionStorage.clear("admin");
+      sessionStorage.removeItem("admin");
     }
   };
 

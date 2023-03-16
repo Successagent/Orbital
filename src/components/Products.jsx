@@ -1,4 +1,4 @@
-import React, { useEffect, useState } from "react";
+import React from "react";
 
 import { useGlobalContext } from "../context/context";
 import {
@@ -8,36 +8,9 @@ import {
 } from "react-icons/ai";
 
 import { Link } from "react-router-dom";
-import axios from "axios";
 
 const Products = ({ h2_title, pathname }) => {
-  const { addToCart } = useGlobalContext();
-  const [products, setProducts] = useState(() => {
-    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
-    return sessionStorageProduct
-      ? JSON.parse(sessionStorage.getItem("createdProducts"))
-      : [];
-  });
-  const [loading, setLoading] = useState(true);
-
-  const getCreatedProduct = async () => {
-    try {
-      const newProducts = await axios.get("http://localhost:5000/api/product");
-      setLoading(false);
-
-      setProducts(newProducts.data);
-      sessionStorage.setItem(
-        `createdProducts`,
-        JSON.stringify(newProducts.data)
-      );
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  useEffect(() => {
-    getCreatedProduct();
-  }, []);
+  const { addToCart, products } = useGlobalContext();
 
   return (
     <div className="product-sect">

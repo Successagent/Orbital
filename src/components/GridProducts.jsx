@@ -4,8 +4,7 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
 
 const GridProducts = ({ pathname }) => {
-  const { addToCart } = useGlobalContext();
-  const products = JSON.parse(sessionStorage.getItem("createdProducts"));
+  const { addToCart, products } = useGlobalContext();
 
   return (
     <div className="flash-sales-item-two-grid-products">

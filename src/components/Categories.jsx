@@ -1,8 +1,6 @@
 import React from "react";
-import { urlFor } from "../lib/client";
 
 const Categories = ({ product }) => {
-  console.log(product);
   return (
     <div className="category-sect">
       <h2>Top Categories</h2>

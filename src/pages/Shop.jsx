@@ -4,7 +4,7 @@ import {
   AiOutlineHeart,
   AiOutlineShoppingCart,
 } from "react-icons/ai";
-import { MdNavigateNext } from "react-icons/md";
+
 import { Link, useLocation } from "react-router-dom";
 import { Footer, Header, Newsletter, PageHero } from "../components";
 import Loading from "../components/HOCs/Loading";
@@ -13,8 +13,7 @@ import { useGlobalContext } from "../context/context";
 const Shop = () => {
   const { pathname } = useLocation();
   const [activePage, setActivePage] = useState(1);
-  const { addToCart } = useGlobalContext();
-  const products = JSON.parse(sessionStorage.getItem("createdProducts"));
+  const { addToCart, products } = useGlobalContext();
 
   const changeActivePage = (e) => {
     if (e.target.className === "active-1") {
