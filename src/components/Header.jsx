@@ -14,7 +14,9 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import SideCart from "./SideCart";
 
 const Header = ({ pathname, slug, login }) => {
-  const { openCart, setOpenCart, cart } = useGlobalContext();
+  const cartItem = JSON.parse(localStorage.getItem("cartItem"));
+
+  const { openCart, setOpenCart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
   const token = JSON.parse(sessionStorage.getItem("token"));
   const [loginStatus, setLoginStatus] = useState("Login");
@@ -111,7 +113,7 @@ const Header = ({ pathname, slug, login }) => {
                 : ""
             }`}
           >
-            <p className="cart-value">{cart?.length}</p>
+            <p className="cart-value">{cartItem ? cartItem?.length : 0}</p>
           </div>
           <AiOutlineShoppingCart
             style={{
@@ -136,7 +138,7 @@ const Header = ({ pathname, slug, login }) => {
           <h1 className="header-style">Orbital</h1>
         </div>
         <div className="mobile-header-icons-con">
-          <Link style={{ color: "#4b4b4b" }} to={"/register"}>
+          <Link style={{ color: "#4b4b4b" }} to={`${token ? "" : "/register"}`}>
             <BiUser />
           </Link>
 
@@ -145,7 +147,7 @@ const Header = ({ pathname, slug, login }) => {
             className="shoppin-cart"
           />
           <div className="cart-value-con">
-            <p className="cart-value">{cart.length}</p>
+            <p className="cart-value">{cartItem ? cartItem?.length : 0}</p>
           </div>
           <div className="hamburger-con">
             <RxHamburgerMenu onClick={oppenNav} />
@@ -161,6 +163,9 @@ const Header = ({ pathname, slug, login }) => {
           <Link to="/about">About</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/contact">Contact</Link>
+          <Link onClick={() => sessionStorage.clear("token")} to={`/login`}>
+            {loginStatus}
+          </Link>
         </ul>
       </section>
       <SideCart openCart={openCart} toggleCart={toggleCart} />

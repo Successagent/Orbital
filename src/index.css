@@ -2789,7 +2789,7 @@ textarea {
   }
 
   .product-search-con {
-    left: 320px;
+    left: 250px;
   }
 
   #svg-con-2 {
@@ -2808,9 +2808,13 @@ textarea {
 }
 
 
+@media(min-width:500px) and (max-width:630px) {
+  .product-search-con {
+    left: 350px;
+  }
+}
 
 @media(max-width:1033px) and (min-width:650px) {
-
 
   .admin-hero-main-sect {
     padding-top: 50px;

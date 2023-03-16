@@ -7,8 +7,9 @@ import { useGlobalContext } from "../context/context";
 import Loading from "./HOCs/Loading";
 
 const SideCart = ({ openCart, toggleCart }) => {
-  const { cart, getTotalQuantity } = useGlobalContext();
+  const { getTotalQuantity } = useGlobalContext();
   const token = JSON.parse(sessionStorage.getItem("token"));
+  const cartItem = JSON.parse(localStorage.getItem("cartItem"));
 
   return (
     <section
@@ -21,7 +22,7 @@ const SideCart = ({ openCart, toggleCart }) => {
           <FaTimes onClick={toggleCart} className="red-hover" />
         </div>
         <div className="cart-content-con">
-          {cart.map((product, idx) => (
+          {cartItem?.map((product, idx) => (
             <div key={idx}>
               <div className="cart-img-con">
                 <img

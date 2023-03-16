@@ -7,6 +7,7 @@ const AppProvider = ({ children }) => {
   const [cart, setCart] = useState([]);
   const [department, setDepartment] = useState(false);
   const [activePage, setActivePage] = useState(1);
+  const cartItem = JSON.parse(localStorage.getItem("cartItem"));
 
   //  Add To Cart Function
 
@@ -26,7 +27,9 @@ const AppProvider = ({ children }) => {
       };
       newCart.push(cartItem);
     }
-    setCart(newCart);
+    localStorage.setItem("cartItem", JSON.stringify(newCart));
+    setCart(JSON.parse(localStorage.getItem("cartItem")));
+    localStorage.setItem("cartItem", JSON.stringify(cart));
     console.log(cart);
   };
 
