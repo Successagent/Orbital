@@ -13,94 +13,35 @@ const Footer = () => {
           About us
         </Link>
         <Link className="link" to="">
-          About us
+          Need More Info
+        </Link>
+      </div>
+      <div>
+        <h3>Contact</h3>
+        <Link className="link" to="">
+          12345678900
         </Link>
         <Link className="link" to="">
-          About us
+          orbital@gmail.com
+        </Link>
+      </div>
+      <div>
+        <h3>Address</h3>
+
+        <Link className="link" to="">
+          Yenagoa, Bayelsa State
         </Link>
         <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
+          No 26 Edepie
         </Link>
       </div>
       <div>
         <h3>Information</h3>
         <Link className="link" to="">
-          About us
+          Our Policy
         </Link>
         <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-      </div>
-      <div>
-        <h3>Information</h3>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-      </div>
-      <div>
-        <h3>Information</h3>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
-        </Link>
-        <Link className="link" to="">
-          About us
+          Terms and Conditions
         </Link>
       </div>
     </footer>
