@@ -28,7 +28,7 @@ const Login = () => {
             password: data.password,
           }
         );
-        console.log(loginUser.data);
+
         if (loginUser.status === 200) {
           setLoading(true);
           sessionStorage.setItem(

@@ -18,7 +18,6 @@ const Newsletter = ({ pathname, slug }) => {
           email: data.email,
         }
       );
-      console.log(newsletter.data);
     } catch (error) {
       console.log(error);
     }

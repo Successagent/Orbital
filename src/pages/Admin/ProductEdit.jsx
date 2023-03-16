@@ -1,7 +1,7 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Footer, Header, PageHero } from "../../components";
-import { Link, useParams } from "react-router-dom";
+import { Link, useLocation, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { BsTrash } from "react-icons/bs";
 
@@ -12,6 +12,7 @@ const ProductEdit = () => {
   let accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const [showImages, setShowImages] = useState(false);
   const { id } = useParams();
+  const { pathname } = useLocation();
 
   const {
     handleSubmit,
@@ -25,7 +26,6 @@ const ProductEdit = () => {
         `http://localhost:5000/api/product/${id}`
       );
       setEditProduct(singleProduct.data);
-      console.log(singleProduct.data);
     } catch (error) {
       console.log(error);
     }
@@ -38,7 +38,6 @@ const ProductEdit = () => {
     updatedProduct.quantity = data.quantity ? data.quantity : quantity;
     updatedProduct.price = data.price ? data.price : price;
     updatedProduct.desc = data.desc ? data.desc : desc;
-    console.log(updatedProduct.images);
 
     try {
       const editedProduct = await axios.put(
@@ -74,7 +73,7 @@ const ProductEdit = () => {
 
   return (
     <>
-      <Header />
+      <Header pathname={pathname} slug={id} />
       <PageHero page_title={"Admin Product Detail"} />
       <div className="admin-card">
         <section className="edit-product">

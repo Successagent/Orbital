@@ -30,7 +30,6 @@ const Shop = () => {
     if (e.target.className === "active-all") {
       setActivePage(4);
     }
-    console.log(activePage);
   };
 
   return (

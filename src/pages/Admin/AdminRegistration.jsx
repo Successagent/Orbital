@@ -28,7 +28,7 @@ const AdminRegistration = () => {
           cpassword: data.confirmPassword,
         }
       );
-      console.log(registerUser);
+
       if (registerUser.status === 201) {
         navigate("/admin_login");
       }

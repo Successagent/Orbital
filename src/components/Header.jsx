@@ -13,10 +13,11 @@ import { BiUser } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
 import SideCart from "./SideCart";
 
-const Header = ({ pathname, slug, login }) => {
+const Header = ({ pathname, slug }) => {
   const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
   const token = JSON.parse(sessionStorage.getItem("token"));
+  const accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const [loginStatus, setLoginStatus] = useState("Login");
   const [signOutStatus, setSignOutStatus] = useState("Sign in");
 
@@ -36,7 +37,12 @@ const Header = ({ pathname, slug, login }) => {
     ) {
       setLoginStatus("Logout");
       setSignOutStatus("Sign Out");
-      console.log(loginStatus);
+    } else if (
+      accessToken &&
+      (pathname === "/admin" || `/admin/product/edit/${slug}`)
+    ) {
+      setLoginStatus("Logout");
+      setSignOutStatus("Sign Out");
     }
   };
 
@@ -62,7 +68,7 @@ const Header = ({ pathname, slug, login }) => {
         <div className="header-hero-links">
           <div>
             <Link
-              onClick={() => sessionStorage.clear("token")}
+              onClick={() => sessionStorage.clear("token" || "admin")}
               className="link red-hover"
               to={`${
                 pathname === "/admin" ||

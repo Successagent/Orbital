@@ -9,7 +9,6 @@ import Loading from "./HOCs/Loading";
 const SideCart = ({ openCart, toggleCart }) => {
   const { getTotalQuantity, cart } = useGlobalContext();
   const token = JSON.parse(sessionStorage.getItem("token"));
-  console.log(cart);
 
   return (
     <section

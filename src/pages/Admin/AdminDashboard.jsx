@@ -29,7 +29,7 @@ const AdminDashboard = () => {
     try {
       const newProducts = await axios.get("http://localhost:5000/api/product");
       setLoading(false);
-      console.log(newProducts.data);
+
       setProducts(newProducts.data);
       sessionStorage.setItem(
         `createdProducts`,
@@ -103,117 +103,125 @@ const AdminDashboard = () => {
       <div className="dashboard-intro">
         <h1>Dashboard</h1>
       </div>
-      <section className="admin-hero">
-        <div className="admin-hero-header">
-          <h2>Create New Product</h2>
-          <button className="btn" id="case-one" onClick={toggleModal}>
-            Create
-          </button>
-        </div>
-        <div
-          className={`admin-hero-main-sect ${
-            modal === 2 ||
-            modal === 3 ||
-            modal === 4 ||
-            modal === 5 ||
-            modal === 6 ||
-            modal === 7 ||
-            modal === 8
-              ? "open-modal"
-              : ""
-          }`}
-        >
-          <div className="admin-hero-main-item admin-hero-main-item-1">
-            <h3>Category</h3>
-            <input name="category" type="text" onChange={handleChange} />
-          </div>
-          <div className="admin-hero-main-item admin-hero-main-item-2">
-            <h3>Product Name</h3>
-            <input
-              name="productName"
-              type="text"
-              id="productNname"
-              onChange={handleChange}
+      {accessToken && (
+        <>
+          <section className="admin-hero">
+            <div className="admin-hero-header">
+              <h2>Create New Product</h2>
+              <button className="btn" id="case-one" onClick={toggleModal}>
+                Create
+              </button>
+            </div>
+            <div
+              className={`admin-hero-main-sect ${
+                modal === 2 ||
+                modal === 3 ||
+                modal === 4 ||
+                modal === 5 ||
+                modal === 6 ||
+                modal === 7 ||
+                modal === 8
+                  ? "open-modal"
+                  : ""
+              }`}
+            >
+              <div className="admin-hero-main-item admin-hero-main-item-1">
+                <h3>Category</h3>
+                <input name="category" type="text" onChange={handleChange} />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-2">
+                <h3>Product Name</h3>
+                <input
+                  name="productName"
+                  type="text"
+                  id="productNname"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-3">
+                <h3>Description</h3>
+                <input
+                  name="description"
+                  type="text"
+                  id="description"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-4">
+                <h3>Sizes</h3>
+                <input
+                  name="sizes"
+                  type="text"
+                  id="sizes"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-5">
+                <h3>Quantity</h3>
+                <input
+                  name="quantity"
+                  type="text"
+                  id="quantity"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-6">
+                <h3>Price</h3>
+                <input
+                  name="price"
+                  type="text"
+                  id="price"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-11">
+                <h3>Images</h3>
+                <input
+                  name="images"
+                  id="images"
+                  type="file"
+                  multiple
+                  onChange={handleImageChange}
+                />
+              </div>
+              <button
+                className="btn"
+                onClick={handleCreateProduct}
+                id="case-one"
+              >
+                Save
+              </button>
+              <button className="btn green" id="case-one" onClick={toggleModal}>
+                Close
+              </button>
+            </div>
+          </section>
+          <section className="admin-card">
+            <div className="admin-card-header">
+              <div>
+                <p>Product Name</p>
+              </div>
+              <div>
+                <p>Price</p>
+              </div>
+              <div>
+                <p>Quantity</p>
+              </div>
+              <div>
+                <p>Category</p>
+              </div>
+              <div>
+                <p>Status</p>
+              </div>
+            </div>
+            <AdminCreatedProduct
+              products={products}
+              loading={loading}
+              setProducts={setProducts}
             />
-          </div>
-          <div className="admin-hero-main-item admin-hero-main-item-3">
-            <h3>Description</h3>
-            <input
-              name="description"
-              type="text"
-              id="description"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="admin-hero-main-item admin-hero-main-item-4">
-            <h3>Sizes</h3>
-            <input
-              name="sizes"
-              type="text"
-              id="sizes"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="admin-hero-main-item admin-hero-main-item-5">
-            <h3>Quantity</h3>
-            <input
-              name="quantity"
-              type="text"
-              id="quantity"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="admin-hero-main-item admin-hero-main-item-6">
-            <h3>Price</h3>
-            <input
-              name="price"
-              type="text"
-              id="price"
-              onChange={handleChange}
-            />
-          </div>
-          <div className="admin-hero-main-item admin-hero-main-item-11">
-            <h3>Images</h3>
-            <input
-              name="images"
-              id="images"
-              type="file"
-              multiple
-              onChange={handleImageChange}
-            />
-          </div>
-          <button className="btn" onClick={handleCreateProduct} id="case-one">
-            Save
-          </button>
-          <button className="btn green" id="case-one" onClick={toggleModal}>
-            Close
-          </button>
-        </div>
-      </section>
-      <section className="admin-card">
-        <div className="admin-card-header">
-          <div>
-            <p>Product Name</p>
-          </div>
-          <div>
-            <p>Price</p>
-          </div>
-          <div>
-            <p>Quantity</p>
-          </div>
-          <div>
-            <p>Category</p>
-          </div>
-          <div>
-            <p>Status</p>
-          </div>
-        </div>
-        <AdminCreatedProduct
-          products={products}
-          loading={loading}
-          setProducts={setProducts}
-        />
-      </section>
+          </section>
+        </>
+      )}
       <Newsletter />
       <Footer />
     </section>

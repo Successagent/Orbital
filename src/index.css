@@ -297,8 +297,7 @@ img {
   display: grid;
   justify-content: center;
   grid-template-columns: repeat(2, 1fr);
-  grid-template-areas:
-    "Header Header2"
+  grid-template-areas: "Header Header2"
     "Header Header3";
   height: auto;
   gap: 15px;
@@ -1793,8 +1792,7 @@ footer .link::after {
 
 .contact-form {
   display: grid;
-  grid-template-areas:
-    "header header1"
+  grid-template-areas: "header header1"
     "main1 main1"
     "footer footer";
   gap: 20px;
@@ -2824,8 +2822,7 @@ textarea {
   .intro-products {
     display: grid;
     grid-template-columns: repeat(2, 1fr);
-    grid-template-areas:
-      "Header Header1"
+    grid-template-areas: "Header Header1"
       "Main Main";
   }
 
@@ -2845,8 +2842,7 @@ textarea {
   }
 
   .intro-products {
-    grid-template-areas:
-      "Header Header"
+    grid-template-areas: "Header Header"
       "Main Main1" !important;
   }
 

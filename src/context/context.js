@@ -9,8 +9,6 @@ const AppProvider = ({ children }) => {
   const [department, setDepartment] = useState(false);
   const [activePage, setActivePage] = useState(1);
 
-  console.log(cart);
-
   //  Add To Cart Function
 
   const addToCart = (productIndex) => {
@@ -40,7 +38,6 @@ const AppProvider = ({ children }) => {
 
   const removeFromCart = (index) => {
     setCart((prevCart) => prevCart.filter((item) => item._id !== index._id));
-    console.log(cart);
   };
 
   const toggleDepartmentCon = () => {
