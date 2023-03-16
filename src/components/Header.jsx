@@ -14,9 +14,7 @@ import { RxHamburgerMenu } from "react-icons/rx";
 import SideCart from "./SideCart";
 
 const Header = ({ pathname, slug, login }) => {
-  const cartItem = JSON.parse(localStorage.getItem("cartItem"));
-
-  const { openCart, setOpenCart } = useGlobalContext();
+  const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
   const token = JSON.parse(sessionStorage.getItem("token"));
   const [loginStatus, setLoginStatus] = useState("Login");
@@ -113,7 +111,7 @@ const Header = ({ pathname, slug, login }) => {
                 : ""
             }`}
           >
-            <p className="cart-value">{cartItem ? cartItem?.length : 0}</p>
+            <p className="cart-value">{cart ? cart?.length : 0}</p>
           </div>
           <AiOutlineShoppingCart
             style={{
@@ -147,7 +145,7 @@ const Header = ({ pathname, slug, login }) => {
             className="shoppin-cart"
           />
           <div className="cart-value-con">
-            <p className="cart-value">{cartItem ? cartItem?.length : 0}</p>
+            <p className="cart-value">{cart ? cart?.length : 0}</p>
           </div>
           <div className="hamburger-con">
             <RxHamburgerMenu onClick={oppenNav} />

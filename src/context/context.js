@@ -1,13 +1,15 @@
-import React, { useContext, useState } from "react";
+import React, { useContext, useEffect, useState } from "react";
 
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false);
-  const [cart, setCart] = useState([]);
+  const localStorageCart = JSON.parse(localStorage.getItem("cart") || "[]");
+  const [cart, setCart] = useState(localStorageCart);
   const [department, setDepartment] = useState(false);
   const [activePage, setActivePage] = useState(1);
-  const cartItem = JSON.parse(localStorage.getItem("cartItem"));
+
+  console.log(cart);
 
   //  Add To Cart Function
 
@@ -27,10 +29,8 @@ const AppProvider = ({ children }) => {
       };
       newCart.push(cartItem);
     }
-    localStorage.setItem("cartItem", JSON.stringify(newCart));
-    setCart(JSON.parse(localStorage.getItem("cartItem")));
-    localStorage.setItem("cartItem", JSON.stringify(cart));
-    console.log(cart);
+
+    setCart(newCart);
   };
 
   //   Total Price Function

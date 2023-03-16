@@ -1,15 +1,15 @@
 import React from "react";
 import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import Button from "./Button";
+
 import { useGlobalContext } from "../context/context";
 
 import Loading from "./HOCs/Loading";
 
 const SideCart = ({ openCart, toggleCart }) => {
-  const { getTotalQuantity } = useGlobalContext();
+  const { getTotalQuantity, cart } = useGlobalContext();
   const token = JSON.parse(sessionStorage.getItem("token"));
-  const cartItem = JSON.parse(localStorage.getItem("cartItem"));
+  console.log(cart);
 
   return (
     <section
@@ -22,7 +22,7 @@ const SideCart = ({ openCart, toggleCart }) => {
           <FaTimes onClick={toggleCart} className="red-hover" />
         </div>
         <div className="cart-content-con">
-          {cartItem?.map((product, idx) => (
+          {cart?.map((product, idx) => (
             <div key={idx}>
               <div className="cart-img-con">
                 <img

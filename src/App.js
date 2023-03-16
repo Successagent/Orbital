@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import { useGlobalContext } from "./context/context";
 import {
   About,
   Contact,
@@ -18,10 +19,16 @@ import ProductEdit from "./pages/Admin/ProductEdit";
 
 function App() {
   const { pathname } = useLocation();
+  const { cart } = useGlobalContext();
 
   useEffect(() => {
     window.scrollTo(0, 0);
   }, [pathname]);
+
+  useEffect(() => {
+    localStorage.setItem("cart", JSON.stringify(cart));
+  }, [cart]);
+
   return (
     <Routes>
       <Route path="/" element={<Home />} />
