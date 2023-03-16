@@ -60,12 +60,12 @@ const Login = () => {
               >
                 <p>Email Address *</p>
                 <input
-                  type="text"
+                  type="email"
                   {...register("email", { required: "Email is Required" })}
                 />
                 <p>Password *</p>
                 <input
-                  type="text"
+                  type="password"
                   {...register("password", {
                     required: "Password is Required",
                   })}

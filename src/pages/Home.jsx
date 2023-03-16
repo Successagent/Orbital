@@ -22,12 +22,13 @@ import {
   DailyDeals,
   Categories,
 } from "../components";
-import { products } from "../datas/product";
+
 import Loading from "../components/HOCs/Loading";
 
 const Home = () => {
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
+  const products = JSON.parse(sessionStorage.getItem("createdProducts"));
 
   const toggleFlashSales = (e) => {
     switch (e.target.id) {
@@ -124,7 +125,7 @@ const Home = () => {
             />
           </div>
           <div className="flash-sales-item-two">
-            <GridProducts pathname={pathname} products={products} />
+            <GridProducts pathname={pathname} />
           </div>
         </div>
         <Categories product={products} />

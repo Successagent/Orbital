@@ -37,12 +37,32 @@ const Header = ({ pathname, slug }) => {
     ) {
       setLoginStatus("Logout");
       setSignOutStatus("Sign Out");
-    } else if (
-      accessToken &&
-      (pathname === "/admin" || `/admin/product/edit/${slug}`)
-    ) {
+    }
+
+    if (pathname === "/admin" || pathname === "/admin_login") {
+      setLoginStatus("Login");
+      setSignOutStatus("Sign in");
+    }
+
+    if (pathname === "/admin" && accessToken) {
       setLoginStatus("Logout");
       setSignOutStatus("Sign Out");
+    }
+  };
+
+  const logOut = () => {
+    if (
+      pathname === "/about" ||
+      pathname === "/" ||
+      pathname === "/shop" ||
+      pathname === "/contact" ||
+      pathname === `/products/${slug}` ||
+      pathname === "/shopping-cart"
+    ) {
+      sessionStorage.clear("token");
+    }
+    if (pathname === "/admin" || pathname === `/admin/product/edit/${slug}`) {
+      sessionStorage.clear("admin");
     }
   };
 
@@ -68,7 +88,7 @@ const Header = ({ pathname, slug }) => {
         <div className="header-hero-links">
           <div>
             <Link
-              onClick={() => sessionStorage.clear("token" || "admin")}
+              onClick={logOut}
               className="link red-hover"
               to={`${
                 pathname === "/admin" ||
@@ -82,7 +102,7 @@ const Header = ({ pathname, slug }) => {
             </Link>
 
             <Link
-              onClick={() => sessionStorage.clear("token")}
+              onClick={logOut}
               className="link red-hover"
               to={`${
                 pathname === "/admin" ||
@@ -102,7 +122,8 @@ const Header = ({ pathname, slug }) => {
               display: `${
                 pathname === "/admin" ||
                 pathname === "/admin_login" ||
-                pathname === "/admin_register"
+                pathname === "/admin_register" ||
+                pathname === `/admin/product/edit/${slug}`
                   ? "none"
                   : ""
               }`,
@@ -124,7 +145,8 @@ const Header = ({ pathname, slug }) => {
               display: `${
                 pathname === "/admin" ||
                 pathname === "/admin_login" ||
-                pathname === "/admin_register"
+                pathname === "/admin_register" ||
+                pathname === `/admin/product/edit/${slug}`
                   ? "none"
                   : ""
               }`,

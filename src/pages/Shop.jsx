@@ -10,12 +10,11 @@ import { Footer, Header, Newsletter, PageHero } from "../components";
 import Loading from "../components/HOCs/Loading";
 import { useGlobalContext } from "../context/context";
 
-import { products } from "../datas/product";
-
 const Shop = () => {
   const { pathname } = useLocation();
   const [activePage, setActivePage] = useState(1);
   const { addToCart } = useGlobalContext();
+  const products = JSON.parse(sessionStorage.getItem("createdProducts"));
 
   const changeActivePage = (e) => {
     if (e.target.className === "active-1") {
@@ -39,7 +38,6 @@ const Shop = () => {
         <PageHero page_title="Products" />
         <div className="store-sect">
           <div className="product-con">
-            {" "}
             {(activePage === 1
               ? products.slice(0, 8)
               : activePage === 2
@@ -65,7 +63,7 @@ const Shop = () => {
                 <div className="product-item-first-con">
                   <Link to={`/products/${product.id}`}>
                     <div className="product-image-con">
-                      <img src={product.src[1]} alt={product.name} />
+                      <img src={product.image[0].url} alt={product.name} />
                     </div>
                   </Link>
                   <div className="product-search-con">

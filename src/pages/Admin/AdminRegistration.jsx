@@ -64,16 +64,16 @@ const AdminRegistration = () => {
                     {...register("lastName")}
                   />
                   <p>Email Address *</p>
-                  <input type="text" name="email" {...register("email")} />
+                  <input type="email" name="email" {...register("email")} />
                   <p>Password *</p>
                   <input
-                    type="text"
+                    type="password"
                     name="password"
                     {...register("password")}
                   />
                   <p>Confirm Password *</p>
                   <input
-                    type="text"
+                    type="password"
                     name="confirmPassword"
                     {...register("confirmPassword")}
                   />

@@ -7,8 +7,6 @@ import {
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
 
-import { urlFor } from "../lib/client";
-
 const DailyDeals = ({ dealsProducts, index }) => {
   const { addToCart } = useGlobalContext();
   return (
@@ -64,10 +62,10 @@ const DailyDeals = ({ dealsProducts, index }) => {
             </div>
             <Link to={`/products/${item.id}`}>
               <div className="flash-sales-item-one-main-image-con">
-                {item.src && (
+                {item.image && (
                   <img
                     className="flash-sales-item-one-img"
-                    src={item.src[0]}
+                    src={item.image[0].url}
                     alt=""
                   />
                 )}
