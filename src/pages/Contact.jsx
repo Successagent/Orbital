@@ -14,11 +14,13 @@ import { FiPhoneCall } from "react-icons/fi";
 import { AiOutlineArrowRight, AiOutlineMail } from "react-icons/ai";
 import Loading from "../components/HOCs/Loading";
 import { useForm } from "react-hook-form";
+import { useGlobalContext } from "../context/context";
 
 const Contact = () => {
   const { pathname } = useLocation();
   const [red, setRed] = useState(0);
   const [focus, setFocus] = useState(0);
+  const { hostUrl } = useGlobalContext();
 
   const {
     handleSubmit,
@@ -52,7 +54,7 @@ const Contact = () => {
 
   const handleFormSubmit = async (data) => {
     try {
-      const response = await fetch("http://localhost:5000/api/contact", {
+      const response = await fetch(`${hostUrl}/api/contact`, {
         method: "POST",
         headers: { "Content-Type": "application/json" },
         body: JSON.stringify(data),

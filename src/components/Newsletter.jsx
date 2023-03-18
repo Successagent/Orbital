@@ -2,6 +2,7 @@ import React from "react";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useGlobalContext } from "../context/context";
 
 const Newsletter = ({ pathname, slug }) => {
   const {
@@ -9,15 +10,13 @@ const Newsletter = ({ pathname, slug }) => {
     register,
     formState: { errors },
   } = useForm();
+  const { hostUrl } = useGlobalContext();
 
   const handleNewsletterForm = async (data) => {
     try {
-      const newsletter = await axios.post(
-        "http://localhost:5000/api/newsletter",
-        {
-          email: data.email,
-        }
-      );
+      const newsletter = await axios.post(`${hostUrl}/api/newsletter`, {
+        email: data.email,
+      });
     } catch (error) {
       console.log(error);
     }

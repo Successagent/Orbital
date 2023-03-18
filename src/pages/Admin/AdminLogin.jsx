@@ -7,8 +7,11 @@ import "../Registration/Registration.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Loading from "../../components/HOCs/Loading";
+import { useGlobalContext } from "../../context/context";
 
 const AdminLogin = () => {
+  const { hostUrl } = useGlobalContext();
+  console.log(hostUrl);
   const {
     handleSubmit,
     register,
@@ -21,14 +24,11 @@ const AdminLogin = () => {
   const handleLoginForm = async (data) => {
     if (data.email !== "" && data.passowrd !== "") {
       try {
-        const adminUser = await axios.post(
-          "http://localhost:5000/api/auth/admin",
-          {
-            email: data.email,
-            password: data.password,
-          }
-        );
-
+        const adminUser = await axios.post(`${hostUrl}/api/auth/admin`, {
+          email: data.email,
+          password: data.password,
+        });
+        console.log(adminUser);
         if (adminUser.status === 200) {
           sessionStorage.setItem(
             "admin",

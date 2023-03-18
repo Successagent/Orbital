@@ -5,6 +5,7 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false);
+  const hostUrl = "https://orbital-api.onrender.com";
   const localStorageCart = JSON.parse(localStorage.getItem("cart") || "[]");
   const [cart, setCart] = useState(localStorageCart);
   const [department, setDepartment] = useState(false);
@@ -18,7 +19,7 @@ const AppProvider = ({ children }) => {
 
   const getCreatedProduct = async () => {
     try {
-      const newProducts = await axios.get("http://localhost:5000/api/product");
+      const newProducts = await axios.get(`${hostUrl}/api/product`);
       setProducts(newProducts.data);
       sessionStorage.setItem(
         `createdProducts`,
@@ -90,6 +91,7 @@ const AppProvider = ({ children }) => {
         activePage,
         setActivePage,
         products,
+        hostUrl,
       }}
     >
       {children}

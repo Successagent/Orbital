@@ -8,6 +8,7 @@ import "../Login/Login.css";
 import Loading from "../../components/HOCs/Loading";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useGlobalContext } from "../../context/context";
 
 const Registration = () => {
   const navigate = useNavigate();
@@ -17,18 +18,17 @@ const Registration = () => {
     formState: { errors },
   } = useForm();
 
+  const { hostUrl } = useGlobalContext();
+
   const handleRegisterForm = async (data) => {
     try {
-      const registerUser = await axios.post(
-        "http://localhost:5000/api/auth/register",
-        {
-          firstName: data.firstName,
-          lastName: data.lastName,
-          email: data.email,
-          password: data.password,
-          confirmPassword: data.confirmPassword,
-        }
-      );
+      const registerUser = await axios.post(`${hostUrl}/api/auth/register`, {
+        firstName: data.firstName,
+        lastName: data.lastName,
+        email: data.email,
+        password: data.password,
+        confirmPassword: data.confirmPassword,
+      });
 
       if (registerUser.status === 201) {
         navigate("/login");

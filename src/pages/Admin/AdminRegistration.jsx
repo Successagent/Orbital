@@ -6,8 +6,10 @@ import "../Login/Login.css";
 import Loading from "../../components/HOCs/Loading";
 import { useForm } from "react-hook-form";
 import axios from "axios";
+import { useGlobalContext } from "../../context/context";
 
 const AdminRegistration = () => {
+  const { hostUrl } = useGlobalContext();
   const navigate = useNavigate();
   const { pathname } = useLocation();
   const {
@@ -19,7 +21,7 @@ const AdminRegistration = () => {
   const handleRegisterForm = async (data) => {
     try {
       const registerUser = await axios.post(
-        "http://localhost:5000/api/auth/adminRegister",
+        `${hostUrl}/api/auth/adminRegister`,
         {
           fname: data.firstName,
           lname: data.lastName,

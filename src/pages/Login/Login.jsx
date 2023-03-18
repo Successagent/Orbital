@@ -7,9 +7,11 @@ import "../Registration/Registration.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Loading from "../../components/HOCs/Loading";
+import { useGlobalContext } from "../../context/context";
 
 const Login = () => {
   const [loading, setLoading] = useState(false);
+  const { hostUrl } = useGlobalContext();
   const {
     handleSubmit,
     register,
@@ -21,13 +23,10 @@ const Login = () => {
   const handleLoginForm = async (data) => {
     if (data.email !== "" && data.passowrd !== "") {
       try {
-        const loginUser = await axios.post(
-          "http://localhost:5000/api/auth/login",
-          {
-            email: data.email,
-            password: data.password,
-          }
-        );
+        const loginUser = await axios.post(`${hostUrl}/api/auth/login`, {
+          email: data.email,
+          password: data.password,
+        });
 
         if (loginUser.status === 200) {
           setLoading(true);
@@ -44,7 +43,6 @@ const Login = () => {
     }
   };
 
-  if (loading) return "Loading...";
   return (
     <>
       <Header />

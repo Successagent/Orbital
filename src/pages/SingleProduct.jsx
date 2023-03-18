@@ -17,7 +17,7 @@ import axios from "axios";
 const SingleProduct = () => {
   const [selectedImage, setSelectedImage] = useState(1);
   const [tabs, setTabs] = useState(false);
-  const { addToCart } = useGlobalContext();
+  const { addToCart, hostUrl } = useGlobalContext();
   const [products, setProducts] = useState(() => {
     const sessionStorageProduct = sessionStorage.getItem("createdProducts");
     return sessionStorageProduct
@@ -30,7 +30,7 @@ const SingleProduct = () => {
 
   const getCreatedProduct = async () => {
     try {
-      const newProducts = await axios.get("http://localhost:5000/api/product");
+      const newProducts = await axios.get(`${hostUrl}/api/product`);
 
       setProducts(newProducts.data);
       sessionStorage.setItem(

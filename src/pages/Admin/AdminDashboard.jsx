@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import { Footer, Header, Newsletter, PageHero } from "../../components";
-import { Link, useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
+import { useGlobalContext } from "../../context/context";
 
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
@@ -13,7 +14,7 @@ const AdminDashboard = () => {
       ? JSON.parse(sessionStorage.getItem("createdProducts"))
       : [];
   });
-
+  const { hostUrl } = useGlobalContext();
   const [loading, setLoading] = useState(true);
   const [formData, setFormData] = useState({
     productName: "",
@@ -27,7 +28,7 @@ const AdminDashboard = () => {
 
   const getCreatedProduct = async () => {
     try {
-      const newProducts = await axios.get("http://localhost:5000/api/product");
+      const newProducts = await axios.get(`${hostUrl}/api/product`);
       setLoading(false);
 
       setProducts(newProducts.data);
@@ -62,15 +63,11 @@ const AdminDashboard = () => {
     newProductData.append("quantity", formData.quantity);
 
     try {
-      const res = await axios.post(
-        "http://localhost:5000/api/product",
-        newProductData,
-        {
-          headers: {
-            token: accessToken,
-          },
-        }
-      );
+      const res = await axios.post(`${hostUrl}/api/product`, newProductData, {
+        headers: {
+          token: accessToken,
+        },
+      });
     } catch (error) {}
   };
 
@@ -91,11 +88,6 @@ const AdminDashboard = () => {
     getCreatedProduct();
   }, []);
 
-  const navigate = useNavigate();
-
-  if (localStorage.getItem("admin") === false) {
-    navigate("/admin_login");
-  }
   return (
     <section className="admin-dashboard">
       <Header pathname={pathname} />

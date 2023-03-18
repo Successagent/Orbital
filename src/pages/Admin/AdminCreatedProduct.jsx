@@ -4,9 +4,11 @@ import axios from "axios";
 
 import { Link } from "react-router-dom";
 import SkeLoading from "./SkeLoading";
+import { useGlobalContext } from "../../context/context";
 
 const AdminCreatedProduct = ({ products, loading, setProducts }) => {
   let accessToken = JSON.parse(sessionStorage.getItem("admin"));
+  const { hostUrl } = useGlobalContext();
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -15,7 +17,7 @@ const AdminCreatedProduct = ({ products, loading, setProducts }) => {
     setIsLoading(true);
     try {
       const removeProduct = await axios.post(
-        `http://localhost:5000/api/product/delete/${id}`,
+        `${hostUrl}/api/product/delete/${id}`,
         { id: id },
         { headers: { token: accessToken } }
       );
