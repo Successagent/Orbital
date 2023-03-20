@@ -44,7 +44,6 @@ function App() {
       <Route path="/admin_login" element={<AdminLogin />} />
       <Route path="/admin_register" element={<AdminRegistration />} />
       <Route path="/admin/product/edit/:id" element={<ProductEdit />} />
-      <Route path="/admin/product/detail/:id" element={<AdminDashboard />} />
     </Routes>
   );
 }

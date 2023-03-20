@@ -4,9 +4,11 @@ import { Footer, Header, PageHero } from "../../components";
 import { Link, useLocation, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
 import { BsTrash } from "react-icons/bs";
+import { useGlobalContext } from "../../context/context";
 
 const ProductEdit = () => {
   const [modal, setModal] = useState(1);
+  const { hostUrl } = useGlobalContext();
   const [editProduct, setEditProduct] = useState([]);
   let { name, price, quantity, category, desc, sizes, image } = editProduct;
   let accessToken = JSON.parse(sessionStorage.getItem("admin"));
@@ -22,9 +24,7 @@ const ProductEdit = () => {
 
   const getCreatedProduct = async () => {
     try {
-      const singleProduct = await axios.get(
-        `http://localhost:5000/api/product/${id}`
-      );
+      const singleProduct = await axios.get(`${hostUrl}/api/product/${id}`);
       setEditProduct(singleProduct.data);
     } catch (error) {
       console.log(error);
@@ -41,7 +41,7 @@ const ProductEdit = () => {
 
     try {
       const editedProduct = await axios.put(
-        `http://localhost:5000/api/product/update/${id}`,
+        `${hostUrl}/api/product/update/${id}`,
         updatedProduct,
         {
           headers: { token: accessToken },
