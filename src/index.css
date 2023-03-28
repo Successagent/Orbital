@@ -2428,6 +2428,7 @@ textarea {
     padding: 30px 20px;
     flex-direction: column;
     padding-bottom: 0px;
+    margin-top: 70px;
   }
 
   .about-hero-sect h1 {
@@ -2466,9 +2467,6 @@ textarea {
     height: 70px;
   }
 
-  .about-hero-sect {
-    margin-top: 0px;
-  }
 
   .mobile-header {
     display: flex;
@@ -2708,11 +2706,12 @@ textarea {
     padding: 0;
     height: auto;
     padding: 50px 20px;
-    text-align: center;
+
   }
 
   .dashboard-intro h1 {
     font-size: 35px;
+    text-align: center;
   }
 
   .admin-hero-main-sect {
@@ -2803,12 +2802,6 @@ textarea {
     transform: translateX(0px) !important;
     transition: none;
     z-index: 1;
-  }
-
-  .dashboard-intro {
-    height: auto;
-    padding: 100px 200px;
-    text-align: center;
   }
 
 }

@@ -44,7 +44,10 @@ const Header = ({ pathname, slug }) => {
       setSignOutStatus("Sign in");
     }
 
-    if (pathname === "/admin" && accessToken) {
+    if (
+      accessToken &&
+      (pathname === "/admin" || `/admin/products/edit/${slug}`)
+    ) {
       setLoginStatus("Logout");
       setSignOutStatus("Sign Out");
     }
@@ -61,7 +64,7 @@ const Header = ({ pathname, slug }) => {
     ) {
       sessionStorage.removeItem("token");
     }
-    if (pathname === "/admin" || pathname === `/admin/product/edit/${slug}`) {
+    if (pathname === "/admin" || pathname === `/admin/products/edit/${slug}`) {
       sessionStorage.removeItem("admin");
     }
   };
@@ -164,7 +167,16 @@ const Header = ({ pathname, slug }) => {
           <h1 className="header-style">Orbital</h1>
         </div>
         <div className="mobile-header-icons-con">
-          <Link style={{ color: "#4b4b4b" }} to={`${token ? "" : "/register"}`}>
+          <Link
+            style={{ color: "#4b4b4b" }}
+            to={`${
+              pathname === "/admin" ||
+              pathname === "/admin_login" ||
+              pathname === "/admin_register"
+                ? "/admin_login"
+                : "/login"
+            }`}
+          >
             <BiUser />
           </Link>
 

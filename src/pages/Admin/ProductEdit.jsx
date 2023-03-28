@@ -14,6 +14,7 @@ const ProductEdit = () => {
   let accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const [showImages, setShowImages] = useState(false);
   const { id } = useParams();
+
   const { pathname } = useLocation();
 
   const {
