@@ -7,7 +7,6 @@ import * as yup from "yup";
 
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import Loading from "../../components/HOCs/Loading";
 import { useGlobalContext } from "../../context/context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
@@ -20,8 +19,7 @@ const schema = yup.object().shape({
 
 const AdminLogin = () => {
   const { hostUrl } = useGlobalContext();
-  const [successState, setSuccessState] = useState("Success");
-  const [errorState, setErrorState] = useState("Wrong Credentials");
+  const [errorState, setErrorState] = useState(false);
 
   const {
     handleSubmit,
@@ -33,48 +31,37 @@ const AdminLogin = () => {
   const { pathname } = useLocation();
 
   const handleLoginForm = async (data) => {
-    if (data.email !== "" && data.passowrd !== "") {
-      try {
-        const adminUser = await axios.post(`${hostUrl}/api/auth/admin`, {
-          email: data.email,
-          password: data.password,
-        });
-        console.log(adminUser);
-        if (adminUser.status === 200 && successState == 200) {
-          sessionStorage.setItem(
-            "admin",
-            JSON.stringify(adminUser.data.accessToken)
-          );
-          navigate("/admin");
-        }
-        setSuccessState(adminUser.status);
-        console.log(successState);
-      } catch (error) {
-        setErrorState(() => error.response.data);
-        console.log(errorState);
+    try {
+      const adminUser = await axios.post(`${hostUrl}/api/auth/admin`, {
+        email: data.email,
+        password: data.password,
+      });
+      console.log(adminUser);
+      if (adminUser.status === 200) {
+        sessionStorage.setItem(
+          "admin",
+          JSON.stringify(adminUser.data.accessToken)
+        );
+        navigate("/admin");
       }
-    }
-  };
-
-  const notify = () => {
-    if (successState === 200) {
-      toast("Success");
-    }
-    if (errorState === "Wrong credentials") {
-      toast(errorState);
+      setErrorState(false);
+      console.log(errorState);
+    } catch (error) {
+      setErrorState(true);
+      console.log(errorState);
     }
   };
 
   setTimeout(() => {
-    if (errorState === "Wrong credentials") {
-      setErrorState("");
-      console.log(errorState);
+    if (errorState === true) {
+      setErrorState(false);
     }
-    if (successState == 200) {
-      setSuccessState("");
-      console.log(successState);
-    }
-  }, 4000);
+    console.log(errorState);
+  }, 3000);
+
+  const notify = () => {
+    toast("Wrong Credentials");
+  };
 
   return (
     <>
@@ -133,7 +120,7 @@ const AdminLogin = () => {
       </div>
       <Newsletter />
       <Footer />
-      <ToastContainer />
+      {errorState === true ? <ToastContainer /> : null}
     </>
   );
 };
