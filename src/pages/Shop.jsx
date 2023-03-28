@@ -60,7 +60,7 @@ const Shop = () => {
                   {product.status}
                 </button>
                 <div className="product-item-first-con">
-                  <Link to={`/products/${product.id}`}>
+                  <Link to={`/products/${product._id}`}>
                     <div className="product-image-con">
                       <img src={product.image[0].url} alt={product.name} />
                     </div>

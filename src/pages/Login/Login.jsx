@@ -99,4 +99,4 @@ const Login = () => {
   );
 };
 
-export default Loading(Login);
+export default Login;

@@ -1,22 +1,33 @@
-import { useState } from "react";
 import { Link, useLocation, useNavigate } from "react-router-dom";
 import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
 import "../Login/Login.css";
 import "../Registration/Registration.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import Loading from "../../components/HOCs/Loading";
 import { useGlobalContext } from "../../context/context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { useState } from "react";
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(12).required(),
+});
 
 const AdminLogin = () => {
   const { hostUrl } = useGlobalContext();
-  console.log(hostUrl);
+  const [successState, setSuccessState] = useState("Success");
+  const [errorState, setErrorState] = useState("Wrong Credentials");
+
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -34,13 +45,36 @@ const AdminLogin = () => {
             "admin",
             JSON.stringify(adminUser.data.accessToken)
           );
-          navigate("/admin");
+          // navigate("/admin");
         }
+        setSuccessState(adminUser.status);
+        console.log(successState);
       } catch (error) {
-        console.log(error);
+        setErrorState(() => error.response.data);
+        console.log(errorState);
       }
     }
   };
+
+  const notify = () => {
+    if (successState === 200) {
+      toast("Success");
+    }
+    if (errorState === "Wrong credentials") {
+      toast(errorState);
+    }
+  };
+
+  setTimeout(() => {
+    if (errorState === "Wrong credentials") {
+      setErrorState("");
+      console.log(errorState);
+    }
+    if (successState == 200) {
+      setSuccessState("");
+      console.log(successState);
+    }
+  }, 4000);
 
   return (
     <>
@@ -58,15 +92,18 @@ const AdminLogin = () => {
                 <p>Email Address *</p>
                 <input
                   type="email"
-                  {...register("email", { required: "Email is Required" })}
+                  {...register("email", { required: true })}
                 />
+                <h3 className="error">{errors.email?.message}</h3>
                 <p>Password *</p>
                 <input
                   type="password"
                   {...register("password", {
-                    required: "Password is Required",
+                    required: true,
+                    minLength: 6,
                   })}
                 />
+                <h3 className="error">{errors.password?.message}</h3>
                 <div className="forget-pass">
                   <div className="flex">
                     <input type="checkbox" />
@@ -76,7 +113,9 @@ const AdminLogin = () => {
                     <p className="p forget-password">Forget Password?</p>
                   </Link>
                 </div>
-                <button className="btn">Login</button>
+                <button className="btn" onClick={notify}>
+                  Login
+                </button>
               </form>
             </div>
           </div>
@@ -94,8 +133,9 @@ const AdminLogin = () => {
       </div>
       <Newsletter />
       <Footer />
+      <ToastContainer />
     </>
   );
 };
 
-export default Loading(AdminLogin);
+export default AdminLogin;

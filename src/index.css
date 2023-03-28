@@ -609,6 +609,14 @@ footer .link::after {
   z-index: 1;
 }
 
+.error {
+  color: red;
+  font-size: 15px;
+  font-weight: 300;
+  font-family: "Poppins", sans-serif;
+  margin-top: 10px;
+}
+
 .intro-products-text-con {
   position: absolute;
   height: 100%;
