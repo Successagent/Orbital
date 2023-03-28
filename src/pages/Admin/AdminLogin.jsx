@@ -40,12 +40,12 @@ const AdminLogin = () => {
           password: data.password,
         });
         console.log(adminUser);
-        if (adminUser.status === 200) {
+        if (adminUser.status === 200 && successState == 200) {
           sessionStorage.setItem(
             "admin",
             JSON.stringify(adminUser.data.accessToken)
           );
-          // navigate("/admin");
+          navigate("/admin");
         }
         setSuccessState(adminUser.status);
         console.log(successState);

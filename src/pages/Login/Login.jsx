@@ -6,7 +6,6 @@ import "../Registration/Registration.css";
 
 import axios from "axios";
 import { useForm } from "react-hook-form";
-import Loading from "../../components/HOCs/Loading";
 import { useGlobalContext } from "../../context/context";
 
 const Login = () => {

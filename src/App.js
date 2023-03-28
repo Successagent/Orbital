@@ -13,9 +13,12 @@ import {
   SingleProduct,
 } from "./pages";
 
-import { AdminDashboard, AdminLogin, AdminRegistration } from "./pages/Admin";
-import ProductDetails from "./pages/Admin/ProductDetails";
-import ProductEdit from "./pages/Admin/ProductEdit";
+import {
+  AdminDashboard,
+  AdminLogin,
+  AdminRegistration,
+  ProductEdit,
+} from "./pages/Admin";
 
 function App() {
   const { pathname } = useLocation();
