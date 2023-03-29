@@ -26,30 +26,55 @@ const Header = ({ pathname, slug }) => {
   };
 
   const toggleLoginAndSignOut = () => {
-    if (
-      token &&
-      (pathname === "/" ||
-        "/about" ||
-        "/shop" ||
-        `/products/${slug}` ||
-        "/contact" ||
-        "/shopping-cart")
-    ) {
-      setLoginStatus("Logout");
-      setSignOutStatus("Sign Out");
-    }
-
-    if (pathname === "/admin" || pathname === "/admin_login") {
-      setLoginStatus("Login");
-      setSignOutStatus("Sign in");
-    }
-
-    if (
-      accessToken &&
-      (pathname === "/admin" || `/admin/products/edit/${slug}`)
-    ) {
-      setLoginStatus("Logout");
-      setSignOutStatus("Sign Out");
+    switch (pathname) {
+      case "/admin":
+        if (accessToken) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case `/admin/product/edit/${slug}`:
+        if (accessToken) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case "/":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case "/about":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case "/shop":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case "/contact":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case `/products/${slug}`:
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case "/shopping-cart":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
     }
   };
 
