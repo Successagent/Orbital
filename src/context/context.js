@@ -1,6 +1,7 @@
 import axios from "axios";
 import React, { useContext, useEffect, useState } from "react";
-
+import { toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
@@ -16,6 +17,9 @@ const AppProvider = ({ children }) => {
       ? JSON.parse(sessionStorage.getItem("createdProducts"))
       : [];
   });
+
+  const notify = () => toast("Item has been added");
+  const deleteNotification = () => toast("Item successfully Deleted");
 
   const getCreatedProduct = async () => {
     try {
@@ -34,7 +38,7 @@ const AppProvider = ({ children }) => {
 
   const addToCart = (productIndex) => {
     //The Method here is to find the index of the product added to the cart, if the product is existing take only the first one
-
+    notify();
     let cartItem = cart.find((item) => item._id === productIndex._id);
 
     let newCart = [...cart];
@@ -58,6 +62,7 @@ const AppProvider = ({ children }) => {
   };
 
   const removeFromCart = (index) => {
+    deleteNotification();
     setCart((prevCart) => prevCart.filter((item) => item._id !== index._id));
   };
 

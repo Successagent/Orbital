@@ -7,40 +7,57 @@ import "../Registration/Registration.css";
 import axios from "axios";
 import { useForm } from "react-hook-form";
 import { useGlobalContext } from "../../context/context";
+import { ToastContainer, toast } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(12).required(),
+});
 
 const Login = () => {
-  const [loading, setLoading] = useState(false);
+  const [loading, setLoading] = useState(true);
   const { hostUrl } = useGlobalContext();
   const {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   const navigate = useNavigate();
 
   const handleLoginForm = async (data) => {
-    if (data.email !== "" && data.passowrd !== "") {
-      try {
-        const loginUser = await axios.post(`${hostUrl}/api/auth/login`, {
-          email: data.email,
-          password: data.password,
-        });
-
-        if (loginUser.status === 200) {
-          setLoading(true);
-          sessionStorage.setItem(
-            "token",
-            JSON.stringify(loginUser.data.accessToken)
-          );
-          setLoading(false);
-          navigate("/");
-        }
-      } catch (error) {
-        console.log(error);
+    try {
+      const loginUser = await axios.post(`${hostUrl}/api/auth/login`, {
+        email: data.email,
+        password: data.password,
+      });
+      console.log(loginUser);
+      if (loginUser.status === 200) {
+        setLoading(true);
+        sessionStorage.setItem(
+          "token",
+          JSON.stringify(loginUser.data.accessToken)
+        );
+        setLoading(false);
+        navigate("/");
       }
+    } catch (error) {
+      console.log(error);
+      setLoading(false);
     }
   };
+
+  const notify = () => toast("Wrong Details");
+
+  setTimeout(() => {
+    if (loading === false) {
+      setLoading(true);
+    }
+    console.log(loading);
+  }, 3000);
 
   return (
     <>
@@ -60,6 +77,7 @@ const Login = () => {
                   type="email"
                   {...register("email", { required: "Email is Required" })}
                 />
+                <h3 className="error">{errors.email?.message}</h3>
                 <p>Password *</p>
                 <input
                   type="password"
@@ -67,6 +85,7 @@ const Login = () => {
                     required: "Password is Required",
                   })}
                 />
+                <h3 className="error">{errors.password?.message}</h3>
                 <div className="forget-pass">
                   <div className="flex">
                     <input type="checkbox" />
@@ -76,7 +95,9 @@ const Login = () => {
                     <p className="p forget-password">Forget Password?</p>
                   </Link>
                 </div>
-                <button className="btn">Login</button>
+                <button className="btn" onClick={notify}>
+                  Login
+                </button>
               </form>
             </div>
           </div>
@@ -94,6 +115,7 @@ const Login = () => {
       </div>
       <Newsletter />
       <Footer />
+      {loading === false && <ToastContainer />}
     </>
   );
 };

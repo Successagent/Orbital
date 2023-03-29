@@ -7,6 +7,16 @@ import Loading from "../../components/HOCs/Loading";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useGlobalContext } from "../../context/context";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
+
+const schema = yup.object().shape({
+  firstName: yup.string().required(),
+  lastName: yup.string().required(),
+  email: yup.string().email().required(),
+  password: yup.string().min(6).max(12).required(),
+  confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
+});
 
 const AdminRegistration = () => {
   const { hostUrl } = useGlobalContext();
@@ -16,7 +26,7 @@ const AdminRegistration = () => {
     handleSubmit,
     register,
     formState: { errors },
-  } = useForm();
+  } = useForm({ resolver: yupResolver(schema) });
 
   const handleRegisterForm = async (data) => {
     try {
@@ -30,6 +40,7 @@ const AdminRegistration = () => {
           cpassword: data.confirmPassword,
         }
       );
+      console.log(registerUser);
 
       if (registerUser.status === 201) {
         navigate("/admin_login");
@@ -59,26 +70,33 @@ const AdminRegistration = () => {
                     name="firstName"
                     {...register("firstName")}
                   />
+                  <h3 className="error">{errors.firstName?.message}</h3>
                   <p>Last Name *</p>
                   <input
                     type="text"
                     name="lastName"
                     {...register("lastName")}
                   />
+                  <h3 className="error">{errors.lastName?.message}</h3>
                   <p>Email Address *</p>
                   <input type="email" name="email" {...register("email")} />
+                  <h3 className="error">{errors.email?.message}</h3>
                   <p>Password *</p>
                   <input
                     type="password"
                     name="password"
                     {...register("password")}
                   />
+                  <h3 className="error">{errors.password?.message}</h3>
                   <p>Confirm Password *</p>
                   <input
                     type="password"
                     name="confirmPassword"
                     {...register("confirmPassword")}
                   />
+                  {errors.confirmPassword && (
+                    <h3 className="error">Password Should Match</h3>
+                  )}
                   <p id="p-form">
                     We collect your data to enable you have a wonderful
                     experience using our website. Your information is safe with

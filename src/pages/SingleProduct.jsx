@@ -13,6 +13,7 @@ import { AiFillStar } from "react-icons/ai";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
 import axios from "axios";
+import { ToastContainer } from "react-toastify";
 
 const SingleProduct = () => {
   const [selectedImage, setSelectedImage] = useState(1);
@@ -196,6 +197,7 @@ const SingleProduct = () => {
       </section>
       <Newsletter pathname={pathname} slug={id} />
       <Footer />
+      <ToastContainer />
     </>
   );
 };

@@ -4,6 +4,7 @@ import { Button, Footer, Header, Newsletter, PageHero } from "../components";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
+import { ToastContainer } from "react-toastify";
 
 const ShoppingCart = () => {
   const { cart, setQuantity, removeFromCart, getTotalQuantity } =
@@ -100,6 +101,7 @@ const ShoppingCart = () => {
       </section>
       <Newsletter pathname={pathname} />
       <Footer />
+      <ToastContainer />
     </>
   );
 };

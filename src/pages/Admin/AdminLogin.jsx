@@ -48,7 +48,6 @@ const AdminLogin = () => {
       console.log(errorState);
     } catch (error) {
       setErrorState(true);
-      console.log(errorState);
     }
   };
 
