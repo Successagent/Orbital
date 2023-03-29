@@ -201,7 +201,18 @@ const Header = ({ pathname, slug }) => {
           <Link to="/about">About</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/contact">Contact</Link>
-          <Link onClick={() => sessionStorage.clear("token")} to={`/login`}>
+          <Link
+            onClick={() => sessionStorage.clear("token")}
+            to={`${
+              pathname === "/admin" ||
+              pathname == "/admin_login" ||
+              pathname == "/admin_register"
+                ? "/admin_register"
+                : token
+                ? ""
+                : "/register"
+            }`}
+          >
             {loginStatus}
           </Link>
         </ul>
