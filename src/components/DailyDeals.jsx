@@ -60,7 +60,7 @@ const DailyDeals = ({ dealsProducts, index }) => {
                 <AiFillStar />
               </div>
             </div>
-            <Link to={`/products/${item.id}`}>
+            <Link to={`/products/${item._id}`}>
               <div className="flash-sales-item-one-main-image-con">
                 {item.image && (
                   <img
