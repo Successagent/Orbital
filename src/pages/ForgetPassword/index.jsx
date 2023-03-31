@@ -1,7 +1,35 @@
+import axios from "axios";
 import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
+import { useGlobalContext } from "../../context/context";
 import "../ForgetPassword/ForgetPassWord.css";
+import { useForm } from "react-hook-form";
+import { yupResolver } from "@hookform/resolvers/yup";
+import * as yup from "yup";
 
-const index = () => {
+const schema = yup.object().shape({
+  email: yup.string().email().required(),
+});
+
+const ForgetPassword = () => {
+  const {
+    handleSubmit,
+    register,
+    formState: { errors },
+  } = useForm({
+    resolver: yupResolver(schema),
+  });
+
+  const { hostUrl } = useGlobalContext();
+  const handleForgetPassword = async (data) => {
+    try {
+      const forgetPass = await axios.post(`${hostUrl}/api/auth/forget`, {
+        email: data.email,
+      });
+      console.log(forgetPass.data);
+    } catch (error) {
+      console.log(error);
+    }
+  };
   return (
     <>
       <Header />
@@ -12,13 +40,20 @@ const index = () => {
             <div>
               <h2>Forget Password</h2>
               <div>
-                <form className="review-form">
+                <form
+                  className="review-form"
+                  onSubmit={handleSubmit((data) => handleForgetPassword(data))}
+                >
                   <p>
                     Forgot your password? . Enter your email address to reset
                     and we will send a reset link to your email
                   </p>
                   <p>Email Address *</p>
-                  <input type="email" />
+                  <input
+                    type="email"
+                    {...register("email", { required: true })}
+                  />
+                  <h3 className="error">{errors.email?.message}</h3>
                   <Button title="Reset Password" />
                 </form>
               </div>
@@ -32,4 +67,4 @@ const index = () => {
   );
 };
 
-export default index;
+export default ForgetPassword;

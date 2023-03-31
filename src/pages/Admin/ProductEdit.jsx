@@ -48,6 +48,7 @@ const ProductEdit = () => {
           headers: { token: accessToken },
         }
       );
+      console.log(editedProduct);
     } catch (error) {
       console.log(error);
     }
