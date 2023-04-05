@@ -18,8 +18,8 @@ const SideCart = ({ openCart, toggleCart }) => {
   const totalAmount = getTotalQuantity();
   const publicKey = "pk_test_cfdb751a4bbe79031d2de7788fe8238f107543e6";
   const [amount, setAmount] = useState(`${totalAmount * 100}`);
-  const [email, setEmail] = useState(token.email);
-  const [name, setName] = useState(`${token.firstName} ${token.lastName}`);
+  const [email, setEmail] = useState(token?.email);
+  const [name, setName] = useState(`${token?.firstName} ${token?.lastName}`);
   const componentProps = {
     email,
     amount,

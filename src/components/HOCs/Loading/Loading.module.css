@@ -1,7 +1,7 @@
 .container {
   position: fixed;
   inset: 0;
-  background: #f97c39;
+  background: #1b9abd;
   z-index: 12;
   display: flex;
   align-items: center;
@@ -38,7 +38,7 @@
   padding: 5em;
   border-radius: 9999px;
   border: 1px solid #fff;
-  border-left: 1px solid #f97c39;
+  border-left: 1px solid #1b9abd;
   animation: spin 2s linear infinite;
 }
 

@@ -1,6 +1,8 @@
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/context";
 
+import orbitalLogo from "../assets/orbitalLogo.png";
+
 import { Link } from "react-router-dom";
 import {
   AiOutlineSearch,
@@ -105,7 +107,7 @@ const Header = ({ pathname, slug }) => {
     <header className="header">
       <section className="header-hero">
         <div className="header-hero-image-con">
-          <h1 className="header-style">Orbital</h1>
+          <img src={orbitalLogo} alt="" />
         </div>
         <ul>
           <Link to="/">Home</Link>

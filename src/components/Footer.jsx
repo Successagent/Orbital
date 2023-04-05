@@ -1,11 +1,12 @@
 import React from "react";
 import { Link } from "react-router-dom";
+import orbitalLogo from "../assets/orbitalLogo.png";
 
 const Footer = () => {
   return (
     <footer>
       <div>
-        <h3>Orbital</h3>
+        <img src={orbitalLogo} alt="" />
       </div>
       <div>
         <h3>Information</h3>
