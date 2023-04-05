@@ -19,6 +19,7 @@ import {
   AdminRegistration,
   ProductEdit,
 } from "./pages/Admin";
+import PaystackIntegration from "./PaystackIntegration";
 
 function App() {
   const { pathname } = useLocation();

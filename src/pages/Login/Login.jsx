@@ -37,10 +37,7 @@ const Login = () => {
       console.log(loginUser);
       if (loginUser.status === 200) {
         setLoading(true);
-        sessionStorage.setItem(
-          "token",
-          JSON.stringify(loginUser.data.accessToken)
-        );
+        sessionStorage.setItem("token", JSON.stringify(loginUser.data));
         setLoading(false);
         navigate("/");
       }

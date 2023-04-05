@@ -4,7 +4,9 @@ import { Button, Footer, Header, Newsletter, PageHero } from "../components";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
-import { ToastContainer } from "react-toastify";
+import { PaystackButton } from "react-paystack";
+import { toast, ToastContainer } from "react-toastify";
+import "react-toastify/dist/ReactToastify.css";
 
 const ShoppingCart = () => {
   const { cart, setQuantity, removeFromCart, getTotalQuantity } =
@@ -13,6 +15,26 @@ const ShoppingCart = () => {
   const [shipping, setShipping] = useState(50);
   const [localFee, setLocalFee] = useState(40);
   const { pathname } = useLocation();
+
+  const notify = () =>
+    toast("Thanks for doing business with us! Come back soon!!");
+
+  const totalAmount = getTotalQuantity();
+  const publicKey = "pk_test_cfdb751a4bbe79031d2de7788fe8238f107543e6";
+  const [amount, setAmount] = useState(`${totalAmount * 100}`);
+  const [email, setEmail] = useState(token.email);
+  const [name, setName] = useState(`${token.firstName} ${token.lastName}`);
+  const componentProps = {
+    email,
+    amount,
+    metadata: {
+      name,
+    },
+    publicKey,
+    text: "Pay Now",
+    onSuccess: () => notify(),
+    onClose: () => alert("Wait! Don't leave :("),
+  };
   return (
     <>
       <section className="shopping-cart">
@@ -92,9 +114,7 @@ const ShoppingCart = () => {
                   N{`${getTotalQuantity() + shipping + localFee}`}
                 </h3>
               </div>
-              <Link to={`${token ? "/checkout" : "/register"}`} className="btn">
-                PROCEED TO CHECKOUT
-              </Link>
+              <PaystackButton className="btn" {...componentProps} />
             </div>
           </div>
         </div>
