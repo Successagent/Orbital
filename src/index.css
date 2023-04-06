@@ -1266,7 +1266,7 @@ footer .link::after {
 }
 
 .about-hero-nav-sect h3:nth-child(2) {
-  color: red;
+  color: #1b9abd;
 }
 
 .about-hero-nav-sect h3:nth-child(1)::after {
@@ -1341,7 +1341,7 @@ footer .link::after {
 }
 
 .team-children:hover .team-children-first-sect {
-  background-color: red;
+  background-color: #1b9abd;
   transform: translateY(0px) !important;
   color: white;
 }
@@ -1766,7 +1766,7 @@ footer .link::after {
 .hr {
   width: 50%;
   height: 2px;
-  background-color: red;
+  background-color: #1b9abd;
 }
 
 .hr-flex>div:nth-child(2) {
@@ -1885,12 +1885,12 @@ textarea {
 }
 
 .color-red {
-  color: red !important;
+  color: #1b9abd !important;
   transition: all ease-in-out 300ms;
 }
 
 .red-border {
-  border: 1px solid red;
+  border: 1px solid #1b9abd;
 }
 
 .input-con input {
