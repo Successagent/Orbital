@@ -20,11 +20,11 @@ const Footer = () => {
       <div>
         <h3>Contact</h3>
         <Link className="link" to="">
-          12345678900
+          +2348068047561
         </Link>
-        <Link className="link" to="">
-          orbital@gmail.com
-        </Link>
+        <a className="link" href="mailto:support@orbitalfashionworld.com">
+          Support
+        </a>
       </div>
       <div>
         <h3>Address</h3>
@@ -33,7 +33,10 @@ const Footer = () => {
           Yenagoa, Bayelsa State
         </Link>
         <Link className="link" to="">
-          No 26 Edepie
+          No 533 Melford Okilo Way
+        </Link>
+        <Link className="link" to="">
+          Opposite Zenith Bank Yenizugene
         </Link>
       </div>
       <div>

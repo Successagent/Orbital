@@ -928,6 +928,10 @@ footer .link::after {
   margin-bottom: 30px;
 }
 
+.support {
+  width: 150px !important;
+}
+
 .part-two-products .product-con {
   background-color: white;
   gap: 20px;
@@ -2505,7 +2509,7 @@ textarea {
     inset: 0;
     right: 20%;
     z-index: 999;
-    background-color: #f97c39;
+    background-color: #1b9abd;
     color: white;
     min-height: 100vh;
     display: flex;
@@ -2540,7 +2544,7 @@ textarea {
   .hamburger-con {
     display: flex;
     align-items: center;
-    background-color: red;
+    background-color: #1b9abd;
     padding: 5px;
     justify-content: center;
     color: white;
