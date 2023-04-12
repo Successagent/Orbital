@@ -1,6 +1,6 @@
 import React from "react";
 import { Link } from "react-router-dom";
-import orbitalLogo from "../assets/orbitalLogo.png";
+import orbitalLogo from "../assets/orbi.png";
 
 const Footer = () => {
   return (
@@ -28,7 +28,6 @@ const Footer = () => {
       </div>
       <div>
         <h3>Address</h3>
-
         <Link className="link" to="">
           Yenagoa, Bayelsa State
         </Link>

@@ -1,15 +1,10 @@
 import React, { useEffect, useState } from "react";
 import { useGlobalContext } from "../context/context";
 
-import orbitalLogo from "../assets/orbitalLogo.png";
+import orbitalLogo from "../assets/orbi.png";
 
 import { Link } from "react-router-dom";
-import {
-  AiOutlineSearch,
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiOutlineClose,
-} from "react-icons/ai";
+import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
 
 import { BiUser } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
