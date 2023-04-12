@@ -47,7 +47,7 @@ li {
   text-transform: uppercase;
   font-size: 14px;
   font-weight: 600;
-  cursor: white !important;
+  color: white !important;
   line-height: 48px;
   border: none;
   display: flex;
@@ -212,6 +212,7 @@ footer img {
   object-fit: contain;
   width: 150px;
 }
+
 
 .mobile-header {
   display: none;
@@ -2187,6 +2188,11 @@ textarea {
 }
 
 @media(max-width:780px) {
+
+  footer img {
+    margin-bottom: 50px;
+  }
+
   .home-hero-section {
 
     display: flex;
