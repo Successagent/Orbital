@@ -1,5 +1,6 @@
 import React, { useEffect } from "react";
 import { Routes, Route, useLocation } from "react-router-dom";
+import PrivateRoutes from "./utils/PrivateRoutes";
 import { useGlobalContext } from "./context/context";
 import {
   About,
@@ -19,7 +20,6 @@ import {
   AdminRegistration,
   ProductEdit,
 } from "./pages/Admin";
-import PaystackIntegration from "./PaystackIntegration";
 
 function App() {
   const { pathname } = useLocation();
@@ -35,6 +35,12 @@ function App() {
 
   return (
     <Routes>
+      <Route element={<PrivateRoutes />}>
+        <Route path="/admin" element={<AdminDashboard />} />
+        <Route path="/admin/product/edit/:id" element={<ProductEdit />} />
+      </Route>
+      <Route path="/admin_login" element={<AdminLogin />} />
+      <Route path="/admin_register" element={<AdminRegistration />} />
       <Route path="/" element={<Home />} />
       <Route path="/about" element={<About />} />
       <Route path="/shop" element={<Shop />} />
@@ -44,10 +50,6 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
-      <Route path="/admin" element={<AdminDashboard />} />
-      <Route path="/admin_login" element={<AdminLogin />} />
-      <Route path="/admin_register" element={<AdminRegistration />} />
-      <Route path="/admin/product/edit/:id" element={<ProductEdit />} />
     </Routes>
   );
 }

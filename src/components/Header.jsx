@@ -186,7 +186,7 @@ const Header = ({ pathname, slug }) => {
         style={{ padding: `${pathname !== "/" ? "20px" : ""}` }}
       >
         <div className="mobile-header-image-con">
-          <img src={orbitalLogo} alt="" />
+          <img className="header_logo" src={orbitalLogo} alt="" />
         </div>
         <div className="mobile-header-icons-con">
           <Link

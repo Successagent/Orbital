@@ -5,7 +5,6 @@ import {
   AiOutlineShoppingCart,
 } from "react-icons/ai";
 import { Link } from "react-router-dom";
-import { urlFor } from "../lib/client";
 
 const RelatedProducts = ({ products }) => {
   return (
