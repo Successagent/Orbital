@@ -60,6 +60,7 @@ const Contact = () => {
         body: JSON.stringify(data),
       });
       const resData = await response.json();
+      console.log(resData);
     } catch (error) {
       console.log(error);
     }
