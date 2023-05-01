@@ -56,6 +56,7 @@ const SingleProduct = () => {
     } else if (e.target.id == 3) {
       setSelectedImage(4);
     }
+    console.log(selectedImage);
   };
 
   const toggleTab = () => {
@@ -75,29 +76,10 @@ const SingleProduct = () => {
           <div className="single-product-image-con">
             <div>
               <div className="single-product-single-image-con">
-                {selectedImage == 1 ? (
-                  <img
-                    src={index?.image && index.image[0].url}
-                    alt={index?.name}
-                  />
-                ) : selectedImage == 2 ? (
-                  <img
-                    src={index?.image && index.image[1].url}
-                    alt={index?.name}
-                  />
-                ) : selectedImage == 3 ? (
-                  <img
-                    src={index?.image && index.image[2].url}
-                    alt={index?.name}
-                  />
-                ) : selectedImage == 4 ? (
-                  <img
-                    src={index?.image && index.image[3].url}
-                    alt={index?.name}
-                  />
-                ) : (
-                  ""
-                )}
+                <img
+                  src={index.image[selectedImage - 1].url}
+                  alt={index?.name}
+                />
               </div>
               <div className="single-product-other-images-con">
                 {index?.image &&
@@ -107,18 +89,19 @@ const SingleProduct = () => {
                       id={idx}
                       className={`${
                         selectedImage == 1 && idx == 0
-                          ? "selected-image"
+                          ? "selected-image click"
                           : selectedImage == 2 && idx == 1
-                          ? "selected-image"
+                          ? "selected-image click"
                           : selectedImage == 3 && idx == 2
-                          ? "selected-image"
+                          ? "selected-image click"
                           : selectedImage == 4 && idx == 3
-                          ? "selected-image"
+                          ? "selected-image click"
                           : ""
                       }`}
                       onMouseEnter={changeActiveImage}
+                      onClick={changeActiveImage}
                     >
-                      <img src={image && image.url} alt="" />
+                      <img src={image && image.url} id={idx} alt="" />
                     </div>
                   ))}
               </div>
@@ -131,11 +114,9 @@ const SingleProduct = () => {
             </h3>
             <div className="single-product-review-con">
               <div className="product-rate-con">
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
-                <AiFillStar />
+                {[1, 2, 3, 4, 5].map(() => (
+                  <AiFillStar />
+                ))}
               </div>
               <p>(1 Review)</p>
             </div>

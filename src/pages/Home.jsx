@@ -27,6 +27,7 @@ import Loading from "../components/HOCs/Loading";
 import { useGlobalContext } from "../context/context";
 
 const Home = () => {
+  const [date, setDate] = useState(new Date());
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
   const { products } = useGlobalContext();

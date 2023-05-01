@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useState, useEffect } from "react";
 import {
   AiFillStar,
   AiOutlineShoppingCart,
@@ -8,7 +8,14 @@ import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";
 
 const DailyDeals = ({ dealsProducts, index }) => {
+  const [date, setDate] = useState(new Date());
   const { addToCart } = useGlobalContext();
+
+  useEffect(() => {
+    setInterval(() => {
+      setDate(new Date());
+    }, 1000);
+  }, []);
   return (
     <div className="flash-sales-item-one-main">
       {dealsProducts.map((item, idx) => {
@@ -31,21 +38,21 @@ const DailyDeals = ({ dealsProducts, index }) => {
               <div className="flash-sales-item-one-main-details-con-time-sect">
                 <div>
                   <div>
-                    <h3>4</h3>
+                    <h3>{date.getHours()}</h3>
                   </div>
                   <h3>HRS</h3>
                 </div>
 
                 <div>
                   <div>
-                    <h3>14</h3>
+                    <h3>{date.getMinutes()}</h3>
                   </div>
                   <h3>MINS</h3>
                 </div>
 
                 <div>
                   <div>
-                    <h3>4</h3>
+                    <h3>{date.getSeconds()}</h3>
                   </div>
                   <h3>SECS</h3>
                 </div>

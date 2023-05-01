@@ -11,6 +11,7 @@ import axios from "axios";
 import { useGlobalContext } from "../../context/context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { toast, ToastContainer } from "react-toastify";
 
 const schema = yup.object().shape({
   firstName: yup.string().required(),
@@ -21,6 +22,8 @@ const schema = yup.object().shape({
 });
 
 const Registration = () => {
+  const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState({});
   const navigate = useNavigate();
   const {
     handleSubmit,
@@ -30,8 +33,13 @@ const Registration = () => {
 
   const { hostUrl } = useGlobalContext();
 
+  const notify = () => {
+    toast(loginError);
+  };
+
   const handleRegisterForm = async (data) => {
     const { firstName, lastName, email, password, confirmPassword } = data;
+    setLoading(true);
     try {
       const registerUser = await axios.post(`${hostUrl}/api/auth/register`, {
         firstName,
@@ -42,9 +50,13 @@ const Registration = () => {
       });
       console.log(registerUser);
       if (registerUser.status === 201) {
+        setLoginError(false);
         navigate("/login");
       }
     } catch (error) {
+      setLoading(false);
+      notify();
+      setLoginError(error.message);
       console.log(error);
     }
   };
@@ -54,7 +66,6 @@ const Registration = () => {
       <div className="register-page">
         <Header />
         <PageHero page_title={"Registration"} />
-
         <div className="register-form">
           <section>
             <div>
@@ -101,7 +112,7 @@ const Registration = () => {
                     experience using our website. Your information is safe with
                     us
                   </p>
-                  <Button title="Register" />
+                  <Button title={loading ? "Loading..." : "Register"} />
                 </form>
               </div>
             </div>
@@ -119,6 +130,7 @@ const Registration = () => {
         </div>
         <Newsletter />
         <Footer />
+        <ToastContainer />
       </div>
     </>
   );

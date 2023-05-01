@@ -9,6 +9,8 @@ import axios from "axios";
 import { useGlobalContext } from "../../context/context";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import { ToastContainer, toast } from "react-toastify";
+import { useState } from "react";
 
 const schema = yup.object().shape({
   firstName: yup.string().required(),
@@ -19,6 +21,8 @@ const schema = yup.object().shape({
 });
 
 const AdminRegistration = () => {
+  const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState({});
   const { hostUrl } = useGlobalContext();
   const navigate = useNavigate();
   const { pathname } = useLocation();
@@ -28,7 +32,18 @@ const AdminRegistration = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
+  console.log(loginError);
+
+  const notify = () => {
+    if (loginError?.data) {
+      toast("Details already exist");
+    } else {
+      toast(loginError);
+    }
+  };
+
   const handleRegisterForm = async (data) => {
+    setLoading(true);
     try {
       const registerUser = await axios.post(
         `${hostUrl}/api/auth/adminRegister`,
@@ -43,9 +58,13 @@ const AdminRegistration = () => {
       console.log(registerUser);
 
       if (registerUser.status === 201) {
+        setLoading(false);
         navigate("/admin_login");
       }
     } catch (error) {
+      setLoading(false);
+      notify();
+      setLoginError(error.response || error.message);
       console.log(error);
     }
   };
@@ -102,7 +121,7 @@ const AdminRegistration = () => {
                     experience using our website. Your information is safe with
                     us
                   </p>
-                  <Button title="Register" />
+                  <Button title={loading ? "Loading..." : "Register"} />
                 </form>
               </div>
             </div>
@@ -120,6 +139,7 @@ const AdminRegistration = () => {
         </div>
         <Newsletter />
         <Footer />
+        <ToastContainer />
       </div>
     </>
   );

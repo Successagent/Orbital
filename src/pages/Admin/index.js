@@ -1,5 +1,6 @@
 import AdminCreatedProduct from "./AdminCreatedProduct";
 import AdminDashboard from "./AdminDashboard";
+import AdminHeader from "./AdminHeader";
 import AdminLogin from "./AdminLogin";
 import AdminRegistration from "./AdminRegistration";
 import ProductEdit from "./ProductEdit";
@@ -12,4 +13,5 @@ export {
   AdminRegistration,
   AdminLogin,
   ProductEdit,
+  AdminHeader,
 };

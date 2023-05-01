@@ -19,7 +19,8 @@ const schema = yup.object().shape({
 
 const AdminLogin = () => {
   const { hostUrl } = useGlobalContext();
-  const [errorState, setErrorState] = useState(false);
+  const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState({});
 
   const {
     handleSubmit,
@@ -30,7 +31,16 @@ const AdminLogin = () => {
   const navigate = useNavigate();
   const { pathname } = useLocation();
 
+  const notify = () => {
+    if (loginError.data) {
+      toast(loginError.data);
+    } else {
+      toast(loginError);
+    }
+  };
+
   const handleLoginForm = async (data) => {
+    setLoading(true);
     try {
       const adminUser = await axios.post(`${hostUrl}/api/auth/admin`, {
         email: data.email,
@@ -38,28 +48,18 @@ const AdminLogin = () => {
       });
       console.log(adminUser);
       if (adminUser.status === 200) {
+        setLoading(false);
         sessionStorage.setItem(
           "admin",
           JSON.stringify(adminUser.data.accessToken)
         );
         navigate("/admin");
       }
-      setErrorState(false);
-      console.log(errorState);
     } catch (error) {
-      setErrorState(true);
+      setLoading(false);
+      setLoginError(error.response || error.message);
+      notify();
     }
-  };
-
-  setTimeout(() => {
-    if (errorState === true) {
-      setErrorState(false);
-    }
-    console.log(errorState);
-  }, 3000);
-
-  const notify = () => {
-    toast("Wrong Credentials");
   };
 
   return (
@@ -99,8 +99,8 @@ const AdminLogin = () => {
                     <p className="p forget-password">Forget Password?</p>
                   </Link>
                 </div>
-                <button className="btn" onClick={notify}>
-                  Login
+                <button className="btn">
+                  {loading ? "Loading..." : "Login"}
                 </button>
               </form>
             </div>
@@ -118,8 +118,8 @@ const AdminLogin = () => {
         </div>
       </div>
       <Newsletter />
+      <ToastContainer />
       <Footer />
-      {errorState === true ? <ToastContainer /> : null}
     </>
   );
 };

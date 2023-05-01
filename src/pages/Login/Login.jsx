@@ -18,7 +18,9 @@ const schema = yup.object().shape({
 });
 
 const Login = () => {
-  const [loading, setLoading] = useState(true);
+  const [loading, setLoading] = useState(false);
+  const [loginError, setLoginError] = useState({});
+  console.log(loginError);
   const { hostUrl } = useGlobalContext();
   const {
     handleSubmit,
@@ -29,6 +31,7 @@ const Login = () => {
   const navigate = useNavigate();
 
   const handleLoginForm = async (data) => {
+    setLoading(true);
     try {
       const loginUser = await axios.post(`${hostUrl}/api/auth/login`, {
         email: data.email,
@@ -36,25 +39,25 @@ const Login = () => {
       });
       console.log(loginUser);
       if (loginUser.status === 200) {
-        setLoading(true);
-        sessionStorage.setItem("token", JSON.stringify(loginUser.data));
         setLoading(false);
+        sessionStorage.setItem("token", JSON.stringify(loginUser.data));
         navigate("/");
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
+      setLoginError(error.response || error.message);
+      notify();
+      console.log(error);
     }
   };
 
-  const notify = () => toast("Wrong Details");
-
-  setTimeout(() => {
-    if (loading === false) {
-      setLoading(true);
+  const notify = () => {
+    if (loginError.data) {
+      toast(loginError.data);
+    } else {
+      toast(loginError);
     }
-    console.log(loading);
-  }, 3000);
+  };
 
   return (
     <>
@@ -92,8 +95,8 @@ const Login = () => {
                     <p className="p forget-password">Forget Password?</p>
                   </Link>
                 </div>
-                <button className="btn" onClick={notify}>
-                  Login
+                <button className="btn">
+                  {loading ? "Loading..." : "Login"}
                 </button>
               </form>
             </div>
@@ -112,7 +115,7 @@ const Login = () => {
       </div>
       <Newsletter />
       <Footer />
-      {loading === false && <ToastContainer />}
+      <ToastContainer />
     </>
   );
 };
