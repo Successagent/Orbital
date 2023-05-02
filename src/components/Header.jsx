@@ -14,7 +14,6 @@ const Header = ({ pathname, slug }) => {
   const { openCart, setOpenCart, cart } = useGlobalContext();
   const [visible, setVisible] = useState(false);
   const token = JSON.parse(sessionStorage.getItem("token"));
-  const accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const [loginStatus, setLoginStatus] = useState("Login");
   const [signOutStatus, setSignOutStatus] = useState("Sign in");
 
@@ -24,18 +23,6 @@ const Header = ({ pathname, slug }) => {
 
   const toggleLoginAndSignOut = () => {
     switch (pathname) {
-      case "/admin":
-        if (accessToken) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case `/admin/product/edit/${slug}`:
-        if (accessToken) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
       case "/":
         if (token) {
           setLoginStatus("Logout");
@@ -85,9 +72,6 @@ const Header = ({ pathname, slug }) => {
       pathname === "/shopping-cart"
     ) {
       sessionStorage.removeItem("token");
-    }
-    if (pathname === "/admin" || pathname === `/admin/products/edit/${slug}`) {
-      sessionStorage.removeItem("admin");
     }
   };
 

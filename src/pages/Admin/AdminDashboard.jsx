@@ -1,9 +1,11 @@
 import React, { useEffect, useState } from "react";
-import { Footer, Header, Newsletter, PageHero } from "../../components";
+import { Footer, Newsletter, PageHero } from "../../components";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
 import { useGlobalContext } from "../../context/context";
+import AdminHeader from "./AdminHeader";
+import { ToastContainer, toast } from "react-toastify";
 
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
@@ -16,6 +18,7 @@ const AdminDashboard = () => {
   });
   const { hostUrl } = useGlobalContext();
   const [loading, setLoading] = useState(true);
+  const [createLoader, setCreateLoader] = useState(false);
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
@@ -25,6 +28,10 @@ const AdminDashboard = () => {
     category: "",
     quantity: "",
   });
+
+  const notify = () => {
+    toast("Product Created Successfully");
+  };
 
   const getCreatedProduct = async () => {
     try {
@@ -49,7 +56,9 @@ const AdminDashboard = () => {
     setFormData({ ...formData, images: e.target.files });
   };
 
-  const handleCreateProduct = async (e) => {
+  const handleCreateProduct = async () => {
+    setCreateLoader(true);
+
     const sizesArray = formData.sizes.split(",").map((size) => size.trim());
     const newProductData = new FormData();
     newProductData.append("name", formData.productName);
@@ -68,7 +77,14 @@ const AdminDashboard = () => {
           token: accessToken,
         },
       });
-    } catch (error) {}
+      console.log(res);
+      if (res.status === 200) {
+        notify();
+        setCreateLoader(false);
+      }
+    } catch (error) {
+      setCreateLoader(false);
+    }
   };
 
   const toggleModal = (e) => {
@@ -90,7 +106,7 @@ const AdminDashboard = () => {
 
   return (
     <section className="admin-dashboard">
-      <Header pathname={pathname} />
+      <AdminHeader pathname={pathname} />
       <PageHero page_title={"Admin"} />
       <div className="dashboard-intro">
         <h1>Dashboard</h1>
@@ -181,11 +197,12 @@ const AdminDashboard = () => {
                 onClick={handleCreateProduct}
                 id="case-one"
               >
-                Save
+                {createLoader ? "Loading..." : "Save"}
               </button>
               <button className="btn green" id="case-one" onClick={toggleModal}>
                 Close
               </button>
+              <ToastContainer />
             </div>
           </section>
           <section className="admin-card">
@@ -214,7 +231,6 @@ const AdminDashboard = () => {
           </section>
         </>
       )}
-      <Newsletter />
       <Footer />
     </section>
   );

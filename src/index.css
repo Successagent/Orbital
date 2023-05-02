@@ -2187,8 +2187,172 @@ textarea {
   background-color: transparent;
 }
 
+.order_search_container {
+  margin-top: 100px;
+  padding: 50px;
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order_search_container input {
+  height: 50px;
+  width: 500px;
+  padding-left: 10px;
+  outline: none;
+  border: 1.5px solid rgba(52, 32, 148, 0.2);
+  box-shadow: 0px 1px 1px rgba(123, 123, 123, 0.16);
+  border-radius: 6px;
+  background-color: white;
+  font-family: "Poppins", sans-serif;
+}
+
+.order_table {
+  padding: 50px;
+}
+
+.order_table_header {
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+}
+
+.order_table_header>div {
+  width: 16.7%;
+}
+
+
+.customers_table_header>div {
+  width: 20%;
+}
+
+.customers_actions {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  gap: 5px;
+}
+
+.customers_actions img {
+  cursor: pointer;
+}
+
+.customer_details {
+  display: flex;
+  align-items: center;
+  gap: 10px;
+}
+
+.order_table_body {
+  margin: 30px 0px;
+}
+
+.order_table_header h3 {
+  font-size: 16px;
+}
+
+.customers_deatils {
+  padding: 100px;
+  background-color: #f5f5f5;
+}
+
+.grid {
+  display: grid;
+  align-items: center;
+  justify-content: center;
+}
+
+.grid p {
+  margin-bottom: 20px;
+}
+
+.details_con,
+.orders_details {
+  background: #FFFFFF;
+  border-radius: 14px;
+  padding: 30px;
+}
+
+.order_status button {
+  font-family: 'Poppins', sans-serif;
+  font-style: normal;
+  font-weight: 400;
+  font-size: 12px;
+  line-height: 15px;
+  height: 20px;
+  color: #56C456;
+
+}
+
+.orders_details {
+  margin-top: 50px;
+
+}
+
+.orders_details .order_table {
+  padding: 0px;
+  margin-top: 30px;
+}
+
+.orders_details .order_table .order_table_header>div {
+  width: 20%;
+}
+
+.orders_details .order_table .order_table_body {
+  margin-bottom: 35px;
+}
+
+.details_con input {
+  background: #F5F5F5;
+  border: 1px solid rgba(0, 8, 28, 0.05);
+  border-radius: 6px;
+  width: 100%;
+  height: 42px;
+  padding-left: 10px;
+  font-family: "Montserrat", sans-serif;
+  outline: none;
+}
+
+.details_con .grid {
+  grid-template-columns: repeat(2, 1fr);
+  gap: 30px;
+  margin-top: 20px;
+}
+
+
 
 @media(max-width:780px) {
+
+  .customers_deatils {
+    padding: 40px 20px;
+  }
+
+  .details_con .grid {
+    grid-template-columns: 1fr;
+  }
+
+  .order_table {
+    overflow: scroll;
+  }
+
+  .order_table_header {
+    width: 1200px;
+  }
+
+  .order_search_container h3 {
+    display: none;
+  }
+
+  .order_search_container {
+    flex-direction: column;
+    align-items: flex-start;
+    padding: 20px;
+    gap: 20px;
+  }
+
+  .order_search_container input {
+    width: 100%;
+  }
 
   .header_logo {
     height: 100%;

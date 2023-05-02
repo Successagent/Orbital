@@ -16,6 +16,7 @@ import { toast, ToastContainer } from "react-toastify";
 const schema = yup.object().shape({
   firstName: yup.string().required(),
   lastName: yup.string().required(),
+  phone: yup.string().required(),
   email: yup.string().email().required(),
   password: yup.string().min(6).max(12).required(),
   confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
@@ -38,12 +39,14 @@ const Registration = () => {
   };
 
   const handleRegisterForm = async (data) => {
-    const { firstName, lastName, email, password, confirmPassword } = data;
+    const { firstName, lastName, email, password, confirmPassword, phone } =
+      data;
     setLoading(true);
     try {
       const registerUser = await axios.post(`${hostUrl}/api/auth/register`, {
         firstName,
         lastName,
+        phone,
         email,
         password,
         confirmPassword,
@@ -88,6 +91,9 @@ const Registration = () => {
                     {...register("lastName")}
                   />
                   <h3 className="error">{errors.lastName?.message}</h3>
+                  <p>Phone Number *</p>
+                  <input type="phone" name="phone" {...register("phone")} />
+                  <h3 className="error">{errors.phone?.message}</h3>
                   <p>Email Address *</p>
                   <input type="email" name="email" {...register("email")} />
                   <h3 className="error">{errors.email?.message}</h3>

@@ -13,6 +13,7 @@ import SideCart from "./SideCart";
 import RelatedProducts from "./RelatedProducts";
 import Comments from "./Comments";
 import Categories from "./Categories";
+import Filter from "./Filter";
 
 export {
   Header,
@@ -30,4 +31,5 @@ export {
   RelatedProducts,
   Comments,
   Categories,
+  Filter,
 };

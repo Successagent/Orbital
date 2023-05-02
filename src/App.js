@@ -18,6 +18,9 @@ import {
   AdminDashboard,
   AdminLogin,
   AdminRegistration,
+  CustomerDetails,
+  Customers,
+  Orders,
   ProductEdit,
 } from "./pages/Admin";
 
@@ -38,6 +41,9 @@ function App() {
       <Route element={<PrivateRoutes />}>
         <Route path="/admin" element={<AdminDashboard />} />
         <Route path="/admin/product/edit/:id" element={<ProductEdit />} />
+        <Route path="/orders" element={<Orders />} />
+        <Route path="/customers" element={<Customers />} />
+        <Route path="/customers/details/:id" element={<CustomerDetails />} />
       </Route>
       <Route path="/admin_login" element={<AdminLogin />} />
       <Route path="/admin_register" element={<AdminRegistration />} />

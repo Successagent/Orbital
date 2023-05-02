@@ -28,7 +28,7 @@ const AdminCreatedProduct = ({ products, loading, setProducts }) => {
     } catch (error) {}
     setIsLoading(false);
   };
-  if (loading || isLoading === true) return <SkeLoading />;
+  if (loading) return <SkeLoading />;
   return (
     <>
       {products &&

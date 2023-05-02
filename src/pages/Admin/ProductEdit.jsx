@@ -1,13 +1,15 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
 import { Footer, Header, PageHero } from "../../components";
-import { Link, useLocation, useParams } from "react-router-dom";
+import { useLocation, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
-import { BsTrash } from "react-icons/bs";
+
 import { useGlobalContext } from "../../context/context";
+import { ToastContainer, toast } from "react-toastify";
 
 const ProductEdit = () => {
   const [modal, setModal] = useState(1);
+  const [loading, setLoading] = useState(false);
   const { hostUrl } = useGlobalContext();
   const [editProduct, setEditProduct] = useState([]);
   let { name, price, quantity, category, desc, sizes, image } = editProduct;
@@ -32,7 +34,12 @@ const ProductEdit = () => {
     }
   };
 
+  const notify = () => {
+    toast("Updated Successfully");
+  };
+
   const handleUpdateProduct = async (data) => {
+    setLoading(true);
     const updatedProduct = data;
     updatedProduct.category = data.category ? data.category : category;
     updatedProduct.name = data.name ? data.name : name;
@@ -49,8 +56,13 @@ const ProductEdit = () => {
         }
       );
       console.log(editedProduct);
+      if (editedProduct.status === 200) {
+        notify();
+        setLoading(false);
+      }
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -144,11 +156,12 @@ const ProductEdit = () => {
               onClick={handleSubmit((e) => handleUpdateProduct(e))}
               id="case-two"
             >
-              Save
+              {loading ? "Loading..." : "Save"}
             </button>
             <button className="btn green" id="case-one" onClick={toggleModal}>
               Close
             </button>
+            <ToastContainer />
           </div>
         </section>
         <section className="admin-card">

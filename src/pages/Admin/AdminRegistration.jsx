@@ -11,6 +11,7 @@ import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
 import { ToastContainer, toast } from "react-toastify";
 import { useState } from "react";
+import AdminHeader from "./AdminHeader";
 
 const schema = yup.object().shape({
   firstName: yup.string().required(),
@@ -72,7 +73,7 @@ const AdminRegistration = () => {
   return (
     <>
       <div className="register-page">
-        <Header pathname={pathname} />
+        <AdminHeader pathname={pathname} />
         <PageHero page_title={"Admin Registration"} />
 
         <div className="register-form">

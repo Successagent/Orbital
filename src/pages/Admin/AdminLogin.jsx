@@ -11,6 +11,7 @@ import { useGlobalContext } from "../../context/context";
 import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
+import AdminHeader from "./AdminHeader";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -64,7 +65,7 @@ const AdminLogin = () => {
 
   return (
     <>
-      <Header pathname={pathname} />
+      <AdminHeader pathname={pathname} />
       <PageHero page_title="Admin Login" />
       <div className="register-form login-form">
         <section className="support-form-section">
