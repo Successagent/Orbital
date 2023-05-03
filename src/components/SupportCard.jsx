@@ -9,29 +9,22 @@ const SupportCard = () => {
       <div>
         <BiSupport />
         <div>
-          <h3>Support 24/7</h3>
-          <p>Delicated 24/7 support</p>
-        </div>
-      </div>
-      <div>
-        <BsArrowReturnRight />
-        <div>
-          <h3>Support 24/7</h3>
+          <h3>Support </h3>
           <p>Delicated 24/7 support</p>
         </div>
       </div>
       <div>
         <BsCreditCard2Back />
         <div>
-          <h3>Support 24/7</h3>
-          <p>Delicated 24/7 support</p>
+          <h3>Payments</h3>
+          <p>All your payments are securely processed</p>
         </div>
       </div>
       <div>
         <MdOutlineLocalShipping />
         <div>
-          <h3>Support 24/7</h3>
-          <p>Delicated 24/7 support</p>
+          <h3>Shipping</h3>
+          <p>Free shpping to all orders in Lagos</p>
         </div>
       </div>
     </div>

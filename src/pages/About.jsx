@@ -54,15 +54,16 @@ const About = () => {
             <img src={AboutImageTwo} alt="" />
           </div>
           <div>
-            <h1>Elehaus Story, We Craft Awesome With Great Experiences.</h1>
-
+            <h1> Welcome to Orbital Clothing.</h1>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmo tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minimo veniam, quis nostrud exercitation ullamco laboris nisi
-              ut aliquip ex eatrl commodo consequat. Duis aute irure dolor in
-              reprehenderit in voluptat velit esse cillum dolore eu fugiat nulla
-              pariatur.
+              Welcome to our Orbital Clothing website, where we provide unique
+              and stylish clothing designed for those who are passionate about
+              looking exquisite. Our collection of apparel is perfect for anyone
+              who wants to show their love for the cosmos and express their
+              individuality. Our product line features a range of clothing items
+              that are comfortable, durable, and fashionable. From t-shirts and
+              hoodies to jackets and hats, we offer a variety of options that
+              are perfect for everyday wear or special occasions.
             </p>
             <Link to={"/contact"}>
               <Button title="Contact Us" icon={<AiOutlineArrowRight />} />

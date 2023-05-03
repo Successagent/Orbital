@@ -1,47 +1,34 @@
 import React from "react";
-import Button from "./Button";
+
 import { AiOutlineArrowRight } from "react-icons/ai";
 import { Link } from "react-router-dom";
+import { useGlobalContext } from "../context/context";
 
-const ProductsBanner = ({ sale_text, name_text }) => {
+const ProductsBanner = () => {
+  const { products } = useGlobalContext();
+  const bannerProducts = products.slice(3, 6);
+
   return (
     <div className="intro-products">
-      <div>
-        <div className="intro-products-text-con">
-          <p>{sale_text}</p>
-          <h2>{name_text}</h2>
-          <Link to="/shop">
-            <button className="btn">
-              Shop Now <AiOutlineArrowRight />
-            </button>
-          </Link>
+      {bannerProducts.map((item, idx) => (
+        <div key={idx}>
+          <div className="intro-products-text-con">
+            <p>{item.name}</p>
+            <h2>{item.desc}</h2>
+            <Link to={`/products/${item._id}`}>
+              <button className="btn">
+                Shop Now <AiOutlineArrowRight />
+              </button>
+            </Link>
+          </div>
+          <div
+            style={{
+              backgroundImage: `url(${item.image[0].url})`,
+            }}
+            className="bg"
+          ></div>
         </div>
-        <div className="bg"></div>
-      </div>
-      <div>
-        <div className="intro-products-text-con">
-          <p>{sale_text}</p>
-          <h2>{name_text}</h2>
-          <Link to="/shop">
-            <button className="btn">
-              Shop Now <AiOutlineArrowRight />
-            </button>
-          </Link>
-        </div>
-        <div className="bg"></div>
-      </div>
-      <div>
-        <div className="intro-products-text-con">
-          <p>{sale_text}</p>
-          <h2>{name_text}</h2>
-          <Link to="/shop">
-            <button className="btn">
-              Shop Now <AiOutlineArrowRight />
-            </button>
-          </Link>
-        </div>
-        <div className="bg"></div>
-      </div>
+      ))}
     </div>
   );
 };

@@ -83,26 +83,29 @@ const Contact = () => {
                 <GoLocation />
               </div>
               <div>
-                <h3>Head Office</h3>
-                <p>Your address here 54/X, New Down City</p>
+                <h3>Location</h3>
+                <p>
+                  Yenagoa, Bayelsa State No 533 Melford Okilo Way Opposite
+                  Zenith Bank Yenizugene
+                </p>
               </div>
             </div>
             <div className="location-details-con">
               <div className="location-icons-con">
-                <GoLocation />
+                <FiPhoneCall />
               </div>
               <div>
-                <h3>Head Office</h3>
-                <p>Your address here 54/X, New Down City</p>
+                <h3>Contact</h3>
+                <p>+2348068047561</p>
               </div>
             </div>
             <div className="location-details-con">
               <div className="location-icons-con">
-                <GoLocation />
+                <AiOutlineMail />
               </div>
               <div>
-                <h3>Head Office</h3>
-                <p>Your address here 54/X, New Down City</p>
+                <h3>Email</h3>
+                <p>support@orbital.com</p>
               </div>
             </div>
           </div>

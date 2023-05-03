@@ -1,51 +1,28 @@
 import reviewLogo from "../assets/client1.webp";
 export const reviews = [
   {
-    message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
+    message: `I recently purchased a beautiful designer dress from this luxury fashion store and I couldn't be happier! The quality of the fabric and the attention to details in the are impeccable.`,
     title: "Chairman",
     name: "Merida Swan",
     icon: reviewLogo,
   },
   {
-    message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-    title: "Chairman",
-    name: "Merida Swan",
+    message: `had a fantastic experience shopping at this luxury fashion store. The selection of high-end fashion brands was amazing, and the staff were knowledgeable and attentive.
+    `,
+    title: "Developer",
+    name: "Beauty",
     icon: reviewLogo,
   },
   {
-    message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
+    message: `This luxury fashion store is truly top-notch. The atmosphere is elegant and refined, and the staff are friendly and accommodating. .`,
     title: "Chairman",
-    name: "Merida Swan",
+    name: "Mary",
     icon: reviewLogo,
   },
   {
-    message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-    title: "Chairman",
-    name: "Merida Swan",
-    icon: reviewLogo,
-  },
-  {
-    message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-    title: "Chairman",
-    name: "Merida Swan",
-    icon: reviewLogo,
-  },
-  {
-    message: `Lorem ipsum dolor sit amet consectetur adipisicing elit. Magni,
-  fugit. Commodi illo delectus, cupiditate atque hic non vero
-  doloremque illum.`,
-    title: "Chairman",
-    name: "Merida Swan",
+    message: `I've shopped at many luxury fashion stores, but this one stands out for its exceptional service and exquisite selection of clothing and accessories. `,
+    title: "Designer",
+    name: "Betty",
     icon: reviewLogo,
   },
 ];

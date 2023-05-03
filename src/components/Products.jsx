@@ -16,14 +16,14 @@ const Products = ({ h2_title, pathname }) => {
   return (
     <>
       <div className="product-sect">
-        <div className="product-hero-con" data-visible={pathname}>
+        {/* <div className="product-hero-con" data-visible={pathname}>
           <h2>{h2_title}</h2>
           <div>
             <p id="polo-shirts">Polo Shirts</p>
             <p id="t-shirts">T-Shirts</p>
             <p id="long-shirts">Long Shirts</p>
           </div>
-        </div>
+        </div> */}
         <div className="product-con">
           {products.map((product, idx) => (
             <div key={idx} className="product-item">

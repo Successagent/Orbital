@@ -1,13 +1,8 @@
 import React, { useState } from "react";
-import { useLocation } from "react-router-dom";
+import { Link, useLocation } from "react-router-dom";
 import clothes from "../assets/pexels-gary-barnes-6248683.jpg";
 
-import {
-  AiOutlineArrowRight,
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-  AiFillStar,
-} from "react-icons/ai";
+import { AiOutlineArrowRight } from "react-icons/ai";
 
 import { MdNavigateNext, MdNavigateBefore } from "react-icons/md";
 import {
@@ -27,10 +22,11 @@ import Loading from "../components/HOCs/Loading";
 import { useGlobalContext } from "../context/context";
 
 const Home = () => {
-  const [date, setDate] = useState(new Date());
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
   const { products } = useGlobalContext();
+
+  console.log(products);
 
   const toggleFlashSales = (e) => {
     switch (e.target.id) {
@@ -70,43 +66,24 @@ const Home = () => {
       <section className="home-hero">
         <Header pathname={pathname} />
         <div className="home-hero-section">
-          <div className="home-hero-item-1">
-            <div className="home-hero-section-text-con">
-              <h2>Tortle Neck Sleeves</h2>
-              <p>A Very Good Looking Tortle Neck Sleeve</p>
-              <Button title="shop now" icon={<AiOutlineArrowRight />} />
+          {products.slice(0, 3).map((item, idx) => (
+            <div key={idx} className={`home-hero-item-${idx + 1}`}>
+              <div className="home-hero-section-text-con">
+                <h2>{item.name}</h2>
+                <p>{item.desc}</p>
+                <Link to={`/products/${item._id}`}>
+                  <Button title={"shop now"} icon={<AiOutlineArrowRight />} />
+                </Link>
+              </div>
+              <div className="home-hero-section-img-con">
+                <img src={item.image[0].url} alt="" />
+              </div>
             </div>
-            <div className="home-hero-section-img-con">
-              <img src={clothes} alt="" />
-            </div>
-          </div>
-          <div className="home-hero-item-2">
-            <div className="home-hero-section-text-con">
-              <h2>Tortle Neck Sleeves</h2>
-              <p>A Very Good Looking Tortle Neck Sleeve</p>
-              <Button title="shop now" icon={<AiOutlineArrowRight />} />
-            </div>
-            <div className="home-hero-section-img-con">
-              <img src={clothes} alt="" />
-            </div>
-          </div>
-          <div className="home-hero-item-3">
-            <div className="home-hero-section-text-con">
-              <h2>Tortle Neck Sleeves</h2>
-              <p>A Very Good Looking Tortle Neck Sleeve</p>
-              <Button title="shop now" icon={<AiOutlineArrowRight />} />
-            </div>
-            <div className="home-hero-section-img-con">
-              <img src={clothes} alt="" />
-            </div>
-          </div>
+          ))}
         </div>
         <SupportCard />
         <Products h2_title="New Top Sales!" products={products} />
-        <ProductsBanner
-          sale_text={"Sparing Sales Coming"}
-          name_text={"A Good Quality T-Shirt"}
-        />
+        <ProductsBanner />
         <div className="flash-sales-con">
           <div className="flash-sales-item-one">
             <div className="flash-sales-item-one-hero">
