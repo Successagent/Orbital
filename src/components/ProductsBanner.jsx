@@ -14,7 +14,7 @@ const ProductsBanner = () => {
         <div key={idx}>
           <div className="intro-products-text-con">
             <p>{item.name}</p>
-            <h2>{item.desc}</h2>
+            <h2>{item.shortDesc}</h2>
             <Link to={`/products/${item._id}`}>
               <button className="btn">
                 Shop Now <AiOutlineArrowRight />
@@ -23,7 +23,7 @@ const ProductsBanner = () => {
           </div>
           <div
             style={{
-              backgroundImage: `url(${item.image[0].url})`,
+              backgroundImage: `url(${item.image[2].url})`,
             }}
             className="bg"
           ></div>

@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { Footer, Newsletter, PageHero } from "../../components";
+import { Footer, PageHero } from "../../components";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
@@ -22,6 +22,7 @@ const AdminDashboard = () => {
   const [formData, setFormData] = useState({
     productName: "",
     description: "",
+    shortDesc: "",
     sizes: [],
     images: [],
     price: "",
@@ -63,6 +64,7 @@ const AdminDashboard = () => {
     const newProductData = new FormData();
     newProductData.append("name", formData.productName);
     newProductData.append("desc", formData.description);
+    newProductData.append("shortDesc", formData.shortDesc);
     newProductData.append("sizes", sizesArray);
     for (let i = 0; i < formData.images.length; i++) {
       newProductData.append("image", formData.images[i]);
@@ -143,6 +145,15 @@ const AdminDashboard = () => {
                   name="productName"
                   type="text"
                   id="productNname"
+                  onChange={handleChange}
+                />
+              </div>
+              <div className="admin-hero-main-item admin-hero-main-item-2">
+                <h3>Brief Description</h3>
+                <input
+                  name="shortDesc"
+                  type="text"
+                  id="shortDesc"
                   onChange={handleChange}
                 />
               </div>
@@ -228,6 +239,7 @@ const AdminDashboard = () => {
               loading={loading}
               setProducts={setProducts}
             />
+            <ToastContainer />
           </section>
         </>
       )}

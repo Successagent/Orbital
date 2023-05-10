@@ -110,7 +110,7 @@ const SingleProduct = () => {
           <div className="single-product-details-con">
             <h2>{index?.name}</h2>
             <h3>
-              N{index?.price} - <span>N260.00</span>
+              ₦{index?.price} - <span>₦260.00</span>
             </h3>
             <div className="single-product-review-con">
               <div className="product-rate-con">
@@ -120,11 +120,7 @@ const SingleProduct = () => {
               </div>
               <p>(1 Review)</p>
             </div>
-            <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmo tempor incididunt ut labore et dolore magna aliqua. Ut enim
-              ad minimo veniam, quis nostrud exercitation ullamco laboris nisi.
-            </p>
+            <p>{index.desc}</p>
             <div className="single-product-btn-con">
               <button
                 className="single-product-btn"

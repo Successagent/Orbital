@@ -14,6 +14,7 @@ import RelatedProducts from "./RelatedProducts";
 import Comments from "./Comments";
 import Categories from "./Categories";
 import Filter from "./Filter";
+import ProductSkeleton from "./ProductSkeleton";
 
 export {
   Header,
@@ -32,4 +33,5 @@ export {
   Comments,
   Categories,
   Filter,
+  ProductSkeleton,
 };

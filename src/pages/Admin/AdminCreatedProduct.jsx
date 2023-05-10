@@ -5,10 +5,13 @@ import axios from "axios";
 import { Link } from "react-router-dom";
 import SkeLoading from "./SkeLoading";
 import { useGlobalContext } from "../../context/context";
+import { ToastContainer, toast } from "react-toastify";
 
 const AdminCreatedProduct = ({ products, loading, setProducts }) => {
   let accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const { hostUrl } = useGlobalContext();
+
+  const notify = () => toast("Product Deleted");
 
   const [isLoading, setIsLoading] = useState(false);
 
@@ -23,6 +26,7 @@ const AdminCreatedProduct = ({ products, loading, setProducts }) => {
       );
 
       if (removeProduct.status === 200) {
+        notify();
         setProducts(products.filter((item) => item._id !== id));
       }
     } catch (error) {}

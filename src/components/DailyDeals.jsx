@@ -72,7 +72,7 @@ const DailyDeals = ({ dealsProducts, index }) => {
                 {item.image && (
                   <img
                     className="flash-sales-item-one-img"
-                    src={item.image[0].url}
+                    src={item.image[3].url}
                     alt=""
                   />
                 )}

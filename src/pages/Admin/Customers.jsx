@@ -8,12 +8,16 @@ import deleteLogo from "../../assets/delete.svg";
 import profile from "../../assets/prof.svg";
 import axios from "axios";
 import { useGlobalContext } from "../../context/context";
+import { ToastContainer, toast } from "react-toastify";
 
 const Customers = () => {
   const [allCustomers, setAllCustomers] = useState([]);
   const { hostUrl } = useGlobalContext();
   const accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const { pathname } = useLocation();
+
+  const notify = () => toast("User Deleted");
+
   const getAllCustomers = async () => {
     try {
       const allCustomers = await axios.get(`${hostUrl}/api/users`, {
@@ -32,6 +36,7 @@ const Customers = () => {
         headers: { token: accessToken },
       });
       if (removeCustomer.status === 200) {
+        notify();
         getAllCustomers();
       }
     } catch (error) {
@@ -98,6 +103,7 @@ const Customers = () => {
           </div>
         ))}
       </section>
+      <ToastContainer />
       <Footer />
     </section>
   );

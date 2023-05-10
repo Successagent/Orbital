@@ -480,6 +480,12 @@ footer .link::after {
   flex-direction: column;
 }
 
+.product_skeleton_container {
+  display: flex;
+  padding: 10px;
+  padding-bottom: 20px;
+}
+
 .product-item img {
   transition: all ease-in-out 500ms;
 }
@@ -2141,6 +2147,17 @@ textarea {
   align-items: center;
   gap: 80px;
 }
+
+.shopping-cart-main .single-product-btn:hover {
+  background-color: white !important;
+}
+
+.shopping-cart-main .single-product-btn {
+  outline-color: #1b9abd;
+  color: #1b9abd;
+}
+
+
 
 .subtotal-con svg {
   color: red;

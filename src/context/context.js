@@ -6,9 +6,10 @@ const AppContext = React.createContext();
 
 const AppProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false);
-  const hostUrl = "https://orbital-api.onrender.com";
+  const hostUrl = "http://localhost:5000";
   const localStorageCart = JSON.parse(localStorage.getItem("cart") || "[]");
   const [cart, setCart] = useState(localStorageCart);
+  const [loading, setLoading] = useState(false);
   const [department, setDepartment] = useState(false);
   const [activePage, setActivePage] = useState(1);
   const [products, setProducts] = useState(() => {
@@ -22,14 +23,21 @@ const AppProvider = ({ children }) => {
   const deleteNotification = () => toast("Item successfully Deleted");
 
   const getCreatedProduct = async () => {
+    setLoading(true);
     try {
       const newProducts = await axios.get(`${hostUrl}/api/product`);
-      setProducts(newProducts.data);
-      sessionStorage.setItem(
-        `createdProducts`,
-        JSON.stringify(newProducts.data)
-      );
+      if (newProducts.status === 200) {
+        setLoading(false);
+        setProducts(newProducts.data);
+        localStorage.setItem("products", JSON.stringify(newProducts.data));
+        sessionStorage.setItem(
+          `createdProducts`,
+          JSON.stringify(newProducts.data)
+        );
+      }
+      console.log(newProducts);
     } catch (error) {
+      setLoading(false);
       console.log(error);
     }
   };
@@ -96,6 +104,7 @@ const AppProvider = ({ children }) => {
         activePage,
         setActivePage,
         products,
+        loading,
         hostUrl,
       }}
     >

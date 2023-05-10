@@ -1,6 +1,5 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
-import clothes from "../assets/pexels-gary-barnes-6248683.jpg";
 
 import { AiOutlineArrowRight } from "react-icons/ai";
 
@@ -25,8 +24,6 @@ const Home = () => {
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
   const { products } = useGlobalContext();
-
-  console.log(products);
 
   const toggleFlashSales = (e) => {
     switch (e.target.id) {
@@ -70,7 +67,7 @@ const Home = () => {
             <div key={idx} className={`home-hero-item-${idx + 1}`}>
               <div className="home-hero-section-text-con">
                 <h2>{item.name}</h2>
-                <p>{item.desc}</p>
+                <p>{item.shortDesc}</p>
                 <Link to={`/products/${item._id}`}>
                   <Button title={"shop now"} icon={<AiOutlineArrowRight />} />
                 </Link>

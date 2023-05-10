@@ -80,7 +80,7 @@ const Shop = () => {
                 </div>
                 <div className="product-item-two-con">
                   <p className="product-name-text">{product.name}</p>
-                  <h3 className="product-price">${product.price}</h3>
+                  <h3 className="product-price">₦{product.price}</h3>
                   <div className="product-rate-con">
                     <AiFillStar />
                     <AiFillStar />
