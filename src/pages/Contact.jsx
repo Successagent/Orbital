@@ -11,13 +11,24 @@ import {
 import { FaUserAlt } from "react-icons/fa";
 import { GoLocation } from "react-icons/go";
 import { FiPhoneCall } from "react-icons/fi";
-import { AiOutlineArrowRight, AiOutlineMail } from "react-icons/ai";
+import {
+  AiOutlineArrowRight,
+  AiOutlineMail,
+  AiOutlineInstagram,
+  AiOutlineFacebook,
+  AiOutlineTwitter,
+  AiOutlineWhatsApp,
+} from "react-icons/ai";
 import Loading from "../components/HOCs/Loading";
 import { useForm } from "react-hook-form";
 import { useGlobalContext } from "../context/context";
+import { MdOutlineMediation } from "react-icons/md";
+import axios from "axios";
+import { ToastContainer, toast } from "react-toastify";
 
 const Contact = () => {
   const { pathname } = useLocation();
+  const [loading, setLoading] = useState(false);
   const [red, setRed] = useState(0);
   const [focus, setFocus] = useState(0);
   const { hostUrl } = useGlobalContext();
@@ -40,6 +51,10 @@ const Contact = () => {
     }
   };
 
+  const notify = () => {
+    toast("Contact Sent");
+  };
+
   const changeFocus = (e) => {
     if (e.target.id == 1) {
       setFocus(1);
@@ -53,16 +68,17 @@ const Contact = () => {
   };
 
   const handleFormSubmit = async (data) => {
+    setLoading(true);
     try {
-      const response = await fetch(`${hostUrl}/api/contact`, {
-        method: "POST",
-        headers: { "Content-Type": "application/json" },
-        body: JSON.stringify(data),
-      });
-      const resData = await response.json();
+      const resData = await axios.post(`${hostUrl}/api/contact`, data);
+      if (resData.status === 200) {
+        setLoading(false);
+        notify();
+      }
       console.log(resData);
     } catch (error) {
       console.log(error);
+      setLoading(false);
     }
   };
 
@@ -106,6 +122,37 @@ const Contact = () => {
               <div>
                 <h3>Email</h3>
                 <p>support@orbital.com</p>
+              </div>
+            </div>
+            <div className="location-details-con">
+              <div className="location-icons-con">
+                <MdOutlineMediation />
+              </div>
+              <div>
+                <h3>Social</h3>
+                <div className="social_flex">
+                  <div className="contact_social_icons">
+                    <a
+                      href="https://www.instagram.com/orbital_clothings/"
+                      target="_blank"
+                      style={{ color: "white" }}
+                    >
+                      <AiOutlineInstagram />
+                    </a>
+                  </div>
+                  <div className="contact_social_icons">
+                    <a
+                      style={{ color: "white" }}
+                      href="https://www.facebook.com/Dr.ORBITAL?mibextid=ZbWKwL"
+                      target="_blank"
+                    >
+                      <AiOutlineFacebook />
+                    </a>
+                  </div>
+                  <div className="contact_social_icons">
+                    <AiOutlineWhatsApp />
+                  </div>
+                </div>
               </div>
             </div>
           </div>
@@ -182,13 +229,17 @@ const Contact = () => {
                 id="4"
                 onFocus={changeFocus}
               ></textarea>
-              <Button title="Submit Now" icon={<AiOutlineArrowRight />} />
+              <Button
+                title={loading ? "Loading..." : "Submit Now"}
+                icon={<AiOutlineArrowRight />}
+              />
             </form>
           </div>
         </div>
         <Map />
       </section>
       <Newsletter pathname={pathname} />
+      <ToastContainer />
       <Footer />
     </>
   );

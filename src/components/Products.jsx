@@ -1,4 +1,4 @@
-import React from "react";
+import React, { useState } from "react";
 
 import { useGlobalContext } from "../context/context";
 import {
@@ -13,6 +13,55 @@ import ProductSkeleton from "./ProductSkeleton";
 
 const Products = ({ h2_title, pathname }) => {
   const { addToCart, products, loading } = useGlobalContext();
+  const [active, setActive] = useState("");
+  let shoes = products.filter((product) => product.category === "Shoes");
+  let joggers = products.filter((product) => product.category === "Joggers");
+  let shirts = products.filter((product) => product.category === "Clothes");
+  let watches = products.filter((product) => product.category === "Watch");
+  let jewelries = products.filter(
+    (product) => product.category === "Jewelries"
+  );
+  let shorts = products.filter((product) => product.category === "Shorts");
+  let trousers = products.filter((product) => product.category === "Trousers");
+  let cosmetics = products.filter(
+    (product) => product.category === "Cosmetics"
+  );
+  let bags = products.filter((product) => product.category === "Bags");
+
+  const filterProducts = (e) => {
+    if (e.target.innerText == "Trousers") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Shorts") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Shoes") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Bags") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Watch") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Joggers") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Shirts") {
+      setActive("Clothes");
+    }
+    if (e.target.innerText == "Jewelries") {
+      setActive(e.target.innerText);
+    }
+    if (e.target.innerText == "Cosmetics") {
+      setActive(e.target.innerText);
+    } else if (e.target.innerText === "All") {
+      setActive("");
+    }
+    console.log(active);
+  };
+
+  console.log(trousers);
 
   return (
     <>
@@ -20,22 +69,44 @@ const Products = ({ h2_title, pathname }) => {
         <div className="product-hero-con" data-visible={pathname}>
           <h2>{h2_title}</h2>
           <div>
-            <p>Trousers</p>
-            <p>Shoes</p>
-            <p>Shirts</p>
-            <p>Bags</p>
-            <p>Jewelries</p>
-            <p>Cosmetics</p>
-            <p>Watch</p>
-            <p>Shorts</p>
-            <p>Joggers</p>
+            <p onClick={(e) => filterProducts(e)}>Trousers</p>
+            <p onClick={(e) => filterProducts(e)}>Shoes</p>
+            <p onClick={(e) => filterProducts(e)}>Shirts</p>
+            <p onClick={(e) => filterProducts(e)}>Bags</p>
+            <p onClick={(e) => filterProducts(e)}>Jewelries</p>
+            <p onClick={(e) => filterProducts(e)}>Cosmetics</p>
+            <p onClick={(e) => filterProducts(e)}>Watch</p>
+            <p onClick={(e) => filterProducts(e)}>Shorts</p>
+            <p onClick={(e) => filterProducts(e)}>Joggers</p>
+            <p onClick={(e) => filterProducts(e)}>All</p>
           </div>
         </div>
         <div className="product-con">
           {loading ? (
             <ProductSkeleton />
           ) : (
-            products.map((product, idx) => (
+            (active === "Trousers"
+              ? trousers
+              : active === "Shoes"
+              ? shoes
+              : active === "Clothes"
+              ? shirts
+              : active === "Bags"
+              ? bags
+              : active === "Jewelries"
+              ? jewelries
+              : active === "Cosmetics"
+              ? cosmetics
+              : active === "Watch"
+              ? watches
+              : active === "Shorts"
+              ? shorts
+              : active === "Joggers"
+              ? joggers
+              : active === ""
+              ? products
+              : ""
+            ).map((product, idx) => (
               <div key={idx} className="product-item">
                 <button
                   className={`status ₦

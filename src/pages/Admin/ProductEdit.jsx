@@ -1,8 +1,9 @@
 import React, { useEffect, useState } from "react";
 import axios from "axios";
-import { Footer, Header, PageHero } from "../../components";
+import { Footer, PageHero } from "../../components";
 import { useLocation, useParams } from "react-router-dom";
 import { useForm } from "react-hook-form";
+import AdminHeader from "./AdminHeader";
 
 import { useGlobalContext } from "../../context/context";
 import { ToastContainer, toast } from "react-toastify";
@@ -87,14 +88,14 @@ const ProductEdit = () => {
 
   return (
     <>
-      <Header pathname={pathname} slug={id} />
+      <AdminHeader pathname={pathname} slug={id} />
       <PageHero page_title={"Admin Product Detail"} />
       <div className="admin-card">
         <section className="edit-product">
           <div className="admin-hero-header">
             <h2>Edit Product</h2>
             <button className="btn" id="case-one" onClick={toggleModal}>
-              Edit
+              Edit Product
             </button>
           </div>
           <div

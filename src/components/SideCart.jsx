@@ -1,11 +1,11 @@
 import React, { useState } from "react";
 import { Link } from "react-router-dom";
 import { FaTimes } from "react-icons/fa";
-import { PaystackButton } from "react-paystack";
+
 import { useGlobalContext } from "../context/context";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
-
+import PaystackPop from "@paystack/inline-js";
 import Loading from "./HOCs/Loading";
 
 const SideCart = ({ openCart, toggleCart }) => {
@@ -13,23 +13,30 @@ const SideCart = ({ openCart, toggleCart }) => {
   const token = JSON.parse(sessionStorage.getItem("token"));
 
   const notify = () =>
-    toast("Thanks for doing business with us! Come back soon!!");
+    toast("Thanks for doing business with us! Payment Successful!");
+
+  const failednotification = () => toast("Transaction Cancelled");
 
   const totalAmount = getTotalQuantity();
-  const publicKey = "pk_test_cfdb751a4bbe79031d2de7788fe8238f107543e6";
+  const key = "pk_test_312e53d43b5bc5ee9d92192b01a9b150cc0f7544";
   const [amount, setAmount] = useState(`${totalAmount * 100}`);
   const [email, setEmail] = useState(token?.email);
   const [name, setName] = useState(`${token?.firstName} ${token?.lastName}`);
-  const componentProps = {
-    email,
-    amount,
-    metadata: {
+
+  const payWithPaystack = () => {
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key,
+      amount,
+      email,
       name,
-    },
-    publicKey,
-    text: "Pay Now",
-    onSuccess: () => notify(),
-    onClose: () => alert("Wait! Don't leave :("),
+      onSuccess: () => {
+        notify();
+      },
+      onClose: () => {
+        failednotification();
+      },
+    });
   };
 
   return (
@@ -56,7 +63,7 @@ const SideCart = ({ openCart, toggleCart }) => {
                 <p>
                   <span>{product.quantity}</span>
                   <span>x</span>
-                  <span>${product.price}</span>
+                  <span>₦{product.price}</span>
                 </p>
               </div>
             </div>
@@ -64,7 +71,7 @@ const SideCart = ({ openCart, toggleCart }) => {
         </div>
         <div className="side-cart-header">
           <h4>Subtotal</h4>
-          <h3>${getTotalQuantity()}</h3>
+          <h3>₦{getTotalQuantity()}</h3>
         </div>
         <div className="cart-btn-con">
           <Link
@@ -74,7 +81,11 @@ const SideCart = ({ openCart, toggleCart }) => {
           >
             View Cart
           </Link>
-          {token && <PaystackButton className="btn" {...componentProps} />}
+          {token && (
+            <button onClick={payWithPaystack} className="btn">
+              Pay Now
+            </button>
+          )}
         </div>
       </div>
       <ToastContainer />

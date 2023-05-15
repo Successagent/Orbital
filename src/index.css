@@ -486,6 +486,26 @@ footer .link::after {
   padding-bottom: 20px;
 }
 
+.social_flex {
+  display: flex;
+  align-items: center;
+  margin-top: 10px;
+  gap: 20px;
+  width: 100%;
+}
+
+.social_flex>div {
+  border-radius: 50%;
+  height: 40px;
+  width: 40px;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  background-color: #1b9abd;
+  color: white;
+  font-size: 18px;
+}
+
 .product-item img {
   transition: all ease-in-out 500ms;
 }

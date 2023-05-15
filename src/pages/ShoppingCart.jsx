@@ -1,6 +1,7 @@
 import React, { useState } from "react";
-import { Link, useLocation } from "react-router-dom";
-import { Button, Footer, Header, Newsletter, PageHero } from "../components";
+import { useLocation } from "react-router-dom";
+import { Footer, Header, Newsletter, PageHero } from "../components";
+
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
@@ -20,7 +21,7 @@ const ShoppingCart = () => {
     toast("Thanks for doing business with us! Come back soon!!");
 
   const totalAmount = getTotalQuantity();
-  const publicKey = "pk_test_cfdb751a4bbe79031d2de7788fe8238f107543e6";
+  const publicKey = "pk_test_312e53d43b5bc5ee9d92192b01a9b150cc0f7544";
   const [amount, setAmount] = useState(`${totalAmount * 100}`);
   const [email, setEmail] = useState(token.email);
   const [name, setName] = useState(`${token.firstName} ${token.lastName}`);
@@ -67,7 +68,7 @@ const ShoppingCart = () => {
                   <p>{product.name}</p>
                 </div>
                 <div className="price-con">
-                  <p>N{product.price}</p>
+                  <p>₦{product.price}</p>
                 </div>
                 <div className="quantity-con">
                   <input
@@ -77,7 +78,7 @@ const ShoppingCart = () => {
                   />
                 </div>
                 <div className="subtotal-con">
-                  <p>N{product.price * product.quantity}</p>
+                  <p>₦{product.price * product.quantity}</p>
                   <FaTrash onClick={() => removeFromCart(product)} />
                 </div>
               </div>
@@ -97,21 +98,21 @@ const ShoppingCart = () => {
             <div className="shopping-cart-total">
               <div className="total-con">
                 <h3>Sub Total</h3>
-                <h3 className="total-price">N{getTotalQuantity()}</h3>
+                <h3 className="total-price">₦{getTotalQuantity()}</h3>
               </div>
               <div>
                 <p>Total</p>
                 <p>
-                  Shipping: <span>N34</span>
+                  Shipping: <span>₦34</span>
                 </p>
                 <p>
-                  Local Pickup: <span>N50</span>
+                  Local Pickup: <span>₦50</span>
                 </p>
               </div>
               <div className="total-con">
                 <h3>Total</h3>
                 <h3 className="total-price">
-                  N{`${getTotalQuantity() + shipping + localFee}`}
+                  ₦{`${getTotalQuantity() + shipping + localFee}`}
                 </h3>
               </div>
               <PaystackButton className="btn" {...componentProps} />
