@@ -81,11 +81,6 @@ const SideCart = ({ openCart, toggleCart }) => {
           >
             View Cart
           </Link>
-          {token && (
-            <button onClick={payWithPaystack} className="btn">
-              Pay Now
-            </button>
-          )}
         </div>
       </div>
       <ToastContainer />

@@ -7,6 +7,7 @@ const AppContext = React.createContext();
 const AppProvider = ({ children }) => {
   const [openCart, setOpenCart] = useState(false);
   const hostUrl = "http://localhost:5000";
+  // const hostUrl = `https://orbital-api.onrender.com`;
   const localStorageCart = JSON.parse(localStorage.getItem("cart") || "[]");
   const [cart, setCart] = useState(localStorageCart);
   const [loading, setLoading] = useState(false);
@@ -35,7 +36,6 @@ const AppProvider = ({ children }) => {
           JSON.stringify(newProducts.data)
         );
       }
-      console.log(newProducts);
     } catch (error) {
       setLoading(false);
       console.log(error);

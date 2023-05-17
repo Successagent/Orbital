@@ -23,7 +23,6 @@ const Customers = () => {
       const allCustomers = await axios.get(`${hostUrl}/api/users`, {
         headers: { token: accessToken },
       });
-      console.log(allCustomers);
       setAllCustomers(allCustomers.data);
     } catch (error) {
       console.log(error);

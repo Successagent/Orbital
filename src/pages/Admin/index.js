@@ -8,6 +8,7 @@ import Customers from "./Customers";
 import Orders from "./Orders";
 import ProductEdit from "./ProductEdit";
 import SkeLoading from "./SkeLoading";
+import UserOrderDetailsView from "./UserOrderDetailsView";
 
 export {
   AdminDashboard,
@@ -20,4 +21,5 @@ export {
   Orders,
   Customers,
   CustomerDetails,
+  UserOrderDetailsView,
 };

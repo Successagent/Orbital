@@ -22,6 +22,7 @@ import {
   Customers,
   Orders,
   ProductEdit,
+  UserOrderDetailsView,
 } from "./pages/Admin";
 
 function App() {
@@ -44,6 +45,7 @@ function App() {
         <Route path="/orders" element={<Orders />} />
         <Route path="/customers" element={<Customers />} />
         <Route path="/customers/details/:id" element={<CustomerDetails />} />
+        <Route path="/orderView/:id" element={<UserOrderDetailsView />} />
       </Route>
       <Route path="/admin_login" element={<AdminLogin />} />
       <Route path="/admin_register" element={<AdminRegistration />} />

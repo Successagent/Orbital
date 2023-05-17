@@ -3,20 +3,21 @@ import AdminHeader from "./AdminHeader";
 import { Footer, PageHero } from "../../components";
 import axios from "axios";
 import { useGlobalContext } from "../../context/context";
-import { useParams } from "react-router-dom";
+import { Link, useParams } from "react-router-dom";
 
 const CustomerDetails = () => {
   const [userDetails, setUserDetails] = useState([]);
+  const [orderDetails, setOrderDetails] = useState([]);
   const { firstName, lastName, phone, email } = userDetails;
   const { hostUrl } = useGlobalContext();
   const accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const { id } = useParams();
+
   const getCustomerDetails = async () => {
     try {
       const customerDetails = await axios.get(`${hostUrl}/api/users/${id}`, {
         headers: { token: accessToken },
       });
-      console.log(customerDetails);
       if (customerDetails.status === 200) {
         setUserDetails(customerDetails.data);
       }
@@ -24,12 +25,15 @@ const CustomerDetails = () => {
       console.log(error);
     }
   };
+
   const getOrderDetails = async () => {
     try {
       const customerDetails = await axios.get(`${hostUrl}/api/order/${id}`, {
         headers: { token: accessToken },
       });
-      console.log(customerDetails);
+      if (customerDetails.status === 200) {
+        setOrderDetails(customerDetails.data);
+      }
     } catch (error) {
       console.log(error);
     }
@@ -71,12 +75,11 @@ const CustomerDetails = () => {
               <div className="order_number">
                 <h3>Order Number</h3>
               </div>
-
               <div className="order_date">
                 <h3>Order Date</h3>
               </div>
               <div className="order_quantiy">
-                <h3> Quantity</h3>
+                <h3>Shipping Fee</h3>
               </div>
               <div className="order_total">
                 <h3> Total</h3>
@@ -84,24 +87,46 @@ const CustomerDetails = () => {
               <div className="order_status">
                 <h3> Status</h3>
               </div>
+              <div className="order_status">
+                <h3>View Details</h3>
+              </div>
             </div>
-            {[1, 3, 4].map((item, idx) => (
+            {orderDetails.map((order, idx) => (
               <div className="order_table_header order_table_body" key={idx}>
                 <div className="order_number">
-                  <p>43434903</p>
+                  <p>{order.paymentIntentId}</p>
                 </div>
                 <div className="order_date">
-                  <p>20 May 2023</p>
+                  <p>{order.createdAt.slice(0, 10)}</p>
                 </div>
                 <div className="order_quantiy">
-                  <p>1</p>
+                  <p>₦{order.Total - order.subTotal}</p>
                 </div>
                 <div className="order_total">
-                  <p>N2,000</p>
+                  <p>₦{order.Total}</p>
                 </div>
                 <div className="order_status">
-                  <p>pending</p>
+                  <button style={{ padding: "10px", cursor: "pointer" }}>
+                    {order.delivery_status === "'Pending"
+                      ? "Pending"
+                      : "Arrived"}
+                  </button>
                 </div>
+                <Link
+                  style={{ display: "block", width: "20%" }}
+                  className="order_edit"
+                  to={`/orderView/${order._id}`}
+                >
+                  <button
+                    style={{
+                      color: "green",
+                      padding: "10px",
+                      cursor: "pointer",
+                    }}
+                  >
+                    {"view details"}
+                  </button>
+                </Link>
               </div>
             ))}
           </section>

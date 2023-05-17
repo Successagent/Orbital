@@ -54,6 +54,8 @@ const AdminLogin = () => {
           "admin",
           JSON.stringify(adminUser.data.accessToken)
         );
+        setLoading(false);
+        sessionStorage.setItem("adminRegister", JSON.stringify(adminUser.data));
         navigate("/admin");
       }
     } catch (error) {

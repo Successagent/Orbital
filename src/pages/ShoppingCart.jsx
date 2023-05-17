@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React, { useEffect, useState } from "react";
 import { useLocation } from "react-router-dom";
 import { Footer, Header, Newsletter, PageHero } from "../components";
 
@@ -8,21 +8,25 @@ import Loading from "../components/HOCs/Loading";
 import { PaystackButton } from "react-paystack";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
+import axios from "axios";
 
 const ShoppingCart = () => {
-  const { cart, setQuantity, removeFromCart, getTotalQuantity } =
+  const { cart, setQuantity, removeFromCart, getTotalQuantity, hostUrl } =
     useGlobalContext();
   const token = JSON.parse(sessionStorage.getItem("token"));
-  const [shipping, setShipping] = useState(50);
-  const [localFee, setLocalFee] = useState(40);
+  const [city, setCity] = useState("");
+  const [address, setAddress] = useState("");
   const { pathname } = useLocation();
+  const [shipping, setShipping] = useState(0);
+  const [tranRef, setTranRef] = useState("");
+  const [customerRef, setCustomerRef] = useState("");
+  const [paymentStatus, setPaymentStatus] = useState("");
 
   const notify = () =>
     toast("Thanks for doing business with us! Come back soon!!");
 
-  const totalAmount = getTotalQuantity();
   const publicKey = "pk_test_312e53d43b5bc5ee9d92192b01a9b150cc0f7544";
-  const [amount, setAmount] = useState(`${totalAmount * 100}`);
+  const [amount, setAmount] = useState("");
   const [email, setEmail] = useState(token.email);
   const [name, setName] = useState(`${token.firstName} ${token.lastName}`);
   const componentProps = {
@@ -33,9 +37,65 @@ const ShoppingCart = () => {
     },
     publicKey,
     text: "Pay Now",
-    onSuccess: () => notify(),
+    onSuccess: (res) => {
+      const data = {};
+      data.userId = token._id;
+      data.customerId = res.reference;
+      data.paymentIntentId = res.transaction;
+      data.products = cart.map((product) => {
+        return {
+          productid: product._id,
+          qty: product.quantity,
+          price: product.price,
+          images: product.image,
+          category: product.category,
+          desc: product.desc,
+          sizes: product.sizes,
+          name: product.name,
+        };
+      });
+      data.subTotal = getTotalQuantity();
+      data.Total = amount / 100;
+      data.address = `${city},${address}`;
+      data.delivery_status = "'Pending";
+      data.payment_status = res.status;
+      console.log(res);
+      sendOrder(data);
+      notify();
+    },
     onClose: () => alert("Wait! Don't leave :("),
   };
+
+  const checkTotalPrice = () => {
+    if (
+      city === "" ||
+      city === "Yenagoa" ||
+      city === "yenagoa" ||
+      city === "Yenago" ||
+      city === "yenago"
+    ) {
+      setShipping(0);
+    } else {
+      setShipping(2000);
+    }
+    setAmount(`${(getTotalQuantity() + shipping) * 100}`);
+  };
+
+  const sendOrder = async (data) => {
+    console.log(data);
+    const res = await axios.post(`${hostUrl}/api/order`, data, {
+      headers: { token: token.accessToken },
+    });
+    console.log(res);
+    try {
+    } catch (error) {
+      console.log(error);
+    }
+  };
+
+  useEffect(() => {
+    checkTotalPrice();
+  }, [city]);
   return (
     <>
       <section className="shopping-cart">
@@ -88,11 +148,16 @@ const ShoppingCart = () => {
         <div className="shopping-cart-calculation">
           <div className="shopping-cart-shipping-con">
             <h3>Shipping Calculation</h3>
-            <input type="text" placeholder="Country" />
-            <input type="text" placeholder="State" />
-            <input type="text" placeholder="City" />
-            <input type="text" placeholder="Postal Code" />
-            <button className="btn">Update</button>
+            <input
+              type="text"
+              placeholder="City"
+              onChange={(e) => setCity(e.target.value)}
+            />
+            <input
+              type="text"
+              placeholder="Address"
+              onChange={(e) => setAddress(e.target.value)}
+            />
           </div>
           <div className="shopping-cart-total-con">
             <div className="shopping-cart-total">
@@ -103,16 +168,14 @@ const ShoppingCart = () => {
               <div>
                 <p>Total</p>
                 <p>
-                  Shipping: <span>₦34</span>
-                </p>
-                <p>
-                  Local Pickup: <span>₦50</span>
+                  Shipping:
+                  <span>₦{shipping}</span>
                 </p>
               </div>
               <div className="total-con">
                 <h3>Total</h3>
                 <h3 className="total-price">
-                  ₦{`${getTotalQuantity() + shipping + localFee}`}
+                  ₦{`${getTotalQuantity() + shipping}`}
                 </h3>
               </div>
               <PaystackButton className="btn" {...componentProps} />
