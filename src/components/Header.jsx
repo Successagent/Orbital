@@ -93,6 +93,7 @@ const Header = ({ pathname, slug }) => {
           <Link to="/about">About</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/orders_view">Order</Link>
         </ul>
         <div className="header-hero-links">
           <div>
@@ -207,6 +208,7 @@ const Header = ({ pathname, slug }) => {
           <Link to="/about">About</Link>
           <Link to="/shop">Shop</Link>
           <Link to="/contact">Contact</Link>
+          <Link to="/orders_view">Order</Link>
           <Link
             onClick={() => sessionStorage.clear("token")}
             to={`${

@@ -12,6 +12,7 @@ import {
   Shop,
   ShoppingCart,
   SingleProduct,
+  UserOrders,
 } from "./pages";
 
 import {
@@ -24,6 +25,7 @@ import {
   ProductEdit,
   UserOrderDetailsView,
 } from "./pages/Admin";
+import UserPrivateRoute from "./utils/UserPrivateRoute";
 
 function App() {
   const { pathname } = useLocation();
@@ -47,6 +49,10 @@ function App() {
         <Route path="/customers/details/:id" element={<CustomerDetails />} />
         <Route path="/orderView/:id" element={<UserOrderDetailsView />} />
       </Route>
+      <Route element={<UserPrivateRoute />}>
+        <Route path="/shopping-cart" element={<ShoppingCart />} />
+        <Route path="/orders_view" element={<UserOrders />} />
+      </Route>
       <Route path="/admin_login" element={<AdminLogin />} />
       <Route path="/admin_register" element={<AdminRegistration />} />
       <Route path="/" element={<Home />} />
@@ -54,7 +60,6 @@ function App() {
       <Route path="/shop" element={<Shop />} />
       <Route path="/products/:id" element={<SingleProduct />} />
       <Route path="/contact" element={<Contact />} />
-      <Route path="/shopping-cart" element={<ShoppingCart />} />
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/forget-password" element={<ForgetPassword />} />

@@ -1,60 +1,26 @@
 import React, { useEffect, useState } from "react";
-import AdminHeader from "./AdminHeader";
-import { Filter, Footer, PageHero } from "../../components";
+import { Filter, Footer, Newsletter, PageHero } from "../components";
 import { Link, useLocation } from "react-router-dom";
-import { useGlobalContext } from "../../context/context";
-import axios from "axios";
-import { ToastContainer, toast } from "react-toastify";
 
-const Orders = () => {
+import axios from "axios";
+import { useGlobalContext } from "../context/context";
+import Header from "../components/Header";
+import { toast } from "react-toastify";
+
+const UserOrders = () => {
   const { pathname } = useLocation();
   const [allOrders, setAllOrders] = useState([]);
 
   const { hostUrl } = useGlobalContext();
-  const accessToken = JSON.parse(sessionStorage.getItem("admin"));
-  const updateNotification = () => toast("Order Updated");
-  const deleteNotification = () => toast("Order Deleted");
+  const user = JSON.parse(sessionStorage.getItem("token"));
 
   const getAllOrders = async () => {
     try {
-      const allOrders = await axios.get(`${hostUrl}/api/order`, {
-        headers: { token: accessToken },
+      const allOrders = await axios.get(`${hostUrl}/api/order/${user._id}`, {
+        headers: { token: user.accessToken },
       });
+      console.log(allOrders);
       setAllOrders(allOrders.data);
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const editOrderStatus = async (id) => {
-    try {
-      const res = await axios.put(
-        `${hostUrl}/api/order/${id}`,
-        {
-          delivery_status: "Approved",
-        },
-        {
-          headers: { token: accessToken },
-        }
-      );
-      if (res.status === 200) {
-        updateNotification();
-        getAllOrders();
-      }
-    } catch (error) {
-      console.log(error);
-    }
-  };
-
-  const deleteOrder = async (id) => {
-    try {
-      const res = await axios.delete(`${hostUrl}/api/order/${id}`, {
-        headers: { token: accessToken },
-      });
-      if (res.status === 200) {
-        deleteNotification();
-        getAllOrders();
-      }
     } catch (error) {
       console.log(error);
     }
@@ -66,7 +32,7 @@ const Orders = () => {
 
   return (
     <section className="orders">
-      <AdminHeader pathname={pathname} />
+      <Header pathname={pathname} />
       <PageHero page_title={"Orders"} />
       <Filter placeholder={"Search order number"} />
       <section className="order_table">
@@ -89,14 +55,8 @@ const Orders = () => {
           <div className="order_status">
             <h3>Order Status</h3>
           </div>
-          <div className="order_edit">
-            <h3>Edit Order</h3>
-          </div>
           <div className="order_details">
             <h3>View Details</h3>
-          </div>
-          <div className="order_details">
-            <h3>Delete Order</h3>
           </div>
         </div>
         {allOrders.map((order, idx) => {
@@ -122,14 +82,6 @@ const Orders = () => {
                   {order.delivery_status === "'Pending" ? "Pending" : "Arrived"}
                 </button>
               </div>
-              <div className="order_edit">
-                <button
-                  onClick={() => editOrderStatus(order._id)}
-                  style={{ color: "blue", padding: "10px", cursor: "pointer" }}
-                >
-                  {"edit status"}
-                </button>
-              </div>
               <Link
                 style={{ display: "block", width: "20%" }}
                 className="order_edit"
@@ -145,22 +97,14 @@ const Orders = () => {
                   {"view details"}
                 </button>
               </Link>
-              <div className="order_edit">
-                <button
-                  onClick={() => deleteOrder(order._id)}
-                  style={{ color: "red", padding: "10px", cursor: "pointer" }}
-                >
-                  {"delete order"}
-                </button>
-              </div>
             </div>
           );
         })}
       </section>
-      <ToastContainer />
+      <Newsletter pathname={pathname} />
       <Footer />
     </section>
   );
 };
 
-export default Orders;
+export default UserOrders;

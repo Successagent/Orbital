@@ -7,6 +7,7 @@ import SingleProduct from "./SingleProduct";
 import Registration from "../pages/Registration";
 import ForgetPassword from "../pages/ForgetPassword";
 import Login from "./Login/Login";
+import UserOrders from "./UserOrder";
 
 export {
   Home,
@@ -18,4 +19,5 @@ export {
   Registration,
   Login,
   ForgetPassword,
+  UserOrders,
 };
