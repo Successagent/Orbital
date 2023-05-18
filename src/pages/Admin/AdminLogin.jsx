@@ -76,7 +76,7 @@ const AdminLogin = () => {
             <div>
               <form
                 className="review-form"
-                onClick={handleSubmit((data) => handleLoginForm(data))}
+                onSubmit={handleSubmit((data) => handleLoginForm(data))}
               >
                 <p>Email Address *</p>
                 <input

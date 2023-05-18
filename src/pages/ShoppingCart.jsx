@@ -5,7 +5,7 @@ import { Footer, Header, Newsletter, PageHero } from "../components";
 import { FaTrash } from "react-icons/fa";
 import { useGlobalContext } from "../context/context";
 import Loading from "../components/HOCs/Loading";
-import { PaystackButton } from "react-paystack";
+import PaystackPop from "@paystack/inline-js";
 import { toast, ToastContainer } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import axios from "axios";
@@ -21,47 +21,62 @@ const ShoppingCart = () => {
 
   const notify = () =>
     toast("Thanks for doing business with us! Come back soon!!");
+  const failednotification = () => toast("Transaction Cancelled");
 
-  const publicKey = "pk_test_312e53d43b5bc5ee9d92192b01a9b150cc0f7544";
+  const key = "pk_test_312e53d43b5bc5ee9d92192b01a9b150cc0f7544";
   const [amount, setAmount] = useState("");
   const [email, setEmail] = useState(token.email);
   const [name, setName] = useState(`${token.firstName} ${token.lastName}`);
-  const componentProps = {
-    email,
-    amount,
-    metadata: {
+  // const componentProps = {
+  //   email,
+  //   amount,
+  //   metadata: {
+  //     name,
+  //   },
+  //   publicKey,
+  //   text: "Pay Now",
+  //   onSuccess: (res) => {},
+  //   onClose: () => alert("Wait! Don't leave :("),
+  // };
+
+  const payWithPaystack = () => {
+    const paystack = new PaystackPop();
+    paystack.newTransaction({
+      key,
+      amount,
+      email,
       name,
-    },
-    publicKey,
-    text: "Pay Now",
-    onSuccess: (res) => {
-      const data = {};
-      data.userId = token._id;
-      data.name = token.firstName;
-      data.customerId = res.reference;
-      data.paymentIntentId = res.transaction;
-      data.products = cart.map((product) => {
-        return {
-          productid: product._id,
-          qty: product.quantity,
-          price: product.price,
-          images: product.image,
-          category: product.category,
-          desc: product.desc,
-          sizes: product.sizes,
-          name: product.name,
-        };
-      });
-      data.subTotal = getTotalQuantity();
-      data.Total = amount / 100;
-      data.address = `${city}, ${address}`;
-      data.delivery_status = "'Pending";
-      data.payment_status = res.status;
-      sendOrder(data);
-      notify();
-      console.log(res);
-    },
-    onClose: () => alert("Wait! Don't leave :("),
+      onSuccess: (res) => {
+        const data = {};
+        data.userId = token._id;
+        data.name = token.firstName;
+        data.customerId = res.reference;
+        data.paymentIntentId = res.transaction;
+        data.products = cart.map((product) => {
+          return {
+            productid: product._id,
+            qty: product.quantity,
+            price: product.price,
+            images: product.image,
+            category: product.category,
+            desc: product.desc,
+            sizes: product.sizes,
+            name: product.name,
+          };
+        });
+        data.subTotal = getTotalQuantity();
+        data.Total = amount / 100;
+        data.address = `${city}, ${address}`;
+        data.delivery_status = "'Pending";
+        data.payment_status = res.status;
+        sendOrder(data);
+        console.log(res);
+        notify();
+      },
+      onClose: () => {
+        failednotification();
+      },
+    });
   };
 
   const checkTotalPrice = () => {
@@ -176,7 +191,9 @@ const ShoppingCart = () => {
                   ₦{`${getTotalQuantity() + shipping}`}
                 </h3>
               </div>
-              <PaystackButton className="btn" {...componentProps} />
+              <button className="btn" onClick={payWithPaystack}>
+                Pay Now
+              </button>
             </div>
           </div>
         </div>
