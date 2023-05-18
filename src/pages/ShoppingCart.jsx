@@ -57,7 +57,7 @@ const ShoppingCart = () => {
       });
       data.subTotal = getTotalQuantity();
       data.Total = amount / 100;
-      data.address = `${city},${address}`;
+      data.address = `${city}, ${address}`;
       data.delivery_status = "'Pending";
       data.payment_status = res.status;
       console.log(res);
