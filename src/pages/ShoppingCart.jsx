@@ -18,9 +18,6 @@ const ShoppingCart = () => {
   const [address, setAddress] = useState("");
   const { pathname } = useLocation();
   const [shipping, setShipping] = useState(0);
-  const [tranRef, setTranRef] = useState("");
-  const [customerRef, setCustomerRef] = useState("");
-  const [paymentStatus, setPaymentStatus] = useState("");
 
   const notify = () =>
     toast("Thanks for doing business with us! Come back soon!!");
@@ -60,9 +57,9 @@ const ShoppingCart = () => {
       data.address = `${city}, ${address}`;
       data.delivery_status = "'Pending";
       data.payment_status = res.status;
-      console.log(res);
       sendOrder(data);
       notify();
+      console.log(res);
     },
     onClose: () => alert("Wait! Don't leave :("),
   };
