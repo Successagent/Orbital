@@ -11,6 +11,7 @@ const UserOrderDetailsView = () => {
   const [order, setOrder] = useState([]);
   const accessToken = JSON.parse(sessionStorage.getItem("admin"));
   const { id } = useParams();
+  const [time, setTime] = useState({});
 
   const index = order[0];
 
@@ -31,7 +32,8 @@ const UserOrderDetailsView = () => {
     }
   };
 
-  const getAllCustomers = async () => {
+  const getAllCustomers = async (time) => {
+    setTime(time);
     try {
       const customerDetails = await axios.get(`${hostUrl}/api/users`, {
         headers: { token: accessToken },
@@ -49,14 +51,7 @@ const UserOrderDetailsView = () => {
     getAllCustomers();
   }, []);
 
-  let updatedTime = index?.createdAt;
-  let timeStamp = new Date(updatedTime).getTime();
-  let day = new Date(timeStamp).getDate();
-  let year = new Date(timeStamp).getFullYear();
-  let month = new Date(timeStamp).getMonth() + 1;
-  let arrivedTime = ``;
-  // console.log(customerIndex);
-  console.log(month);
+  console.log(index);
 
   return (
     <section className="order_details_view_container">
@@ -81,7 +76,16 @@ const UserOrderDetailsView = () => {
           </div>
           <div className="input_con">
             <p>Order Date</p>
-            <input type="text" defaultValue={index?.createdAt.slice(0, 10)} />
+            <input
+              type="text"
+              defaultValue={
+                index?.createdAt &&
+                `${index?.createdAt.slice(11, 16)}   ${index?.createdAt.slice(
+                  0,
+                  10
+                )}`
+              }
+            />
           </div>
         </div>
         <div className="details_con order_view">
@@ -127,7 +131,31 @@ const UserOrderDetailsView = () => {
           <h3>History</h3>
           <div className="input_con">
             <p>Order Completed on</p>
-            <input type="text" defaultValue={arrivedTime} />
+            <input
+              type="text"
+              defaultValue={
+                index?.updatedAt &&
+                `${index?.updatedAt.slice(11, 16)}   ${index?.updatedAt.slice(
+                  0,
+                  10
+                )}`
+              }
+            />
+          </div>
+          <div className="input_con">
+            <h3 className="shipping">Shipping Details</h3>
+            <p>
+              <span>Address:</span> {index?.address}
+            </p>
+            <p>
+              <span>Shipping Fee:</span> ₦{index?.Total - index?.subTotal}
+            </p>
+            <p>
+              <span>Email:</span> {customerIndex?.email}
+            </p>
+            <p>
+              <span>Phone:</span> {customerIndex?.phone}
+            </p>
           </div>
         </div>
       </section>

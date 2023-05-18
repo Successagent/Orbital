@@ -2417,9 +2417,19 @@ textarea {
   margin-top: 20px;
 }
 
+.shipping {
+  margin-top: 20px;
+}
 
 
 @media(max-width:780px) {
+  .order_details_view {
+    padding: 40px 20px;
+  }
+
+  .order_details_view .details_con {
+    padding: 30px 15px;
+  }
 
   .customers_deatils {
     padding: 40px 20px;

@@ -40,6 +40,7 @@ const ShoppingCart = () => {
     onSuccess: (res) => {
       const data = {};
       data.userId = token._id;
+      data.name = token.firstName;
       data.customerId = res.reference;
       data.paymentIntentId = res.transaction;
       data.products = cart.map((product) => {

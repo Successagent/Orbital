@@ -34,7 +34,6 @@ const Orders = () => {
           headers: { token: accessToken },
         }
       );
-      console.log(res);
       if (res.status === 200) {
         getAllOrders();
       }
@@ -51,7 +50,6 @@ const Orders = () => {
       if (res.status === 200) {
         getAllOrders();
       }
-      console.log(res);
     } catch (error) {
       console.log(error);
     }
@@ -96,61 +94,63 @@ const Orders = () => {
             <h3>Delete Order</h3>
           </div>
         </div>
-        {allOrders.map((order, idx) => (
-          <div className="order_table_header order_table_body" key={idx}>
-            <div className="order_number">
-              <p>{order.paymentIntentId}</p>
-            </div>
-            <div className="order_name">
-              <p>Success</p>
-            </div>
-            <div className="order_date">
-              <p>{order.createdAt.slice(0, 10)}</p>
-            </div>
-            <div className="order_quantiy">
-              <p>₦{order.Total - order.subTotal}</p>
-            </div>
-            <div className="order_total">
-              <p>₦2,000</p>
-            </div>
-            <div className="order_status">
-              <button style={{ padding: "10px", cursor: "pointer" }}>
-                {order.delivery_status === "'Pending" ? "Pending" : "Arrived"}
-              </button>
-            </div>
-            <div className="order_edit">
-              <button
-                onClick={() => editOrderStatus(order._id)}
-                style={{ color: "blue", padding: "10px", cursor: "pointer" }}
+        {allOrders.map((order, idx) => {
+          return (
+            <div className="order_table_header order_table_body" key={idx}>
+              <div className="order_number">
+                <p>{order.paymentIntentId}</p>
+              </div>
+              <div className="order_name">
+                <p>{order.name}</p>
+              </div>
+              <div className="order_date">
+                <p>{order.createdAt.slice(0, 10)}</p>
+              </div>
+              <div className="order_quantiy">
+                <p>₦{order.Total - order.subTotal}</p>
+              </div>
+              <div className="order_total">
+                <p>₦{order.Total}</p>
+              </div>
+              <div className="order_status">
+                <button style={{ padding: "10px", cursor: "pointer" }}>
+                  {order.delivery_status === "'Pending" ? "Pending" : "Arrived"}
+                </button>
+              </div>
+              <div className="order_edit">
+                <button
+                  onClick={() => editOrderStatus(order._id)}
+                  style={{ color: "blue", padding: "10px", cursor: "pointer" }}
+                >
+                  {"edit status"}
+                </button>
+              </div>
+              <Link
+                style={{ display: "block", width: "20%" }}
+                className="order_edit"
+                to={`/orderView/${order._id}`}
               >
-                {"edit status"}
-              </button>
+                <button
+                  style={{
+                    color: "green",
+                    padding: "10px",
+                    cursor: "pointer",
+                  }}
+                >
+                  {"view details"}
+                </button>
+              </Link>
+              <div className="order_edit">
+                <button
+                  onClick={() => deleteOrder(order._id)}
+                  style={{ color: "red", padding: "10px", cursor: "pointer" }}
+                >
+                  {"delete order"}
+                </button>
+              </div>
             </div>
-            <Link
-              style={{ display: "block", width: "20%" }}
-              className="order_edit"
-              to={`/orderView/${order._id}`}
-            >
-              <button
-                style={{
-                  color: "green",
-                  padding: "10px",
-                  cursor: "pointer",
-                }}
-              >
-                {"view details"}
-              </button>
-            </Link>
-            <div className="order_edit">
-              <button
-                onClick={() => deleteOrder(order._id)}
-                style={{ color: "red", padding: "10px", cursor: "pointer" }}
-              >
-                {"delete order"}
-              </button>
-            </div>
-          </div>
-        ))}
+          );
+        })}
       </section>
       <Footer />
     </section>
