@@ -59,6 +59,12 @@ const Header = ({ pathname, slug }) => {
           setSignOutStatus("Signout");
         }
         break;
+      case "/orders_view":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
     }
   };
 
@@ -69,7 +75,8 @@ const Header = ({ pathname, slug }) => {
       pathname === "/shop" ||
       pathname === "/contact" ||
       pathname === `/products/${slug}` ||
-      pathname === "/shopping-cart"
+      pathname === "/shopping-cart" ||
+      pathname === "/orders_view"
     ) {
       sessionStorage.removeItem("token");
     }

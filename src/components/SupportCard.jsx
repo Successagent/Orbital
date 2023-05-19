@@ -24,7 +24,7 @@ const SupportCard = () => {
         <MdOutlineLocalShipping />
         <div>
           <h3>Shipping</h3>
-          <p>Free shpping to all orders in Lagos</p>
+          <p>Free shpping to all orders in Nigeria</p>
         </div>
       </div>
     </div>
