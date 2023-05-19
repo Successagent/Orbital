@@ -1486,18 +1486,12 @@ footer .link::after {
 }
 
 .store-sect {
-  display: flex;
   padding: 50px 30px;
 }
 
 
 .store-sect>div>div h3 {
   font-size: 22px;
-}
-
-
-.product-hero-con[data-visible="/shop"] {
-  display: none;
 }
 
 .category-hr-con {
