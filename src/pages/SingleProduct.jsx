@@ -109,9 +109,7 @@ const SingleProduct = () => {
           </div>
           <div className="single-product-details-con">
             <h2>{index?.name}</h2>
-            <h3>
-              ₦{index?.price} - <span>₦260.00</span>
-            </h3>
+            <h3>₦{index?.price}</h3>
             <div className="single-product-review-con">
               <div className="product-rate-con">
                 {[1, 2, 3, 4, 5].map(() => (
@@ -154,18 +152,20 @@ const SingleProduct = () => {
           </div>
           <div className={`tabs ${tabs == false ? "active-tab" : ""}`}>
             <p>
-              Lorem ipsum dolor sit amet, consectetur adipisicing elit, sed do
-              eiusmod tempor incididunt ut labore et dolor magna aliqua. Ut enim
-              ad minim veniam, quis nostrud exercitation ullamco laboris nisi ut
-              aliquip ex ea comm consequat. Duis aute irure dolor in
-              reprehenderit in voluptate velit esse cillum dolore eu fugiat
-              nulla pariatur. Excepteur sint occaecat cupidatat non proident,
-              sunt in culpa qui officia deserunt mollit anim id est laborum. Sed
-              ut perspiciatis unde omnis iste natus error sit voluptatem
-              accusantium doloremque laudantium, totamhy rem aperiam, eaque ipsa
-              quae ab illo inventore veritatis et quasi architecto beatae vitae
-              dicta sunt explicabo. Nemo enim ipsam voluptatem quia voluptas sit
-              aspernatur
+              Welcome to Orbital Fashion, your go-to source for unrivaled luxury
+              clothing. We take pride in compiling a gorgeous selection of
+              designer apparel and accessories that embodies class,
+              sophistication, and classic style. Our products, which range from
+              elegant evening gowns to tailored suits, are carefully
+              hand-selected from leading design houses throughout the world to
+              guarantee the best materials and exquisite workmanship. Every item
+              in our collection reflects the newest fashions and exemplifies the
+              inventiveness of forward-thinking designers. Our broad assortment
+              of products meets all of your sartorial requirements, whether
+              you're dressing for an event or just want to dress up your regular
+              appearance. Each piece is a work of art that oozes luxury and
+              sophistication, from elaborately beaded dresses to lavish handbags
+              and spectacular jewelry. You have access to Orbital Fashion
             </p>
           </div>
           <Comments tabs={tabs} />

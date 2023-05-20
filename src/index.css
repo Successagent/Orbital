@@ -1634,12 +1634,6 @@ footer .link::after {
   font-size: 12;
 }
 
-.single-product-btn:hover {
-  background-color: red;
-  color: white;
-  border: none;
-}
-
 .related-product-con {
   padding: 20px 50px;
 }
@@ -1722,6 +1716,12 @@ footer .link::after {
   background: #f0f2f5;
   padding: 30px;
   border-radius: 30px;
+}
+
+.descrp-tab>div img {
+  width: 50px;
+  height: 50px;
+  border-radius: 50%;
 }
 
 .descrp-tab>div>div {
