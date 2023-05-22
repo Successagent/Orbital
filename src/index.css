@@ -2253,6 +2253,10 @@ textarea {
   width: 1300px;
 }
 
+.userorder_table_header {
+  width: 100%;
+}
+
 .order_table_header>div,
 .order_table_header>a {
   width: 12.5% !important;

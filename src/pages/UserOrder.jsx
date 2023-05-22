@@ -34,7 +34,7 @@ const UserOrders = () => {
       <PageHero page_title={"Orders"} />
       <Filter placeholder={"Search order number"} />
       <section className="order_table">
-        <div className="order_table_header">
+        <div className="userorder_table_header order_table_header">
           <div className="order_number">
             <h3>Order Number</h3>
           </div>
@@ -53,13 +53,13 @@ const UserOrders = () => {
           <div className="order_status">
             <h3>Order Status</h3>
           </div>
-          <div className="order_details">
-            <h3>View Details</h3>
-          </div>
         </div>
         {allOrders.map((order, idx) => {
           return (
-            <div className="order_table_header order_table_body" key={idx}>
+            <div
+              className="userorder_table_header order_table_header order_table_body"
+              key={idx}
+            >
               <div className="order_number">
                 <p>{order.paymentIntentId}</p>
               </div>
@@ -80,21 +80,6 @@ const UserOrders = () => {
                   {order.delivery_status === "'Pending" ? "Pending" : "Arrived"}
                 </button>
               </div>
-              <Link
-                style={{ display: "block", width: "20%" }}
-                className="order_edit"
-                to={`/orderView/${order._id}`}
-              >
-                <button
-                  style={{
-                    color: "green",
-                    padding: "10px",
-                    cursor: "pointer",
-                  }}
-                >
-                  {"view details"}
-                </button>
-              </Link>
             </div>
           );
         })}
