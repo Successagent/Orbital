@@ -65,6 +65,18 @@ const Header = ({ pathname, slug }) => {
           setSignOutStatus("Signout");
         }
         break;
+      case "/terms":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
+      case "/privacy":
+        if (token) {
+          setLoginStatus("Logout");
+          setSignOutStatus("Signout");
+        }
+        break;
     }
   };
 

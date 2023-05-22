@@ -17,9 +17,7 @@ const Newsletter = ({ pathname, slug }) => {
       const newsletter = await axios.post(`${hostUrl}/api/newsletter`, {
         email: data.email,
       });
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   return (

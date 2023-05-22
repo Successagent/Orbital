@@ -51,7 +51,7 @@ const Registration = () => {
         password,
         confirmPassword,
       });
-      console.log(registerUser);
+
       if (registerUser.status === 201) {
         setLoginError(false);
         navigate("/login");
@@ -60,7 +60,6 @@ const Registration = () => {
       setLoading(false);
       notify();
       setLoginError(error.message);
-      console.log(error);
     }
   };
 

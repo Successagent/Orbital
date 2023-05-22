@@ -24,9 +24,7 @@ const Customers = () => {
         headers: { token: accessToken },
       });
       setAllCustomers(allCustomers.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const deleteCustomer = async (id) => {
@@ -38,9 +36,7 @@ const Customers = () => {
         notify();
         getAllCustomers();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

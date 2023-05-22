@@ -20,7 +20,7 @@ const schema = yup.object().shape({
 const Login = () => {
   const [loading, setLoading] = useState(false);
   const [loginError, setLoginError] = useState({});
-  console.log(loginError);
+
   const { hostUrl } = useGlobalContext();
   const {
     handleSubmit,
@@ -37,7 +37,7 @@ const Login = () => {
         email: data.email,
         password: data.password,
       });
-      console.log(loginUser);
+
       if (loginUser.status === 200) {
         setLoading(false);
         sessionStorage.setItem("token", JSON.stringify(loginUser.data));
@@ -47,7 +47,6 @@ const Login = () => {
       setLoading(false);
       setLoginError(error.response || error.message);
       notify();
-      console.log(error);
     }
   };
 

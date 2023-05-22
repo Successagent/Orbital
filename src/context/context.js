@@ -38,7 +38,6 @@ const AppProvider = ({ children }) => {
       }
     } catch (error) {
       setLoading(false);
-      console.log(error);
     }
   };
 

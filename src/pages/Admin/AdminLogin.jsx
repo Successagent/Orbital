@@ -47,7 +47,7 @@ const AdminLogin = () => {
         email: data.email,
         password: data.password,
       });
-      console.log(adminUser);
+
       if (adminUser.status === 200) {
         setLoading(false);
         sessionStorage.setItem(

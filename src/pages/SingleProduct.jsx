@@ -38,9 +38,7 @@ const SingleProduct = () => {
         `createdProducts`,
         JSON.stringify(newProducts.data)
       );
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   let product = products.filter((item) => item._id == id);
@@ -56,7 +54,6 @@ const SingleProduct = () => {
     } else if (e.target.id == 3) {
       setSelectedImage(4);
     }
-    console.log(selectedImage);
   };
 
   const toggleTab = () => {

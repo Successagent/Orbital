@@ -21,9 +21,7 @@ const CustomerDetails = () => {
       if (customerDetails.status === 200) {
         setUserDetails(customerDetails.data);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const getOrderDetails = async () => {
@@ -34,9 +32,7 @@ const CustomerDetails = () => {
       if (customerDetails.status === 200) {
         setOrderDetails(customerDetails.data);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   useEffect(() => {
     getCustomerDetails();

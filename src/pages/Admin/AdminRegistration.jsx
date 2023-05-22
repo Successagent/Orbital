@@ -33,8 +33,6 @@ const AdminRegistration = () => {
     formState: { errors },
   } = useForm({ resolver: yupResolver(schema) });
 
-  console.log(loginError);
-
   const notify = () => {
     if (loginError?.data) {
       toast("Details already exist");
@@ -56,7 +54,6 @@ const AdminRegistration = () => {
           cpassword: data.confirmPassword,
         }
       );
-      console.log(registerUser);
 
       if (registerUser.status === 201) {
         setLoading(false);
@@ -66,7 +63,6 @@ const AdminRegistration = () => {
       setLoading(false);
       notify();
       setLoginError(error.response || error.message);
-      console.log(error);
     }
   };
 

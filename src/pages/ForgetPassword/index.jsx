@@ -25,10 +25,7 @@ const ForgetPassword = () => {
       const forgetPass = await axios.post(`${hostUrl}/api/auth/forget`, {
         email: data.email,
       });
-      console.log(forgetPass.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
   return (
     <>

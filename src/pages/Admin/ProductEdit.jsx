@@ -30,9 +30,7 @@ const ProductEdit = () => {
     try {
       const singleProduct = await axios.get(`${hostUrl}/api/product/${id}`);
       setEditProduct(singleProduct.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const notify = () => {
@@ -56,13 +54,12 @@ const ProductEdit = () => {
           headers: { token: accessToken },
         }
       );
-      console.log(editedProduct);
+
       if (editedProduct.status === 200) {
         notify();
         setLoading(false);
       }
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };

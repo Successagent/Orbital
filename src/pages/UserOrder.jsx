@@ -19,11 +19,9 @@ const UserOrders = () => {
       const allOrders = await axios.get(`${hostUrl}/api/order/${user._id}`, {
         headers: { token: user.accessToken },
       });
-      console.log(allOrders);
+
       setAllOrders(allOrders.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

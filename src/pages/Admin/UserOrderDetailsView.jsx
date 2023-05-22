@@ -27,9 +27,7 @@ const UserOrderDetailsView = () => {
         headers: { token: accessToken },
       });
       setOrder(() => allOrders.data.filter((order) => order._id === id));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const getAllCustomers = async (time) => {
@@ -41,17 +39,13 @@ const UserOrderDetailsView = () => {
       if (customerDetails.status === 200) {
         setUserDetails(customerDetails.data);
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {
     getAllOrders();
     getAllCustomers();
   }, []);
-
-  console.log(index);
 
   return (
     <section className="order_details_view_container">

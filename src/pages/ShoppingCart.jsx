@@ -1,5 +1,5 @@
 import React, { useEffect, useState } from "react";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import { Footer, Header, Newsletter, PageHero } from "../components";
 
 import { FaTrash } from "react-icons/fa";
@@ -18,6 +18,8 @@ const ShoppingCart = () => {
   const [address, setAddress] = useState("");
   const { pathname } = useLocation();
   const [shipping, setShipping] = useState(0);
+
+  const navigate = useNavigate();
 
   const notify = () =>
     toast("Thanks for doing business with us! Come back soon!!");
@@ -70,7 +72,9 @@ const ShoppingCart = () => {
         data.delivery_status = "'Pending";
         data.payment_status = res.status;
         sendOrder(data);
-        console.log(res);
+        if (res.status === "succss") {
+          navigate("/orders_view");
+        }
         notify();
       },
       onClose: () => {
@@ -95,15 +99,11 @@ const ShoppingCart = () => {
   };
 
   const sendOrder = async (data) => {
-    console.log(data);
     const res = await axios.post(`${hostUrl}/api/order`, data, {
       headers: { token: token.accessToken },
     });
-    console.log(res);
     try {
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

@@ -3,7 +3,6 @@ import Skeleton from "react-loading-skeleton";
 
 const ProductSkeleton = () => {
   const products = JSON.parse(localStorage.getItem("products"));
-  console.log(products);
 
   return (
     <>

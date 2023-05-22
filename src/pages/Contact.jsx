@@ -75,9 +75,7 @@ const Contact = () => {
         setLoading(false);
         notify();
       }
-      console.log(resData);
     } catch (error) {
-      console.log(error);
       setLoading(false);
     }
   };

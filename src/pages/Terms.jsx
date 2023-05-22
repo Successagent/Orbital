@@ -1,10 +1,12 @@
 import React from "react";
 import { Footer, Header, Newsletter, PageHero } from "../components";
+import { useLocation } from "react-router-dom";
 
 const Terms = () => {
+  const { pathname } = useLocation();
   return (
     <section className="terms_container">
-      <Header />
+      <Header pathname={pathname} />
       <PageHero page_title={"Terms and Condition's"} />
       <div className="terms">
         <h3>Terms and Conditions for Orbital Fashion</h3>
@@ -96,7 +98,7 @@ const Terms = () => {
           </p>
         </div>
       </div>
-      <Newsletter />
+      <Newsletter pathname={pathname} />
       <Footer />
     </section>
   );

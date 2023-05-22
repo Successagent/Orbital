@@ -58,10 +58,7 @@ const Products = ({ h2_title, pathname }) => {
     } else if (e.target.innerText === "All") {
       setActive("");
     }
-    console.log(active);
   };
-
-  console.log(trousers);
 
   return (
     <>

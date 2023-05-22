@@ -21,9 +21,7 @@ const Orders = () => {
         headers: { token: accessToken },
       });
       setAllOrders(allOrders.data);
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const editOrderStatus = async (id) => {
@@ -41,9 +39,7 @@ const Orders = () => {
         updateNotification();
         getAllOrders();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const deleteOrder = async (id) => {
@@ -55,9 +51,7 @@ const Orders = () => {
         deleteNotification();
         getAllOrders();
       }
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   useEffect(() => {

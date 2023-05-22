@@ -45,9 +45,7 @@ const AdminDashboard = () => {
         JSON.stringify(newProducts.data)
       );
       localStorage.setItem(`createdProducts`, JSON.stringify(newProducts.data));
-    } catch (error) {
-      console.log(error);
-    }
+    } catch (error) {}
   };
 
   const handleChange = (e) => {
@@ -79,7 +77,7 @@ const AdminDashboard = () => {
           token: accessToken,
         },
       });
-      console.log(res);
+
       if (res.status === 200) {
         notify();
         setCreateLoader(false);
