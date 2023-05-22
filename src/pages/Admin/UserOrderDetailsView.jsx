@@ -42,6 +42,8 @@ const UserOrderDetailsView = () => {
     } catch (error) {}
   };
 
+  console.log(time);
+
   useEffect(() => {
     getAllOrders();
     getAllCustomers();

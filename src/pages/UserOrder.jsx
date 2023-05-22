@@ -36,10 +36,10 @@ const UserOrders = () => {
       <section className="order_table">
         <div className="userorder_table_header order_table_header">
           <div className="order_number">
-            <h3>Order Number</h3>
+            <h3> Number</h3>
           </div>
           <div className="order_name">
-            <h3>Order Name</h3>
+            <h3> Name</h3>
           </div>
           <div className="order_date">
             <h3>Order Date</h3>
