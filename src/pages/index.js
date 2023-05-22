@@ -8,6 +8,8 @@ import Registration from "../pages/Registration";
 import ForgetPassword from "../pages/ForgetPassword";
 import Login from "./Login/Login";
 import UserOrders from "./UserOrder";
+import Terms from "./Terms";
+import Privacy from "./Privacy";
 
 export {
   Home,
@@ -20,4 +22,6 @@ export {
   Login,
   ForgetPassword,
   UserOrders,
+  Terms,
+  Privacy,
 };

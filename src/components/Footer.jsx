@@ -40,10 +40,10 @@ const Footer = () => {
       </div>
       <div>
         <h3>Information</h3>
-        <Link className="link" to="">
+        <Link className="link" to="/privacy">
           Our Policy
         </Link>
-        <Link className="link" to="">
+        <Link className="link" to="/terms">
           Terms and Conditions
         </Link>
       </div>

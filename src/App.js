@@ -8,10 +8,12 @@ import {
   ForgetPassword,
   Home,
   Login,
+  Privacy,
   Registration,
   Shop,
   ShoppingCart,
   SingleProduct,
+  Terms,
   UserOrders,
 } from "./pages";
 
@@ -63,6 +65,8 @@ function App() {
       <Route path="/login" element={<Login />} />
       <Route path="/register" element={<Registration />} />
       <Route path="/forget-password" element={<ForgetPassword />} />
+      <Route path="/terms" element={<Terms />} />
+      <Route path="/privacy" element={<Privacy />} />
     </Routes>
   );
 }
