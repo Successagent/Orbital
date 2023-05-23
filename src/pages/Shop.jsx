@@ -30,31 +30,31 @@ const Shop = () => {
   let bags = products.filter((product) => product.category === "Bags");
 
   const filterProducts = (e) => {
-    if (e.target.innerText == "Trousers") {
+    if (e.target.innerText === "Trousers") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Shorts") {
+    if (e.target.innerText === "Shorts") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Shoes") {
+    if (e.target.innerText === "Shoes") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Bags") {
+    if (e.target.innerText === "Bags") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Watch") {
+    if (e.target.innerText === "Watch") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Joggers") {
+    if (e.target.innerText === "Joggers") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Shirts") {
+    if (e.target.innerText === "Shirts") {
       setActive("Clothes");
     }
-    if (e.target.innerText == "Jewelries") {
+    if (e.target.innerText === "Jewelries") {
       setActive(e.target.innerText);
     }
-    if (e.target.innerText == "Cosmetics") {
+    if (e.target.innerText === "Cosmetics") {
       setActive(e.target.innerText);
     } else if (e.target.innerText === "All") {
       setActive("");
@@ -115,13 +115,13 @@ const Shop = () => {
               ? joggers
               : active === ""
               ? products
-              : active == 1
+              : active === 1
               ? products.slice(0, 8)
-              : active == 2
+              : active === 2
               ? products.slice(7, 15)
-              : active == 3
+              : active === 3
               ? products.slice(14, 22)
-              : active == 4
+              : active === 4
               ? products
               : ""
             ).map((product, idx) => (
@@ -130,7 +130,7 @@ const Shop = () => {
                   className={`status ${
                     product.status === "-10%"
                       ? "status-btn-red"
-                      : product.status == "new"
+                      : product.status === "new"
                       ? "status-btn-green"
                       : ""
                   }`}
@@ -172,22 +172,26 @@ const Shop = () => {
           </div>
         </div>
         <div className="pagination">
-          <div className={`${active == 1 ? "active-pagination" : ""}`}>
+          <div className={`${active === 1 ? "active-pagination" : ""}`}>
             <p className="active-1" onClick={filterProducts}>
               1
             </p>
           </div>
-          <div className={`${active == 2 ? "active-pagination" : ""}`}>
+          <div className={`${active === 2 ? "active-pagination" : ""}`}>
             <p className="active-2" onClick={filterProducts}>
               2
             </p>
           </div>
-          <div className={`${active == 3 ? "active-pagination" : ""}`}>
+          <div className={`${active === 3 ? "active-pagination" : ""}`}>
             <p className="active-3" onClick={filterProducts}>
               3
             </p>
           </div>
-          <div className={`${active == 4 ? "active-pagination" : ""}`}>
+          <div
+            className={`${
+              active === 4 || active === "" ? "active-pagination" : ""
+            }`}
+          >
             <p className="active-all" onClick={filterProducts}>
               All
             </p>

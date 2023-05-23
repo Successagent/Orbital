@@ -2446,6 +2446,10 @@ textarea {
     padding: 40px 20px;
   }
 
+  .terms {
+    padding: 50px 20px;
+  }
+
   .order_details_view .details_con {
     padding: 30px 15px;
   }

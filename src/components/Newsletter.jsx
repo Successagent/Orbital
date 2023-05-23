@@ -49,7 +49,7 @@ const Newsletter = ({ pathname, slug }) => {
           placeholder="Enter Your Email"
           {...register("email")}
         />
-        <Button title={loading ? "Loading" : "Subscribe"} />
+        <Button title={loading ? "Loading..." : "Subscribe"} />
       </form>
       <ToastContainer />
     </section>
