@@ -28,30 +28,30 @@ const Home = () => {
   const toggleFlashSales = (e) => {
     switch (e.target.id) {
       case "next":
-        if (index == 1) {
+        if (index === 1) {
           setIndex(2);
         }
-        if (index == 2) {
+        if (index === 2) {
           setIndex(3);
         }
-        if (index == 3) {
+        if (index === 3) {
           setIndex(4);
         }
-        if (index == 4) {
+        if (index === 4) {
           setIndex(1);
         }
         break;
       case "prev":
-        if (index == 4) {
+        if (index === 4) {
           setIndex(3);
         }
-        if (index == 3) {
+        if (index === 3) {
           setIndex(2);
         }
-        if (index == 2) {
+        if (index === 2) {
           setIndex(1);
         }
-        if (index == 1) {
+        if (index === 1) {
           setIndex(4);
         }
         break;

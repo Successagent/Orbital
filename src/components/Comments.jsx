@@ -1,9 +1,5 @@
 import React from "react";
-import {
-  AiFillStar,
-  AiOutlineHeart,
-  AiOutlineShoppingCart,
-} from "react-icons/ai";
+import { AiFillStar } from "react-icons/ai";
 
 import reviewImage from "../assets/c1.webp";
 import female1 from "../assets/female1.jpg";
@@ -11,7 +7,7 @@ import male from "../assets/male.jpg";
 
 const Comments = ({ tabs }) => {
   return (
-    <div className={`tabs descrp-tab ${tabs == true ? "active-tab" : ""}`}>
+    <div className={`tabs descrp-tab ${tabs === true ? "active-tab" : ""}`}>
       <div>
         <div>
           <img src={reviewImage} alt="" />

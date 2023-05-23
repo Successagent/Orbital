@@ -1,4 +1,4 @@
-import React, { useState } from "react";
+import React from "react";
 import { AiFillStar, AiOutlineShoppingCart } from "react-icons/ai";
 import { Link } from "react-router-dom";
 import { useGlobalContext } from "../context/context";

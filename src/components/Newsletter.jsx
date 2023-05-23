@@ -1,23 +1,29 @@
-import React from "react";
+import React, { useState } from "react";
 import Button from "./Button";
 import { useForm } from "react-hook-form";
 import axios from "axios";
 import { useGlobalContext } from "../context/context";
+import { ToastContainer, toast } from "react-toastify";
 
 const Newsletter = ({ pathname, slug }) => {
-  const {
-    handleSubmit,
-    register,
-    formState: { errors },
-  } = useForm();
+  const notify = () => toast("Email Sent");
+  const { handleSubmit, register } = useForm();
   const { hostUrl } = useGlobalContext();
 
+  const [loading, setLoading] = useState(false);
   const handleNewsletterForm = async (data) => {
+    setLoading(true);
     try {
       const newsletter = await axios.post(`${hostUrl}/api/newsletter`, {
         email: data.email,
       });
-    } catch (error) {}
+      if (newsletter.status === 200) {
+        setLoading(false);
+        notify();
+      }
+    } catch (error) {
+      setLoading(false);
+    }
   };
 
   return (
@@ -43,8 +49,9 @@ const Newsletter = ({ pathname, slug }) => {
           placeholder="Enter Your Email"
           {...register("email")}
         />
-        <Button title="Subscribe" />
+        <Button title={loading ? "Loading" : "Subscribe"} />
       </form>
+      <ToastContainer />
     </section>
   );
 };
