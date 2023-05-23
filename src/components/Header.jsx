@@ -88,7 +88,9 @@ const Header = ({ pathname, slug }) => {
       pathname === "/contact" ||
       pathname === `/products/${slug}` ||
       pathname === "/shopping-cart" ||
-      pathname === "/orders_view"
+      pathname === "/orders_view" ||
+      pathname === "/terms" ||
+      pathname === "/policy"
     ) {
       sessionStorage.removeItem("token");
     }
@@ -194,7 +196,7 @@ const Header = ({ pathname, slug }) => {
         </div>
         <div className="mobile-header-icons-con">
           <Link
-            style={{ color: "#4b4b4b" }}
+            style={{ color: "#1b9abd" }}
             to={`${
               pathname === "/admin" ||
               pathname === "/admin_login" ||
@@ -203,11 +205,12 @@ const Header = ({ pathname, slug }) => {
                 : "/login"
             }`}
           >
-            <BiUser />
+            <BiUser style={{ color: "#1b9abd" }} />
           </Link>
 
           <AiOutlineShoppingCart
             onClick={toggleCart}
+            style={{ color: "#1b9abd" }}
             className="shoppin-cart"
           />
           <div className="cart-value-con">

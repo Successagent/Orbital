@@ -54,9 +54,9 @@ const About = () => {
             <img src={AboutImageTwo} alt="" />
           </div>
           <div>
-            <h1> Welcome to Orbital Clothing.</h1>
+            <h1> Welcome to Orbital Fashion.</h1>
             <p>
-              Welcome to our Orbital Clothing website, where we provide unique
+              Welcome to our Orbital Fashion website, where we provide unique
               and stylish clothing designed for those who are passionate about
               looking exquisite. Our collection of apparel is perfect for anyone
               who wants to show their love for the cosmos and express their
