@@ -1,7 +1,9 @@
 import AdminCreatedProduct from "./AdminCreatedProduct";
 import AdminDashboard from "./AdminDashboard";
+import AdminFooter from "./AdminFooter";
 import AdminHeader from "./AdminHeader";
 import AdminLogin from "./AdminLogin";
+import AdminNewsletter from "./AdminNewsletter";
 import AdminRegistration from "./AdminRegistration";
 import CustomerDetails from "./CustomerDetails";
 import Customers from "./Customers";
@@ -22,4 +24,6 @@ export {
   Customers,
   CustomerDetails,
   UserOrderDetailsView,
+  AdminFooter,
+  AdminNewsletter,
 };

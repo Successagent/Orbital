@@ -1,9 +1,10 @@
 import { Link, useLocation, useNavigate } from "react-router-dom";
-import { Button, Footer, Header, Newsletter, PageHero } from "../../components";
+import { PageHero } from "../../components";
 import "../Login/Login.css";
 import "../Registration/Registration.css";
 import { yupResolver } from "@hookform/resolvers/yup";
 import * as yup from "yup";
+import AdminButton from "./AdminButton";
 
 import axios from "axios";
 import { useForm } from "react-hook-form";
@@ -12,6 +13,8 @@ import { ToastContainer, toast } from "react-toastify";
 import "react-toastify/dist/ReactToastify.css";
 import { useState } from "react";
 import AdminHeader from "./AdminHeader";
+import AdminFooter from "./AdminFooter";
+import AdminNewsletter from "./AdminNewsletter";
 
 const schema = yup.object().shape({
   email: yup.string().email().required(),
@@ -116,13 +119,13 @@ const AdminLogin = () => {
             orders and profile
           </p>
           <Link to="/admin_register">
-            <Button title="Register"></Button>
+            <AdminButton title="Register"></AdminButton>
           </Link>
         </div>
       </div>
-      <Newsletter />
+      <AdminNewsletter />
       <ToastContainer />
-      <Footer />
+      <AdminFooter />
     </>
   );
 };

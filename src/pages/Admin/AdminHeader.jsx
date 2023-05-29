@@ -1,18 +1,14 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
 
 import orbitalLogo from "../../assets/orbi.png";
 
 import { Link } from "react-router-dom";
-import { AiOutlineShoppingCart, AiOutlineClose } from "react-icons/ai";
+import { AiOutlineClose } from "react-icons/ai";
 
-import { BiUser } from "react-icons/bi";
 import { RxHamburgerMenu } from "react-icons/rx";
-import { useGlobalContext } from "../../context/context";
 
-const AdminHeader = ({ pathname, slug }) => {
-  const { openCart, setOpenCart, cart } = useGlobalContext();
+const AdminHeader = ({ pathname }) => {
   const [visible, setVisible] = useState(false);
-  const token = JSON.parse(sessionStorage.getItem("token"));
   const accessToken = JSON.parse(sessionStorage.getItem("admin"));
 
   const oppenNav = () => {
@@ -21,10 +17,6 @@ const AdminHeader = ({ pathname, slug }) => {
 
   const logOut = () => {
     sessionStorage.removeItem("admin");
-  };
-
-  const toggleCart = () => {
-    setOpenCart(!openCart);
   };
 
   return (

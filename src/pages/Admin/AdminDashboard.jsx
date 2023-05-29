@@ -1,11 +1,13 @@
 import React, { useEffect, useState } from "react";
-import { Footer, PageHero } from "../../components";
+import { PageHero } from "../../components";
 import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
 import { useGlobalContext } from "../../context/context";
 import AdminHeader from "./AdminHeader";
 import { ToastContainer, toast } from "react-toastify";
+import AdminFooter from "./AdminFooter";
+import AdminNewsletter from "./AdminNewsletter";
 
 const AdminDashboard = () => {
   const [modal, setModal] = useState(1);
@@ -241,7 +243,8 @@ const AdminDashboard = () => {
           </section>
         </>
       )}
-      <Footer />
+      <AdminNewsletter />
+      <AdminFooter />
     </section>
   );
 };
