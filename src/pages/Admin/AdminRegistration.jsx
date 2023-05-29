@@ -19,6 +19,7 @@ const schema = yup.object().shape({
   email: yup.string().email().required(),
   password: yup.string().min(6).max(12).required(),
   confirmPassword: yup.string().oneOf([yup.ref("password"), null]),
+  secretKey: yup.string().required(),
 });
 
 const AdminRegistration = () => {
@@ -34,8 +35,8 @@ const AdminRegistration = () => {
   } = useForm({ resolver: yupResolver(schema) });
 
   const notify = () => {
-    if (loginError?.data) {
-      toast("Details already exist");
+    if (loginError === "Wrong Admin Key") {
+      toast("Wrong Admin Key");
     } else {
       toast(loginError);
     }
@@ -52,9 +53,10 @@ const AdminRegistration = () => {
           email: data.email,
           password: data.password,
           cpassword: data.confirmPassword,
+          secretKey: data.secretKey,
         }
       );
-
+      console.log(registerUser);
       if (registerUser.status === 201) {
         setLoading(false);
         navigate("/admin_login");
@@ -62,7 +64,7 @@ const AdminRegistration = () => {
     } catch (error) {
       setLoading(false);
       notify();
-      setLoginError(error.response || error.message);
+      setLoginError(error.response.data.msg || error.message);
     }
   };
 
@@ -113,6 +115,12 @@ const AdminRegistration = () => {
                   {errors.confirmPassword && (
                     <h3 className="error">Password Should Match</h3>
                   )}
+                  <p>Secret Key *</p>
+                  <input
+                    type="text"
+                    name="secretKey"
+                    {...register("secretKey")}
+                  />
                   <p id="p-form">
                     We collect your data to enable you have a wonderful
                     experience using our website. Your information is safe with
