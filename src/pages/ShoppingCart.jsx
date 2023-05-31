@@ -76,7 +76,6 @@ const ShoppingCart = () => {
         if (res.status === "success") {
           navigate("/orders_view");
         }
-        console.log(res);
         notify();
       },
       onClose: () => {
