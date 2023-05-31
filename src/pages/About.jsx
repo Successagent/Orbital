@@ -16,7 +16,7 @@ import { CiTwitter } from "react-icons/ci";
 import { GrFacebookOption } from "react-icons/gr";
 import AboutImageTwo from "../assets/d1.webp";
 import TeamImage from "../assets/2.webp";
-import { reviews } from "../datas/reviews";
+import { reviews } from "../data/reviews";
 
 import Carousel from "react-multi-carousel";
 import "react-multi-carousel/lib/styles.css";

@@ -72,9 +72,11 @@ const ShoppingCart = () => {
         data.delivery_status = "'Pending";
         data.payment_status = res.status;
         sendOrder(data);
-        if (res.status === "succss") {
+
+        if (res.status === "success") {
           navigate("/orders_view");
         }
+        console.log(res);
         notify();
       },
       onClose: () => {
