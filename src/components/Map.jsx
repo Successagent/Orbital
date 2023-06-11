@@ -11,7 +11,7 @@ const Map = () => {
         marginheight="0"
         marginwidth="0"
         id="gmap_canvas"
-        src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Biogbolo%20Yenagoa+(Orbital)&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
+        src="https://maps.google.com/maps?width=520&amp;height=400&amp;hl=en&amp;q=Melford%20Okilo%20Way%20Yenagoa+()&amp;t=&amp;z=12&amp;ie=UTF8&amp;iwloc=B&amp;output=embed"
       ></iframe>
     </div>
   );

@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PageHero } from "../../components";
-import { useLocation } from "react-router-dom";
+import { useLocation, useNavigate } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
 import { useGlobalContext } from "../../context/context";
@@ -82,7 +82,9 @@ const AdminDashboard = () => {
 
       if (res.status === 200) {
         notify();
+
         setCreateLoader(false);
+        getCreatedProduct();
       }
     } catch (error) {
       setCreateLoader(false);
@@ -119,7 +121,7 @@ const AdminDashboard = () => {
             <div className="admin-hero-header">
               <h2>Create New Product</h2>
               <button className="btn" id="case-one" onClick={toggleModal}>
-                Create
+                Create New Prduct
               </button>
             </div>
             <div
