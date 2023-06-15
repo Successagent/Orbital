@@ -89,12 +89,12 @@ const Terms = () => {
             </li>
           </ul>
           <p>
-            These Terms and Conditions govern the relationship between Ebiye
-            Luxury Fashion and its customers. By accessing or using the Ebiye
-            Luxury Fashion Collection, customers agree to abide by these terms.
-            Orbital Fashion reserves the right to modify or update these terms
-            at any time, and any changes will be communicated to customers
-            through appropriate channels.
+            These Terms and Conditions govern the relationship between Orbital
+            Fashion and its customers. By accessing or using the Orbital
+            Fashion, customers agree to abide by these terms. Orbital Fashion
+            reserves the right to modify or update these terms at any time, and
+            any changes will be communicated to customers through appropriate
+            channels.
           </p>
         </div>
       </div>

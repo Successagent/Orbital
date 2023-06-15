@@ -94,7 +94,7 @@ const Privacy = () => {
             This Privacy Policy outlines how Orbital Fashion handles and
             protects customer information. By using the Orbital Fashion
             Collection, customers consent to the collection, use, and storage of
-            their personal information as described in this policy. Ebiye Luxury
+            their personal information as described in this policy. Orbital
             Fashion reserves the right to update or modify this Privacy Policy
             as necessary, and any changes will be communicated to customers
             through appropriate channels.
