@@ -10,7 +10,7 @@ const SupportCard = () => {
         <BiSupport />
         <div>
           <h3>Support </h3>
-          <p>Delicated 24/7 support</p>
+          <p>Dedicated 24/7 support</p>
         </div>
       </div>
       <div>
