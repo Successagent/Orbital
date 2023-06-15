@@ -29,7 +29,7 @@ const Terms = () => {
           <p>2: Returns and Exchanges:</p>
           <ul>
             <li>
-              Orbital Fashion accepts returns or exchanges within 14 days of the
+              Orbital Fashion accepts returns or exchanges within 7 days of the
               delivery date, provided that the item is in its original condition
               and packaging.
             </li>

@@ -47,7 +47,9 @@ const AdminDashboard = () => {
         JSON.stringify(newProducts.data)
       );
       localStorage.setItem(`createdProducts`, JSON.stringify(newProducts.data));
-    } catch (error) {}
+    } catch (error) {
+      console.log(error);
+    }
   };
 
   const handleChange = (e) => {
@@ -63,7 +65,6 @@ const AdminDashboard = () => {
     const sizesArray = formData.sizes.split(",").map((size) => size.trim());
     const newProductData = new FormData();
     newProductData.append("name", formData.productName);
-    newProductData.append("desc", formData.description);
     newProductData.append("shortDesc", formData.shortDesc);
     newProductData.append("sizes", sizesArray);
     for (let i = 0; i < formData.images.length; i++) {
@@ -156,15 +157,6 @@ const AdminDashboard = () => {
                   name="shortDesc"
                   type="text"
                   id="shortDesc"
-                  onChange={handleChange}
-                />
-              </div>
-              <div className="admin-hero-main-item admin-hero-main-item-3">
-                <h3>Description</h3>
-                <input
-                  name="description"
-                  type="text"
-                  id="description"
                   onChange={handleChange}
                 />
               </div>

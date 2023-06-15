@@ -1,6 +1,6 @@
 import React from "react";
 import { BiSupport } from "react-icons/bi";
-import { BsArrowReturnRight, BsCreditCard2Back } from "react-icons/bs";
+import { BsCreditCard2Back } from "react-icons/bs";
 import { MdOutlineLocalShipping } from "react-icons/md";
 
 const SupportCard = () => {
@@ -24,7 +24,7 @@ const SupportCard = () => {
         <MdOutlineLocalShipping />
         <div>
           <h3>Shipping</h3>
-          <p>Free shpping to all orders in Nigeria</p>
+          <p>Free shpping to all orders in within Yenagoa</p>
         </div>
       </div>
     </div>
