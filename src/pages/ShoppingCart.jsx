@@ -18,6 +18,8 @@ const ShoppingCart = () => {
   const [address, setAddress] = useState("");
   const { pathname } = useLocation();
   const [shipping, setShipping] = useState(0);
+  const [termsAndConditions, setTermsAndConditions] = useState(false);
+  const condition = JSON.parse(sessionStorage.getItem("terms"));
 
   const navigate = useNavigate();
 
@@ -110,6 +112,8 @@ const ShoppingCart = () => {
   useEffect(() => {
     checkTotalPrice();
   }, [city]);
+
+  console.log(termsAndConditions);
   return (
     <>
       <section className="shopping-cart">
@@ -172,6 +176,26 @@ const ShoppingCart = () => {
               placeholder="Address"
               onChange={(e) => setAddress(e.target.value)}
             />
+            <div className="flex_terms">
+              <input
+                type="checkbox"
+                className="checkbox"
+                onChange={() => {
+                  setTermsAndConditions(true);
+                  sessionStorage.setItem("terms", JSON.stringify(true));
+                }}
+                defaultChecked={condition}
+                style={{ alignItems: "start", justifyContent: "flex-start" }}
+              />
+              <p
+                style={{ cursor: "pointer", color: "#1b9abd" }}
+                onClick={() => {
+                  navigate("/terms");
+                }}
+              >
+                Accept terms and condition's
+              </p>
+            </div>
           </div>
           <div className="shopping-cart-total-con">
             <div className="shopping-cart-total">
@@ -192,7 +216,12 @@ const ShoppingCart = () => {
                   ₦{`${getTotalQuantity() + shipping}`}
                 </h3>
               </div>
-              <button className="btn" onClick={payWithPaystack}>
+              <button
+                disabled={condition ? false : true}
+                style={{ cursor: condition ? "pointer" : "no-drop" }}
+                className="btn"
+                onClick={payWithPaystack}
+              >
                 Pay Now
               </button>
             </div>
