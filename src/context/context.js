@@ -13,12 +13,7 @@ const AppProvider = ({ children }) => {
   const [loading, setLoading] = useState(false);
   const [department, setDepartment] = useState(false);
   const [activePage, setActivePage] = useState(1);
-  const [products, setProducts] = useState(() => {
-    const sessionStorageProduct = sessionStorage.getItem("createdProducts");
-    return sessionStorageProduct
-      ? JSON.parse(sessionStorage.getItem("createdProducts"))
-      : [];
-  });
+  const [products, setProducts] = useState([]);
 
   const notify = () => toast("Item has been added");
   const deleteNotification = () => toast("Item successfully Deleted");
@@ -30,6 +25,7 @@ const AppProvider = ({ children }) => {
       if (newProducts.status === 200) {
         setLoading(false);
         setProducts(newProducts.data);
+        console.log(newProducts);
         localStorage.setItem("products", JSON.stringify(newProducts.data));
         sessionStorage.setItem(
           `createdProducts`,

@@ -18,7 +18,7 @@ const DailyDeals = ({ dealsProducts, index }) => {
   }, []);
   return (
     <div className="flash-sales-item-one-main">
-      {dealsProducts.map((item, idx) => {
+      {dealsProducts?.map((item, idx) => {
         return (
           <div
             key={idx}
@@ -69,10 +69,10 @@ const DailyDeals = ({ dealsProducts, index }) => {
             </div>
             <Link to={`/products/${item._id}`}>
               <div className="flash-sales-item-one-main-image-con">
-                {item.image && (
+                {item?.image && (
                   <img
                     className="flash-sales-item-one-img"
-                    src={item.image[3].url}
+                    src={item?.image[3]?.url}
                     alt=""
                   />
                 )}

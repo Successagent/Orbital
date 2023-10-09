@@ -17,6 +17,18 @@
   margin: 0;
 }
 
+.loader_container {
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin-top: 150px;
+  margin-bottom: 50px;
+}
+
+.loader_container>p {
+  color: #03b5c3;
+}
+
 body {
   font-family: "Montserrat", sans-serif;
   font-weight: 400;
@@ -509,6 +521,7 @@ footer .link::after {
 
 .product-item img {
   transition: all ease-in-out 500ms;
+  background-color: #0000004d;
 }
 
 .checkbox {
@@ -516,6 +529,7 @@ footer .link::after {
   height: 15px !important;
   padding: 0 !important;
   margin: 0 !important;
+  background-color: #237d721a;
 
 }
 

@@ -80,7 +80,7 @@ const AdminDashboard = () => {
           token: accessToken,
         },
       });
-
+      console.log(res.data);
       if (res.status === 200) {
         notify();
 
@@ -89,6 +89,7 @@ const AdminDashboard = () => {
       }
     } catch (error) {
       setCreateLoader(false);
+      console.log(error);
     }
   };
 

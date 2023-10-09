@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Link, useLocation } from "react-router-dom";
+import { ColorRing } from "react-loader-spinner";
 
 import { AiOutlineArrowRight } from "react-icons/ai";
 
@@ -23,7 +24,7 @@ import { useGlobalContext } from "../context/context";
 const Home = () => {
   const { pathname } = useLocation();
   const [index, setIndex] = useState(1);
-  const { products } = useGlobalContext();
+  const { products, loading } = useGlobalContext();
 
   const toggleFlashSales = (e) => {
     switch (e.target.id) {
@@ -62,22 +63,39 @@ const Home = () => {
     <>
       <section className="home-hero">
         <Header pathname={pathname} />
-        <div className="home-hero-section">
-          {products.slice(0, 3).map((item, idx) => (
-            <div key={idx} className={`home-hero-item-${idx + 1}`}>
-              <div className="home-hero-section-text-con">
-                <h2>{item.name}</h2>
-                <p>{item.shortDesc}</p>
-                <Link to={`/products/${item._id}`}>
-                  <Button title={"shop now"} icon={<AiOutlineArrowRight />} />
-                </Link>
-              </div>
-              <div className="home-hero-section-img-con">
-                <img src={item.image[0].url} alt="" />
-              </div>
+        {loading ? (
+          <>
+            <div className="loader_container">
+              <ColorRing
+                visible={true}
+                height="40"
+                width="40"
+                ariaLabel="blocks-loading"
+                wrapperStyle={{}}
+                wrapperClass="blocks-wrapper"
+                colors={["#03b5c3", "#03b5c3", "#03b5c3", "#03b5c3", "#03b5c3"]}
+              />
+              <p>Loading...</p>
             </div>
-          ))}
-        </div>
+          </>
+        ) : (
+          <div className="home-hero-section">
+            {products.slice(0, 3).map((item, idx) => (
+              <div key={idx} className={`home-hero-item-${idx + 1}`}>
+                <div className="home-hero-section-text-con">
+                  <h2>{item.name}</h2>
+                  <p>{item.shortDesc}</p>
+                  <Link to={`/products/${item._id}`}>
+                    <Button title={"shop now"} icon={<AiOutlineArrowRight />} />
+                  </Link>
+                </div>
+                <div className="home-hero-section-img-con">
+                  <img src={item.image[0].url} alt="" />
+                </div>
+              </div>
+            ))}
+          </div>
+        )}
         <SupportCard />
         <Products h2_title="New Top Sales!" products={products} />
         <ProductsBanner />
