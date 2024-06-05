@@ -120,7 +120,7 @@ const Products = ({ h2_title, pathname }) => {
                 <div className="product-item-first-con">
                   <Link to={`/products/${product._id}`}>
                     <div className="product-image-con">
-                      <img src={product.image[1].url} alt={product.name} />
+                      <img src={product?.image[1]?.url} alt={product?.name} />
                     </div>
                   </Link>
                   <div className="product-search-con">

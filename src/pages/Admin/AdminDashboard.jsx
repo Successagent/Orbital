@@ -1,6 +1,6 @@
 import React, { useEffect, useState } from "react";
 import { PageHero } from "../../components";
-import { useLocation, useNavigate } from "react-router-dom";
+import { useLocation } from "react-router-dom";
 import axios from "axios";
 import AdminCreatedProduct from "./AdminCreatedProduct";
 import { useGlobalContext } from "../../context/context";
