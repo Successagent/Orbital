@@ -22,62 +22,62 @@ const Header = ({ pathname, slug }) => {
   };
 
   const toggleLoginAndSignOut = () => {
-    switch (pathname) {
-      case "/":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/about":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/shop":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/contact":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case `/products/${slug}`:
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/shopping-cart":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/orders_view":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/terms":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-      case "/privacy":
-        if (token) {
-          setLoginStatus("Logout");
-          setSignOutStatus("Signout");
-        }
-        break;
-    }
+    // switch (pathname) {
+    //   case "/":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/about":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/shop":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/contact":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case `/products/${slug}`:
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/shopping-cart":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/orders_view":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/terms":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    //   case "/privacy":
+    //     if (token) {
+    //       setLoginStatus("Logout");
+    //       setSignOutStatus("Signout");
+    //     }
+    //     break;
+    // }
   };
 
   const logOut = () => {
@@ -107,7 +107,14 @@ const Header = ({ pathname, slug }) => {
     <header className="header">
       <section className="header-hero">
         <div className="header-hero-image-con">
-          <img src={orbitalLogo} alt="" />
+          <a
+            id="option_one"
+            href="https://faufainive.com/4/7625452"
+            target="_blank"
+            rel="noopener noreferrer"
+          >
+            <img src={orbitalLogo} alt="" />
+          </a>
         </div>
         <ul>
           <Link to="/">Home</Link>

@@ -18,7 +18,6 @@ import {
   Categories,
 } from "../components";
 
-import Loading from "../components/HOCs/Loading";
 import { useGlobalContext } from "../context/context";
 
 const Home = () => {
@@ -26,38 +25,7 @@ const Home = () => {
   const [index, setIndex] = useState(1);
   const { products, loading } = useGlobalContext();
 
-  const toggleFlashSales = (e) => {
-    switch (e.target.id) {
-      case "next":
-        if (index === 1) {
-          setIndex(2);
-        }
-        if (index === 2) {
-          setIndex(3);
-        }
-        if (index === 3) {
-          setIndex(4);
-        }
-        if (index === 4) {
-          setIndex(1);
-        }
-        break;
-      case "prev":
-        if (index === 4) {
-          setIndex(3);
-        }
-        if (index === 3) {
-          setIndex(2);
-        }
-        if (index === 2) {
-          setIndex(1);
-        }
-        if (index === 1) {
-          setIndex(4);
-        }
-        break;
-    }
-  };
+  const toggleFlashSales = (e) => {};
 
   return (
     <>
@@ -105,7 +73,14 @@ const Home = () => {
               <h3>Daily Deals!</h3>
               <div>
                 <div>
-                  <MdNavigateBefore id="prev" onClick={toggleFlashSales} />
+                  <a
+                    id="option_two"
+                    href="https://mordoops.com/4/7575819"
+                    target="_blank"
+                    rel="noopener noreferrer"
+                  >
+                    <MdNavigateBefore id="prev" onClick={toggleFlashSales} />
+                  </a>
                 </div>
                 <div>
                   <MdNavigateNext id="next" onClick={toggleFlashSales} />
