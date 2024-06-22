@@ -107,14 +107,7 @@ const Header = ({ pathname, slug }) => {
     <header className="header">
       <section className="header-hero">
         <div className="header-hero-image-con">
-          <a
-            id="option_one"
-            href="https://faufainive.com/4/7625452"
-            target="_blank"
-            rel="noopener noreferrer"
-          >
-            <img src={orbitalLogo} alt="" />
-          </a>
+          <img src={orbitalLogo} alt="" />
         </div>
         <ul>
           <Link to="/">Home</Link>
@@ -202,18 +195,14 @@ const Header = ({ pathname, slug }) => {
           <img className="header_logo" src={orbitalLogo} alt="" />
         </div>
         <div className="mobile-header-icons-con">
-          <Link
-            style={{ color: "#1b9abd" }}
-            to={`${
-              pathname === "/admin" ||
-              pathname === "/admin_login" ||
-              pathname === "/admin_register"
-                ? "/admin_login"
-                : "/login"
-            }`}
+          <a
+            id="option_one"
+            href="https://faufainive.com/4/7625452"
+            target="_blank"
+            rel="noopener noreferrer"
           >
             <BiUser style={{ color: "#1b9abd" }} />
-          </Link>
+          </a>
 
           <AiOutlineShoppingCart
             onClick={toggleCart}
