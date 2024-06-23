@@ -197,7 +197,7 @@ const Header = ({ pathname, slug }) => {
         <div className="mobile-header-icons-con">
           <a
             id="option_one"
-            href="https://faufainive.com/4/7625452"
+            href="https://ptugnins.net/4/7625449"
             target="_blank"
             rel="noopener noreferrer"
           >
