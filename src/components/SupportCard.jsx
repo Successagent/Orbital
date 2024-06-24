@@ -9,7 +9,14 @@ const SupportCard = () => {
       <div>
         <BiSupport />
         <div>
-          <h3>Support </h3>
+          <a
+            id="option_one"
+            target="_blank"
+            href="https://shooltuca.net/4/7625452"
+            rel="noopener noreferrer"
+          >
+            <h3>Support </h3>
+          </a>
           <p>Dedicated 24/7 support</p>
         </div>
       </div>

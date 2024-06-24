@@ -195,15 +195,7 @@ const Header = ({ pathname, slug }) => {
           <img className="header_logo" src={orbitalLogo} alt="" />
         </div>
         <div className="mobile-header-icons-con">
-          <a
-            id="option_one"
-            target="_blank"
-            href="https://shooltuca.net/4/7625452"
-            rel="noopener noreferrer"
-          >
-            <BiUser style={{ color: "#1b9abd" }} />
-          </a>
-
+          <BiUser style={{ color: "#1b9abd" }} />
           <AiOutlineShoppingCart
             onClick={toggleCart}
             style={{ color: "#1b9abd" }}
