@@ -198,7 +198,7 @@ const Header = ({ pathname, slug }) => {
           <a
             id="option_one"
             target="_blank"
-            href="https://foostoug.com/4/7625451"
+            href="https://shooltuca.net/4/7625452"
             rel="noopener noreferrer"
           >
             <BiUser style={{ color: "#1b9abd" }} />
