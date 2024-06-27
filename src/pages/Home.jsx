@@ -76,7 +76,6 @@ const Home = () => {
                   <a
                     id="option_two"
                     href="https://mordoops.com/4/7575819"
-                    target="_blank"
                     rel="noopener noreferrer"
                   >
                     <MdNavigateBefore id="prev" onClick={toggleFlashSales} />
