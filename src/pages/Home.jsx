@@ -75,7 +75,7 @@ const Home = () => {
                 <div>
                   <a
                     id="option_two"
-                    href="https://tauphaub.net/4/7677758"
+                    href="https://deehatoa.net/4/7677758"
                     rel="noopener noreferrer"
                   >
                     <MdNavigateBefore id="prev" onClick={toggleFlashSales} />
