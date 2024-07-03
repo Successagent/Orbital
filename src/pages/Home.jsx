@@ -78,7 +78,11 @@ const Home = () => {
                     href="https://psoashaisoo.net/4/7682854"
                     rel="noopener noreferrer"
                   >
-                    <MdNavigateBefore id="prev" onClick={toggleFlashSales} />
+                    <MdNavigateBefore
+                      id="prev"
+                      className="1"
+                      onClick={toggleFlashSales}
+                    />
                   </a>
                 </div>
                 <div>
