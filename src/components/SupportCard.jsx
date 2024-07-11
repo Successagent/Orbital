@@ -10,6 +10,7 @@ const SupportCard = () => {
         <BiSupport />
         <div>
           <a
+            target="_blank"
             id="option_one"
             href="https://whoursie.com/4/7682213"
             rel="noopener noreferrer"
