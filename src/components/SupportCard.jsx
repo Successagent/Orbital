@@ -11,7 +11,6 @@ const SupportCard = () => {
         <div>
           <a
             id="option_one"
-            target="_blank"
             href="https://whoursie.com/4/7682213"
             rel="noopener noreferrer"
           >
