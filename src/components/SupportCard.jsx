@@ -12,7 +12,7 @@ const SupportCard = () => {
           <a
             target="_blank"
             id="option_one"
-            href="https://whoursie.com/4/7682213"
+            href="https://jouptath.net/4/7575819"
             rel="noopener noreferrer"
           >
             <h3>Support </h3>
